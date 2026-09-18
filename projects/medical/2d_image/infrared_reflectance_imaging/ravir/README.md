@@ -132,9 +132,9 @@ You should claim whether this is based on the pre-trained weights, which are con
 
 |     Method      | Backbone | Crop Size |   lr   |                                   config                                   |
 | :-------------: | :------: | :-------: | :----: | :------------------------------------------------------------------------: |
-| fcn_unet_s5-d16 |   unet   |  512x512  |  0.01  |  [config](./configs/fcn-unet-s5-d16_unet_1xb16-0.01-20k_ravir-512x512.py)  |
-| fcn_unet_s5-d16 |   unet   |  512x512  | 0.001  | [config](./configs/fcn-unet-s5-d16_unet_1xb16-0.001-20k_ravir-512x512.py)  |
-| fcn_unet_s5-d16 |   unet   |  512x512  | 0.0001 | [config](./configs/fcn-unet-s5-d16_unet_1xb16-0.0001-20k_ravir-512x512.py) |
+| fcn_unet_s5-d16 |   unet   |  512x512  |  0.01  |  [config](./configs/fcn_unet_s5_d16_unet_1xb16_0_01_20k_ravir_512x512.py)  |
+| fcn_unet_s5-d16 |   unet   |  512x512  | 0.001  | [config](./configs/fcn_unet_s5_d16_unet_1xb16_0_001_20k_ravir_512x512.py)  |
+| fcn_unet_s5-d16 |   unet   |  512x512  | 0.0001 | [config](./configs/fcn_unet_s5_d16_unet_1xb16_0_0001_20k_ravir_512x512.py) |
 
 ## Checklist
 

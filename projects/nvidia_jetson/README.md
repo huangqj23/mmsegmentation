@@ -32,7 +32,7 @@
 
 ## 3 从 config 页面下载模型的 pth 权重文件
 
-这里以 [`deeplabv3plus_r101-d8_4xb4-80k_potsdam-512x512.py`](../../configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-80k_potsdam-512x512.py) 配置文件举例，在 [configs](https://github.com/open-mmlab/mmsegmentation/tree/main/configs/deeplabv3plus#potsdam) 页面下载权重文件，
+这里以 [`deeplabv3plus_r101_d8_4xb4_80k_potsdam_512x512.py`](../../configs/deeplabv3plus/deeplabv3plus_r101_d8_4xb4_80k_potsdam_512x512.py) 配置文件举例，在 [configs](https://github.com/open-mmlab/mmsegmentation/tree/main/configs/deeplabv3plus#potsdam) 页面下载权重文件，
 ![pth](https://github.com/AI-Tianlong/Useful-Tools/assets/50650583/8f747362-caf4-406c-808d-4ca72babb209)
 
 ## 4 通过 [OpenMMLab deployee](https://platform.openmmlab.com/deploee) 以交互式方式进行模型转换及测速
@@ -57,7 +57,7 @@ _base_ = [
 ```python
 import mmengine
 
-mmengine.Config.fromfile("configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-80k_potsdam-512x512.py").dump("My_config.py")
+mmengine.Config.fromfile("configs/deeplabv3plus/deeplabv3plus_r101_d8_4xb4_80k_potsdam_512x512.py").dump("My_config.py")
 ```
 
 使用上述代码后，您能够看到，在`My_config.py`包含着完整的配置文件，无相对引用。这时，上传模型 config 至网页内对应处。

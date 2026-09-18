@@ -7,7 +7,7 @@ Models:
     Metrics:
       mIoU: 77.56
       mIoU(ms+flip): 78.98
-  Config: configs/resnest/resnest_s101-d8_fcn_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/resnest/resnest_s101_d8_fcn_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -31,7 +31,7 @@ Models:
     Metrics:
       mIoU: 78.57
       mIoU(ms+flip): 79.19
-  Config: configs/resnest/resnest_s101-d8_pspnet_4xb2-80k_cityscapes512x1024.py
+  Config: configs/resnest/resnest_s101_d8_pspnet_4xb2_80k_cityscapes512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -55,7 +55,7 @@ Models:
     Metrics:
       mIoU: 79.67
       mIoU(ms+flip): 80.51
-  Config: configs/resnest/resnest_s101-d8_deeplabv3_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/resnest/resnest_s101_d8_deeplabv3_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -79,7 +79,7 @@ Models:
     Metrics:
       mIoU: 79.62
       mIoU(ms+flip): 80.27
-  Config: configs/resnest/resnest_s101-d8_deeplabv3plus_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/resnest/resnest_s101_d8_deeplabv3plus_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -103,7 +103,7 @@ Models:
     Metrics:
       mIoU: 45.62
       mIoU(ms+flip): 46.16
-  Config: configs/resnest/resnest_s101-d8_fcn_4xb4-160k_ade20k-512x512.py
+  Config: configs/resnest/resnest_s101_d8_fcn_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -127,7 +127,7 @@ Models:
     Metrics:
       mIoU: 45.44
       mIoU(ms+flip): 46.28
-  Config: configs/resnest/resnest_s101-d8_pspnet_4xb4-160k_ade20k-512x512.py
+  Config: configs/resnest/resnest_s101_d8_pspnet_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -151,7 +151,7 @@ Models:
     Metrics:
       mIoU: 45.71
       mIoU(ms+flip): 46.59
-  Config: configs/resnest/resnest_s101-d8_deeplabv3_4xb4-160k_ade20k-512x512.py
+  Config: configs/resnest/resnest_s101_d8_deeplabv3_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -175,7 +175,7 @@ Models:
     Metrics:
       mIoU: 46.47
       mIoU(ms+flip): 47.27
-  Config: configs/resnest/resnest_s101-d8_deeplabv3plus_4xb4-160k_ade20k-512x512.py
+  Config: configs/resnest/resnest_s101_d8_deeplabv3plus_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

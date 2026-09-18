@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 70.96
       mIoU(ms+flip): 72.65
-  Config: configs/fastscnn/fast_scnn_8xb4-160k_cityscapes-512x1024.py
+  Config: configs/fastscnn/fast_scnn_8xb4_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 32

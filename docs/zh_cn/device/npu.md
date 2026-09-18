@@ -7,13 +7,13 @@
 以下展示单机四卡场景的运行指令:
 
 ```shell
-bash tools/dist_train.sh configs/deeplabv3/deeplabv3_r50-d8_4xb2-40k_cityscapes-512x1024.py 4
+bash tools/dist_train.sh configs/deeplabv3/deeplabv3_r50_d8_4xb2_40k_cityscapes_512x1024.py 4
 ```
 
 以下展示单机单卡下的运行指令:
 
 ```shell
-python tools/train.py configs/deeplabv3/deeplabv3_r50-d8_4xb2-40k_cityscapes-512x1024.py
+python tools/train.py configs/deeplabv3/deeplabv3_r50_d8_4xb2_40k_cityscapes_512x1024.py
 ```
 
 ## 模型验证结果

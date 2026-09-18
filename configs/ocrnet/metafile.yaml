@@ -23,7 +23,7 @@ Models:
     Metrics:
       mIoU: 76.61
       mIoU(ms+flip): 78.01
-  Config: configs/ocrnet/ocrnet_hr18s_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -47,7 +47,7 @@ Models:
     Metrics:
       mIoU: 77.72
       mIoU(ms+flip): 79.49
-  Config: configs/ocrnet/ocrnet_hr18_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -71,7 +71,7 @@ Models:
     Metrics:
       mIoU: 80.58
       mIoU(ms+flip): 81.79
-  Config: configs/ocrnet/ocrnet_hr48_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -95,7 +95,7 @@ Models:
     Metrics:
       mIoU: 77.16
       mIoU(ms+flip): 78.66
-  Config: configs/ocrnet/ocrnet_hr18s_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -118,7 +118,7 @@ Models:
     Metrics:
       mIoU: 78.57
       mIoU(ms+flip): 80.46
-  Config: configs/ocrnet/ocrnet_hr18_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -141,7 +141,7 @@ Models:
     Metrics:
       mIoU: 80.7
       mIoU(ms+flip): 81.87
-  Config: configs/ocrnet/ocrnet_hr48_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -164,7 +164,7 @@ Models:
     Metrics:
       mIoU: 78.45
       mIoU(ms+flip): 79.97
-  Config: configs/ocrnet/ocrnet_hr18s_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -187,7 +187,7 @@ Models:
     Metrics:
       mIoU: 79.47
       mIoU(ms+flip): 80.91
-  Config: configs/ocrnet/ocrnet_hr18_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -210,7 +210,7 @@ Models:
     Metrics:
       mIoU: 81.35
       mIoU(ms+flip): 82.7
-  Config: configs/ocrnet/ocrnet_hr48_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# HRNet backbone'
     Batch Size: 8
@@ -232,7 +232,7 @@ Models:
     Dataset: '# ResNet backbone'
     Metrics:
       mIoU: 80.09
-  Config: configs/ocrnet/ocrnet_r101-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_r101_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# ResNet backbone'
     Batch Size: 8
@@ -254,7 +254,7 @@ Models:
     Dataset: '# ResNet backbone'
     Metrics:
       mIoU: 80.3
-  Config: configs/ocrnet/ocrnet_r101-d8_8xb2-40k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_r101_d8_8xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# ResNet backbone'
     Batch Size: 16
@@ -277,7 +277,7 @@ Models:
     Dataset: '# ResNet backbone'
     Metrics:
       mIoU: 80.81
-  Config: configs/ocrnet/ocrnet_r101-d8_8xb2-80k_cityscapes-512x1024.py
+  Config: configs/ocrnet/ocrnet_r101_d8_8xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: '# ResNet backbone'
     Batch Size: 16
@@ -301,7 +301,7 @@ Models:
     Metrics:
       mIoU: 35.06
       mIoU(ms+flip): 35.8
-  Config: configs/ocrnet/ocrnet_hr18s_4xb4-80k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -325,7 +325,7 @@ Models:
     Metrics:
       mIoU: 37.79
       mIoU(ms+flip): 39.16
-  Config: configs/ocrnet/ocrnet_hr18_4xb4-80k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -349,7 +349,7 @@ Models:
     Metrics:
       mIoU: 43.0
       mIoU(ms+flip): 44.3
-  Config: configs/ocrnet/ocrnet_hr48_4xb4-80k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -373,7 +373,7 @@ Models:
     Metrics:
       mIoU: 37.19
       mIoU(ms+flip): 38.4
-  Config: configs/ocrnet/ocrnet_hr18s_4xb4-80k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -396,7 +396,7 @@ Models:
     Metrics:
       mIoU: 39.32
       mIoU(ms+flip): 40.8
-  Config: configs/ocrnet/ocrnet_hr18_4xb4-80k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -419,7 +419,7 @@ Models:
     Metrics:
       mIoU: 43.25
       mIoU(ms+flip): 44.88
-  Config: configs/ocrnet/ocrnet_hr48_4xb4-160k_ade20k-512x512.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -442,7 +442,7 @@ Models:
     Metrics:
       mIoU: 71.7
       mIoU(ms+flip): 73.84
-  Config: configs/ocrnet/ocrnet_hr18s_4xb4-20k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -466,7 +466,7 @@ Models:
     Metrics:
       mIoU: 74.75
       mIoU(ms+flip): 77.11
-  Config: configs/ocrnet/ocrnet_hr18_4xb4-20k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -490,7 +490,7 @@ Models:
     Metrics:
       mIoU: 77.72
       mIoU(ms+flip): 79.87
-  Config: configs/ocrnet/ocrnet_hr48_4xb4-20k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -514,7 +514,7 @@ Models:
     Metrics:
       mIoU: 72.76
       mIoU(ms+flip): 74.6
-  Config: configs/ocrnet/ocrnet_hr18s_4xb4-40k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18s_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -537,7 +537,7 @@ Models:
     Metrics:
       mIoU: 74.98
       mIoU(ms+flip): 77.4
-  Config: configs/ocrnet/ocrnet_hr18_4xb4-40k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr18_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -560,7 +560,7 @@ Models:
     Metrics:
       mIoU: 77.14
       mIoU(ms+flip): 79.71
-  Config: configs/ocrnet/ocrnet_hr48_4xb4-40k_voc12aug-512x512.py
+  Config: configs/ocrnet/ocrnet_hr48_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16

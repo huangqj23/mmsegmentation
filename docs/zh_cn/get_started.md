@@ -75,14 +75,14 @@ pip install "mmsegmentation>=1.0.0"
 mim download mmsegmentation --config pspnet_r50-d8_4xb2-40k_cityscapes-512x1024 --dest .
 ```
 
-该下载过程可能需要花费几分钟，这取决于您的网络环境。当下载结束，您将看到以下两个文件在您当前工作目录：`pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py` 和 `pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth`
+该下载过程可能需要花费几分钟，这取决于您的网络环境。当下载结束，您将看到以下两个文件在您当前工作目录：`pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py` 和 `pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth`
 
 **步骤 2.** 验证推理 demo
 
 选项 (a). 如果您通过源码安装了 mmsegmentation，运行以下命令即可：
 
 ```shell
-python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --out-file result.jpg
+python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --out-file result.jpg
 ```
 
 您将在当前文件夹中看到一个新图像 `result.jpg`，其中所有目标都覆盖了分割 mask
@@ -93,7 +93,7 @@ python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_4xb2-40k_ci
 from mmseg.apis import inference_model, init_model, show_result_pyplot
 import mmcv
 
-config_file = 'pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+config_file = 'pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 checkpoint_file = 'pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth'
 
 # 根据配置文件和模型文件建立模型

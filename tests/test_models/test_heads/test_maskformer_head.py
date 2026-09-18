@@ -16,7 +16,7 @@ def test_maskformer_head():
     cfg = Config.fromfile(
         join(
             repo_dpath,
-            '../../configs/maskformer/maskformer_r50-d32_8xb2-160k_ade20k-512x512.py'  # noqa
+            '../../configs/maskformer/maskformer_r50_d32_8xb2_160k_ade20k_512x512.py'  # noqa
         ))
     cfg.model.train_cfg = None
     decode_head = MODELS.build(cfg.model.decode_head)

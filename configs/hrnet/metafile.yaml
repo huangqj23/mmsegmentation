@@ -7,7 +7,7 @@ Models:
     Metrics:
       mIoU: 73.86
       mIoU(ms+flip): 75.91
-  Config: configs/hrnet/fcn_hr18s_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18s_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -31,7 +31,7 @@ Models:
     Metrics:
       mIoU: 77.19
       mIoU(ms+flip): 78.92
-  Config: configs/hrnet/fcn_hr18_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -55,7 +55,7 @@ Models:
     Metrics:
       mIoU: 78.48
       mIoU(ms+flip): 79.69
-  Config: configs/hrnet/fcn_hr48_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr48_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -79,7 +79,7 @@ Models:
     Metrics:
       mIoU: 75.31
       mIoU(ms+flip): 77.48
-  Config: configs/hrnet/fcn_hr18s_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18s_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -102,7 +102,7 @@ Models:
     Metrics:
       mIoU: 78.65
       mIoU(ms+flip): 80.35
-  Config: configs/hrnet/fcn_hr18_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -125,7 +125,7 @@ Models:
     Metrics:
       mIoU: 79.93
       mIoU(ms+flip): 80.72
-  Config: configs/hrnet/fcn_hr48_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr48_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -148,7 +148,7 @@ Models:
     Metrics:
       mIoU: 76.31
       mIoU(ms+flip): 78.31
-  Config: configs/hrnet/fcn_hr18s_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18s_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -171,7 +171,7 @@ Models:
     Metrics:
       mIoU: 78.8
       mIoU(ms+flip): 80.74
-  Config: configs/hrnet/fcn_hr18_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr18_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -194,7 +194,7 @@ Models:
     Metrics:
       mIoU: 80.65
       mIoU(ms+flip): 81.92
-  Config: configs/hrnet/fcn_hr48_4xb2-160k_cityscapes-512x1024.py
+  Config: configs/hrnet/fcn_hr48_4xb2_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -217,7 +217,7 @@ Models:
     Metrics:
       mIoU: 31.38
       mIoU(ms+flip): 32.45
-  Config: configs/hrnet/fcn_hr18s_4xb4-80k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -241,7 +241,7 @@ Models:
     Metrics:
       mIoU: 36.27
       mIoU(ms+flip): 37.28
-  Config: configs/hrnet/fcn_hr18_4xb4-80k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -265,7 +265,7 @@ Models:
     Metrics:
       mIoU: 41.9
       mIoU(ms+flip): 43.27
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -289,7 +289,7 @@ Models:
     Metrics:
       mIoU: 33.07
       mIoU(ms+flip): 34.56
-  Config: configs/hrnet/fcn_hr18s_4xb4-160k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -312,7 +312,7 @@ Models:
     Metrics:
       mIoU: 36.79
       mIoU(ms+flip): 38.58
-  Config: configs/hrnet/fcn_hr18_4xb4-160k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -335,7 +335,7 @@ Models:
     Metrics:
       mIoU: 42.02
       mIoU(ms+flip): 43.86
-  Config: configs/hrnet/fcn_hr48_4xb4-160k_ade20k-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -358,7 +358,7 @@ Models:
     Metrics:
       mIoU: 65.5
       mIoU(ms+flip): 68.89
-  Config: configs/hrnet/fcn_hr18s_4xb4-20k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -382,7 +382,7 @@ Models:
     Metrics:
       mIoU: 72.3
       mIoU(ms+flip): 74.71
-  Config: configs/hrnet/fcn_hr18_4xb4-20k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -406,7 +406,7 @@ Models:
     Metrics:
       mIoU: 75.87
       mIoU(ms+flip): 78.58
-  Config: configs/hrnet/fcn_hr48_4xb4-20k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -430,7 +430,7 @@ Models:
     Metrics:
       mIoU: 66.61
       mIoU(ms+flip): 70.0
-  Config: configs/hrnet/fcn_hr18s_4xb4-40k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -453,7 +453,7 @@ Models:
     Metrics:
       mIoU: 72.9
       mIoU(ms+flip): 75.59
-  Config: configs/hrnet/fcn_hr18_4xb4-40k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -476,7 +476,7 @@ Models:
     Metrics:
       mIoU: 76.24
       mIoU(ms+flip): 78.49
-  Config: configs/hrnet/fcn_hr48_4xb4-40k_voc12aug-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -499,7 +499,7 @@ Models:
     Metrics:
       mIoU: 45.14
       mIoU(ms+flip): 47.42
-  Config: configs/hrnet/fcn_hr48_4xb4-40k_pascal-context-480x480.py
+  Config: configs/hrnet/fcn_hr48_4xb4_40k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -523,7 +523,7 @@ Models:
     Metrics:
       mIoU: 45.84
       mIoU(ms+flip): 47.84
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_pascal-context-480x480.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -546,7 +546,7 @@ Models:
     Metrics:
       mIoU: 50.33
       mIoU(ms+flip): 52.83
-  Config: configs/hrnet/fcn_hr48_4xb4-40k_pascal-context-59-480x480.py
+  Config: configs/hrnet/fcn_hr48_4xb4_40k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16
@@ -569,7 +569,7 @@ Models:
     Metrics:
       mIoU: 51.12
       mIoU(ms+flip): 53.56
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_pascal-context-59-480x480.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16
@@ -592,7 +592,7 @@ Models:
     Metrics:
       mIoU: 49.28
       mIoU(ms+flip): 49.42
-  Config: configs/hrnet/fcn_hr18s_4xb4-80k_loveda-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_80k_loveda_512x512.py
   Metadata:
     Training Data: LoveDA
     Batch Size: 16
@@ -616,7 +616,7 @@ Models:
     Metrics:
       mIoU: 50.81
       mIoU(ms+flip): 50.95
-  Config: configs/hrnet/fcn_hr18_4xb4-80k_loveda-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_80k_loveda_512x512.py
   Metadata:
     Training Data: LoveDA
     Batch Size: 16
@@ -640,7 +640,7 @@ Models:
     Metrics:
       mIoU: 51.42
       mIoU(ms+flip): 51.64
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_loveda-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_loveda_512x512.py
   Metadata:
     Training Data: LoveDA
     Batch Size: 16
@@ -664,7 +664,7 @@ Models:
     Metrics:
       mIoU: 77.64
       mIoU(ms+flip): 78.8
-  Config: configs/hrnet/fcn_hr18s_4xb4-80k_potsdam-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_80k_potsdam_512x512.py
   Metadata:
     Training Data: Potsdam
     Batch Size: 16
@@ -688,7 +688,7 @@ Models:
     Metrics:
       mIoU: 78.26
       mIoU(ms+flip): 79.24
-  Config: configs/hrnet/fcn_hr18_4xb4-80k_potsdam-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_80k_potsdam_512x512.py
   Metadata:
     Training Data: Potsdam
     Batch Size: 16
@@ -712,7 +712,7 @@ Models:
     Metrics:
       mIoU: 78.39
       mIoU(ms+flip): 79.34
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_potsdam-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_potsdam_512x512.py
   Metadata:
     Training Data: Potsdam
     Batch Size: 16
@@ -736,7 +736,7 @@ Models:
     Metrics:
       mIoU: 71.81
       mIoU(ms+flip): 73.1
-  Config: configs/hrnet/fcn_hr18s_4xb4-80k_vaihingen-512x512.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_80k_vaihingen_512x512.py
   Metadata:
     Training Data: Vaihingen
     Batch Size: 16
@@ -760,7 +760,7 @@ Models:
     Metrics:
       mIoU: 72.57
       mIoU(ms+flip): 74.09
-  Config: configs/hrnet/fcn_hr18_4xb4-80k_vaihingen-512x512.py
+  Config: configs/hrnet/fcn_hr18_4xb4_80k_vaihingen_512x512.py
   Metadata:
     Training Data: Vaihingen
     Batch Size: 16
@@ -784,7 +784,7 @@ Models:
     Metrics:
       mIoU: 72.5
       mIoU(ms+flip): 73.52
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_vaihingen-512x512.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_vaihingen_512x512.py
   Metadata:
     Training Data: Vaihingen
     Batch Size: 16
@@ -808,7 +808,7 @@ Models:
     Metrics:
       mIoU: 62.3
       mIoU(ms+flip): 62.97
-  Config: configs/hrnet/fcn_hr18s_4xb4-80k_isaid-896x896.py
+  Config: configs/hrnet/fcn_hr18s_4xb4_80k_isaid_896x896.py
   Metadata:
     Training Data: iSAID
     Batch Size: 16
@@ -832,7 +832,7 @@ Models:
     Metrics:
       mIoU: 65.06
       mIoU(ms+flip): 65.6
-  Config: configs/hrnet/fcn_hr18_4xb4-80k_isaid-896x896.py
+  Config: configs/hrnet/fcn_hr18_4xb4_80k_isaid_896x896.py
   Metadata:
     Training Data: iSAID
     Batch Size: 16
@@ -856,7 +856,7 @@ Models:
     Metrics:
       mIoU: 67.8
       mIoU(ms+flip): 68.53
-  Config: configs/hrnet/fcn_hr48_4xb4-80k_isaid-896x896.py
+  Config: configs/hrnet/fcn_hr48_4xb4_80k_isaid_896x896.py
   Metadata:
     Training Data: iSAID
     Batch Size: 16

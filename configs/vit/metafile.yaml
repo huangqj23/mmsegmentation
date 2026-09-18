@@ -7,7 +7,7 @@ Models:
     Metrics:
       mIoU: 47.71
       mIoU(ms+flip): 49.51
-  Config: configs/vit/vit_vit-b16_mln_upernet_8xb2-80k_ade20k-512x512.py
+  Config: configs/vit/vit_vit_b16_mln_upernet_8xb2_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -31,7 +31,7 @@ Models:
     Metrics:
       mIoU: 46.75
       mIoU(ms+flip): 48.46
-  Config: configs/vit/vit_vit-b16_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_vit_b16_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -55,7 +55,7 @@ Models:
     Metrics:
       mIoU: 47.73
       mIoU(ms+flip): 49.95
-  Config: configs/vit/vit_vit-b16-ln_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_vit_b16_ln_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -79,7 +79,7 @@ Models:
     Metrics:
       mIoU: 42.96
       mIoU(ms+flip): 43.79
-  Config: configs/vit/vit_deit-s16_upernet_8xb2-80k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_s16_upernet_8xb2_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -103,7 +103,7 @@ Models:
     Metrics:
       mIoU: 42.87
       mIoU(ms+flip): 43.79
-  Config: configs/vit/vit_deit-s16_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_s16_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -127,7 +127,7 @@ Models:
     Metrics:
       mIoU: 43.82
       mIoU(ms+flip): 45.07
-  Config: configs/vit/vit_deit-s16_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_s16_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -151,7 +151,7 @@ Models:
     Metrics:
       mIoU: 43.52
       mIoU(ms+flip): 45.01
-  Config: configs/vit/vit_deit-s16-ln_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_s16_ln_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -175,7 +175,7 @@ Models:
     Metrics:
       mIoU: 45.24
       mIoU(ms+flip): 46.73
-  Config: configs/vit/vit_deit-b16_upernet_8xb2-80k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_b16_upernet_8xb2_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -199,7 +199,7 @@ Models:
     Metrics:
       mIoU: 45.36
       mIoU(ms+flip): 47.16
-  Config: configs/vit/vit_deit-b16_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_b16_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -223,7 +223,7 @@ Models:
     Metrics:
       mIoU: 45.46
       mIoU(ms+flip): 47.16
-  Config: configs/vit/vit_deit-b16_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_b16_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -247,7 +247,7 @@ Models:
     Metrics:
       mIoU: 45.37
       mIoU(ms+flip): 47.23
-  Config: configs/vit/vit_deit-b16-ln_mln_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/vit/vit_deit_b16_ln_mln_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

@@ -6,7 +6,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 36.68
-  Config: configs/poolformer/fpn_poolformer_s12_8xb4-40k_ade20k-512x512.py
+  Config: configs/poolformer/fpn_poolformer_s12_8xb4_40k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 32
@@ -29,7 +29,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 40.12
-  Config: configs/poolformer/fpn_poolformer_s24_8xb4-40k_ade20k-512x512.py
+  Config: configs/poolformer/fpn_poolformer_s24_8xb4_40k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 32
@@ -75,7 +75,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 41.95
-  Config: configs/poolformer/fpn_poolformer_m36_8xb4-40k_ade20k-512x512.py
+  Config: configs/poolformer/fpn_poolformer_m36_8xb4_40k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 32
@@ -98,7 +98,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 42.43
-  Config: configs/poolformer/fpn_poolformer_m48_8xb4-40k_ade20k-512x512.py
+  Config: configs/poolformer/fpn_poolformer_m48_8xb4_40k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 32

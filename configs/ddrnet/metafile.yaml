@@ -20,7 +20,7 @@ Models:
     Metrics:
       mIoU: 77.84
       mIoU(ms+flip): 80.15
-  Config: configs/ddrnet/ddrnet_23-slim_in1k-pre_2xb6-120k_cityscapes-1024x1024.py
+  Config: configs/ddrnet/ddrnet_23_slim_in1k_pre_2xb6_120k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 12
@@ -45,7 +45,7 @@ Models:
     Metrics:
       mIoU: 79.99
       mIoU(ms+flip): 81.71
-  Config: configs/ddrnet/ddrnet_23_in1k-pre_2xb6-120k_cityscapes-1024x1024.py
+  Config: configs/ddrnet/ddrnet_23_in1k_pre_2xb6_120k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 12

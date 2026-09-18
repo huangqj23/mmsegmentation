@@ -29,7 +29,7 @@ visualizer = dict(
 启动训练实验的命令如下
 
 ```shell
-python tools/train.py configs/pspnet/pspnet_r50-d8_4xb4-80k_ade20k-512x512.py --work-dir work_dir/test_visual
+python tools/train.py configs/pspnet/pspnet_r50_d8_4xb4_80k_ade20k_512x512.py --work-dir work_dir/test_visual
 ```
 
 开始训练后找到 `work_dir` 中的 `vis_data` 路径，例如：本次特定测试的 vis_data 路径如下所示：

@@ -6,7 +6,7 @@ from os.path import dirname, exists, isdir, join, relpath
 import numpy as np
 from mmengine import Config
 from mmengine.dataset import Compose
-from mmengine.registry import init_default_scope
+from mmengine.registry import cfg_type_matches, init_default_scope
 from torch import nn
 
 from mmseg.models import build_segmentor
@@ -95,8 +95,8 @@ def test_config_data_pipeline():
         # remove loading annotation in test pipeline
         load_anno_idx = -1
         for i in range(len(config_mod.test_pipeline)):
-            if config_mod.test_pipeline[i].type in ('LoadAnnotations',
-                                                    'LoadDepthAnnotation'):
+            if cfg_type_matches(config_mod.test_pipeline[i].type,
+                                'LoadAnnotations', 'LoadDepthAnnotation'):
                 load_anno_idx = i
         del config_mod.test_pipeline[load_anno_idx]
 
@@ -148,9 +148,8 @@ def _check_decode_head(decode_head_cfg, decode_head):
             _check_decode_head(decode_head_cfg[i], decode_head[i])
         return
     # check consistency between head_config and roi_head
-    assert decode_head_cfg['type'] == decode_head.__class__.__name__
-
-    assert decode_head_cfg['type'] == decode_head.__class__.__name__
+    assert cfg_type_matches(decode_head_cfg['type'],
+                            decode_head.__class__.__name__)
 
     in_channels = decode_head_cfg.in_channels
     input_transform = decode_head.input_transform
@@ -164,11 +163,11 @@ def _check_decode_head(decode_head_cfg, decode_head):
     else:
         assert in_channels == decode_head.in_channels
 
-    if decode_head_cfg['type'] == 'PointHead':
+    if cfg_type_matches(decode_head_cfg['type'], 'PointHead'):
         assert decode_head_cfg.channels+decode_head_cfg.num_classes == \
                decode_head.fc_seg.in_channels
         assert decode_head.fc_seg.out_channels == decode_head_cfg.num_classes
-    elif decode_head_cfg['type'] == 'VPDDepthHead':
+    elif cfg_type_matches(decode_head_cfg['type'], 'VPDDepthHead'):
         assert decode_head.out_channels == 1
     else:
         assert decode_head_cfg.channels == decode_head.conv_seg.in_channels

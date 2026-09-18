@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 41.5
       mIoU(ms+flip): 42.59
-  Config: configs/segnext/segnext_mscan-t_1xb16-adamw-160k_ade20k-512x512.py
+  Config: configs/segnext/segnext_mscan_t_1xb16_adamw_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -43,7 +43,7 @@ Models:
     Metrics:
       mIoU: 44.16
       mIoU(ms+flip): 45.81
-  Config: configs/segnext/segnext_mscan-s_1xb16-adamw-160k_ade20k-512x512.py
+  Config: configs/segnext/segnext_mscan_s_1xb16_adamw_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -67,7 +67,7 @@ Models:
     Metrics:
       mIoU: 48.03
       mIoU(ms+flip): 49.68
-  Config: configs/segnext/segnext_mscan-b_1xb16-adamw-160k_ade20k-512x512.py
+  Config: configs/segnext/segnext_mscan_b_1xb16_adamw_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -91,7 +91,7 @@ Models:
     Metrics:
       mIoU: 50.99
       mIoU(ms+flip): 52.1
-  Config: configs/segnext/segnext_mscan-l_1xb16-adamw-160k_ade20k-512x512.py
+  Config: configs/segnext/segnext_mscan_l_1xb16_adamw_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

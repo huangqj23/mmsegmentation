@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 43.6
       mIoU(ms+flip): 45.12
-  Config: configs/knet/knet-s3_r50-d8_fcn_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_r50_d8_fcn_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -44,7 +44,7 @@ Models:
     Metrics:
       mIoU: 44.18
       mIoU(ms+flip): 45.58
-  Config: configs/knet/knet-s3_r50-d8_pspnet_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_r50_d8_pspnet_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -69,7 +69,7 @@ Models:
     Metrics:
       mIoU: 45.06
       mIoU(ms+flip): 46.11
-  Config: configs/knet/knet-s3_r50-d8_deeplabv3_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_r50_d8_deeplabv3_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -94,7 +94,7 @@ Models:
     Metrics:
       mIoU: 43.45
       mIoU(ms+flip): 44.07
-  Config: configs/knet/knet-s3_r50-d8_upernet_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_r50_d8_upernet_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -119,7 +119,7 @@ Models:
     Metrics:
       mIoU: 45.84
       mIoU(ms+flip): 46.27
-  Config: configs/knet/knet-s3_swin-t_upernet_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_swin_t_upernet_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -144,7 +144,7 @@ Models:
     Metrics:
       mIoU: 52.05
       mIoU(ms+flip): 53.24
-  Config: configs/knet/knet-s3_swin-l_upernet_8xb2-adamw-80k_ade20k-512x512.py
+  Config: configs/knet/knet_s3_swin_l_upernet_8xb2_adamw_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -169,7 +169,7 @@ Models:
     Metrics:
       mIoU: 52.21
       mIoU(ms+flip): 53.34
-  Config: configs/knet/knet-s3_swin-l_upernet_8xb2-adamw-80k_ade20k-640x640.py
+  Config: configs/knet/knet_s3_swin_l_upernet_8xb2_adamw_80k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

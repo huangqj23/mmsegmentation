@@ -20,7 +20,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 80.44
-  Config: configs/mask2former/mask2former_r50_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_r50_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -43,7 +43,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 80.8
-  Config: configs/mask2former/mask2former_r101_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_r101_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -66,7 +66,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 81.71
-  Config: configs/mask2former/mask2former_swin-t_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_swin_t_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -89,7 +89,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 82.57
-  Config: configs/mask2former/mask2former_swin-s_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_swin_s_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -112,7 +112,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 83.52
-  Config: configs/mask2former/mask2former_swin-b-in22k-384x384-pre_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_swin_b_in22k_384x384_pre_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -135,7 +135,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 83.65
-  Config: configs/mask2former/mask2former_swin-l-in22k-384x384-pre_8xb2-90k_cityscapes-512x1024.py
+  Config: configs/mask2former/mask2former_swin_l_in22k_384x384_pre_8xb2_90k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -158,7 +158,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 47.87
-  Config: configs/mask2former/mask2former_r50_8xb2-160k_ade20k-512x512.py
+  Config: configs/mask2former/mask2former_r50_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -181,7 +181,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 48.6
-  Config: configs/mask2former/mask2former_r101_8xb2-160k_ade20k-512x512.py
+  Config: configs/mask2former/mask2former_r101_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -204,7 +204,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 48.66
-  Config: configs/mask2former/mask2former_swin-t_8xb2-160k_ade20k-512x512.py
+  Config: configs/mask2former/mask2former_swin_t_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -227,7 +227,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 51.24
-  Config: configs/mask2former/mask2former_swin-s_8xb2-160k_ade20k-512x512.py
+  Config: configs/mask2former/mask2former_swin_s_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -250,7 +250,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 52.44
-  Config: configs/mask2former/mask2former_swin-b-in1k-384x384-pre_8xb2-160k_ade20k-640x640.py
+  Config: configs/mask2former/mask2former_swin_b_in1k_384x384_pre_8xb2_160k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -273,7 +273,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 53.9
-  Config: configs/mask2former/mask2former_swin-b-in22k-384x384-pre_8xb2-160k_ade20k-640x640.py
+  Config: configs/mask2former/mask2former_swin_b_in22k_384x384_pre_8xb2_160k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -296,7 +296,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 56.01
-  Config: configs/mask2former/mask2former_swin-l-in22k-384x384-pre_8xb2-160k_ade20k-640x640.py
+  Config: configs/mask2former/mask2former_swin_l_in22k_384x384_pre_8xb2_160k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

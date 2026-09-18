@@ -38,19 +38,19 @@ export PYTHONPATH=`pwd`:$PYTHONPATH
 ### Training commands
 
 ```shell
-mim train mmsegmentation configs/fcn_dummy-r50-d8_4xb2-40k_cityscapes-512x1024.py --work-dir work_dirs/dummy_resnet
+mim train mmsegmentation configs/fcn_dummy_r50_d8_4xb2_40k_cityscapes_512x1024.py --work-dir work_dirs/dummy_resnet
 ```
 
 To train on multiple GPUs, e.g. 8 GPUs, run the following command:
 
 ```shell
-mim train mmsegmentation configs/fcn_dummy-r50-d8_4xb2-40k_cityscapes-512x1024.py --work-dir work_dirs/dummy_resnet --launcher pytorch --gpus 8
+mim train mmsegmentation configs/fcn_dummy_r50_d8_4xb2_40k_cityscapes_512x1024.py --work-dir work_dirs/dummy_resnet --launcher pytorch --gpus 8
 ```
 
 ### Testing commands
 
 ```shell
-mim test mmsegmentation configs/fcn_dummy-r50-d8_4xb2-40k_cityscapes-512x1024.py --work-dir work_dirs/dummy_resnet --checkpoint ${CHECKPOINT_PATH}
+mim test mmsegmentation configs/fcn_dummy_r50_d8_4xb2_40k_cityscapes_512x1024.py --work-dir work_dirs/dummy_resnet --checkpoint ${CHECKPOINT_PATH}
 ```
 
 > List the results as usually done in other model's README. \[Example\](https://github.com/open-mmlab/mmsegmentation/tree/main/configs/fcn#results-and-models
@@ -58,7 +58,7 @@ mim test mmsegmentation configs/fcn_dummy-r50-d8_4xb2-40k_cityscapes-512x1024.py
 
 | Method | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) |  mIoU | mIoU(ms+flip) | config                                                             | download                                                                                                                                                                                                                                                                                                                           |
 | ------ | -------- | --------- | ------: | -------- | -------------- | ----: | ------------: | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| FCN    | R-50-D8  | 512x1024  |   40000 | 5.7      | 4.17           | 72.25 |         73.36 | [config](configs/fcn_dummy-r50-d8_4xb2-40k_cityscapes-512x1024.py) | [model](https://download.openmmlab.com/mmsegmentation/v0.5/fcn/fcn_r50-d8_512x1024_40k_cityscapes/fcn_r50-d8_512x1024_40k_cityscapes_20200604_192608-efe53f0d.pth) \| [log](https://download.openmmlab.com/mmsegmentation/v0.5/fcn/fcn_r50-d8_512x1024_40k_cityscapes/fcn_r50-d8_512x1024_40k_cityscapes_20200604_192608.log.json) |
+| FCN    | R-50-D8  | 512x1024  |   40000 | 5.7      | 4.17           | 72.25 |         73.36 | [config](configs/fcn_dummy_r50_d8_4xb2_40k_cityscapes_512x1024.py) | [model](https://download.openmmlab.com/mmsegmentation/v0.5/fcn/fcn_r50-d8_512x1024_40k_cityscapes/fcn_r50-d8_512x1024_40k_cityscapes_20200604_192608-efe53f0d.pth) \| [log](https://download.openmmlab.com/mmsegmentation/v0.5/fcn/fcn_r50-d8_512x1024_40k_cityscapes/fcn_r50-d8_512x1024_40k_cityscapes_20200604_192608.log.json) |
 
 ## Citation
 

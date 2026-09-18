@@ -377,7 +377,7 @@ class GID_Dataset(BaseSegDataset):
 
 ```python
 _base_ = [
-    '../../../configs/_base_/models/deeplabv3plus_r50-d8.py',
+    '../../../configs/_base_/models/deeplabv3plus_r50_d8.py',
     './_base_/datasets/gid.py',
     '../../../configs/_base_/default_runtime.py',
     '../../../configs/_base_/schedules/schedule_240k.py'

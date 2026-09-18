@@ -143,7 +143,7 @@ Example:
 ```python
 from mmseg.apis import init_model
 
-config_path = 'configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+config_path = 'configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 checkpoint_path = 'checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth'
 
 # initialize model without checkpoint
@@ -184,7 +184,7 @@ Example:
 ```python
 from mmseg.apis import init_model, inference_model
 
-config_path = 'configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+config_path = 'configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 checkpoint_path = 'checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth'
 img_path = 'demo/demo.png'
 
@@ -220,7 +220,7 @@ Example:
 ```python
 from mmseg.apis import init_model, inference_model, show_result_pyplot
 
-config_path = 'configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+config_path = 'configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 checkpoint_path = 'checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth'
 img_path = 'demo/demo.png'
 

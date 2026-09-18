@@ -189,7 +189,7 @@ e.g
 ```shell
 python feature_map_visual.py \
 aachen_000000_000019_leftImg8bit.png \
-configs/ann/ann_r50-d8_4xb2-40k_cityscapes-512x1024.py \
+configs/ann/ann_r50_d8_4xb2_40k_cityscapes_512x1024.py \
 ann_r50-d8_512x1024_40k_cityscapes_20200605_095211-049fc292.pth \
 --gt_mask aachen_000000_000019_gtFine_labelTrainIds.png
 ```

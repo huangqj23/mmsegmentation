@@ -21,7 +21,7 @@ Models:
     Metrics:
       mIoU: 77.1
       mIoU(ms+flip): 78.37
-  Config: configs/upernet/upernet_r50_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/upernet/upernet_r50_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -45,7 +45,7 @@ Models:
     Metrics:
       mIoU: 78.69
       mIoU(ms+flip): 80.11
-  Config: configs/upernet/upernet_r101_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/upernet/upernet_r101_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -69,7 +69,7 @@ Models:
     Metrics:
       mIoU: 77.98
       mIoU(ms+flip): 79.7
-  Config: configs/upernet/upernet_r50_4xb2-40k_cityscapes-769x769.py
+  Config: configs/upernet/upernet_r50_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -93,7 +93,7 @@ Models:
     Metrics:
       mIoU: 79.03
       mIoU(ms+flip): 80.77
-  Config: configs/upernet/upernet_r101_4xb2-40k_cityscapes-769x769.py
+  Config: configs/upernet/upernet_r101_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -117,7 +117,7 @@ Models:
     Metrics:
       mIoU: 78.19
       mIoU(ms+flip): 79.19
-  Config: configs/upernet/upernet_r50_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/upernet/upernet_r50_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -140,7 +140,7 @@ Models:
     Metrics:
       mIoU: 79.4
       mIoU(ms+flip): 80.46
-  Config: configs/upernet/upernet_r101_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/upernet/upernet_r101_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -163,7 +163,7 @@ Models:
     Metrics:
       mIoU: 79.39
       mIoU(ms+flip): 80.92
-  Config: configs/upernet/upernet_r50_4xb2-80k_cityscapes-769x769.py
+  Config: configs/upernet/upernet_r50_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -186,7 +186,7 @@ Models:
     Metrics:
       mIoU: 80.1
       mIoU(ms+flip): 81.49
-  Config: configs/upernet/upernet_r101_4xb2-80k_cityscapes-769x769.py
+  Config: configs/upernet/upernet_r101_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -209,7 +209,7 @@ Models:
     Metrics:
       mIoU: 40.7
       mIoU(ms+flip): 41.81
-  Config: configs/upernet/upernet_r50_4xb4-80k_ade20k-512x512.py
+  Config: configs/upernet/upernet_r50_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -233,7 +233,7 @@ Models:
     Metrics:
       mIoU: 42.91
       mIoU(ms+flip): 43.96
-  Config: configs/upernet/upernet_r101_4xb4-80k_ade20k-512x512.py
+  Config: configs/upernet/upernet_r101_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -257,7 +257,7 @@ Models:
     Metrics:
       mIoU: 42.05
       mIoU(ms+flip): 42.78
-  Config: configs/upernet/upernet_r50_4xb4-160k_ade20k-512x512.py
+  Config: configs/upernet/upernet_r50_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -280,7 +280,7 @@ Models:
     Metrics:
       mIoU: 43.82
       mIoU(ms+flip): 44.85
-  Config: configs/upernet/upernet_r101_4xb4-160k_ade20k-512x512.py
+  Config: configs/upernet/upernet_r101_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -303,7 +303,7 @@ Models:
     Metrics:
       mIoU: 74.82
       mIoU(ms+flip): 76.35
-  Config: configs/upernet/upernet_r50_4xb4-20k_voc12aug-512x512.py
+  Config: configs/upernet/upernet_r50_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -327,7 +327,7 @@ Models:
     Metrics:
       mIoU: 77.1
       mIoU(ms+flip): 78.29
-  Config: configs/upernet/upernet_r101_4xb4-20k_voc12aug-512x512.py
+  Config: configs/upernet/upernet_r101_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -351,7 +351,7 @@ Models:
     Metrics:
       mIoU: 75.92
       mIoU(ms+flip): 77.44
-  Config: configs/upernet/upernet_r50_4xb4-40k_voc12aug-512x512.py
+  Config: configs/upernet/upernet_r50_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -374,7 +374,7 @@ Models:
     Metrics:
       mIoU: 77.43
       mIoU(ms+flip): 78.56
-  Config: configs/upernet/upernet_r101_4xb4-40k_voc12aug-512x512.py
+  Config: configs/upernet/upernet_r101_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16

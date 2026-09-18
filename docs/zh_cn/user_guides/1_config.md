@@ -45,7 +45,7 @@ data_preprocessor = dict(size=crop_size)
 model = dict(data_preprocessor=data_preprocessor)
 ```
 
-`_base_/models/pspnet_r50-d8.py`是使用ResNet50V1c作为主干网络的PSPNet的基本模型配置文件。
+`_base_/models/pspnet_r50_d8.py`是使用ResNet50V1c作为主干网络的PSPNet的基本模型配置文件。
 
 ```python
 # 模型设置
@@ -222,7 +222,7 @@ resume = False  # 是否从已有的模型恢复
 ```python
 from mmengine.config import Config
 
-cfg = Config.fromfile('configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py')
+cfg = Config.fromfile('configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py')
 print(cfg.train_dataloader)
 ```
 

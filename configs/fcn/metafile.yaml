@@ -23,7 +23,7 @@ Models:
     Metrics:
       mIoU: 72.25
       mIoU(ms+flip): 73.36
-  Config: configs/fcn/fcn_r50-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r50_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -47,7 +47,7 @@ Models:
     Metrics:
       mIoU: 75.45
       mIoU(ms+flip): 76.58
-  Config: configs/fcn/fcn_r101-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r101_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -71,7 +71,7 @@ Models:
     Metrics:
       mIoU: 71.47
       mIoU(ms+flip): 72.54
-  Config: configs/fcn/fcn_r50-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r50_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -95,7 +95,7 @@ Models:
     Metrics:
       mIoU: 73.93
       mIoU(ms+flip): 75.14
-  Config: configs/fcn/fcn_r101-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r101_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -119,7 +119,7 @@ Models:
     Metrics:
       mIoU: 71.11
       mIoU(ms+flip): 72.91
-  Config: configs/fcn/fcn_r18-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r18_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -143,7 +143,7 @@ Models:
     Metrics:
       mIoU: 73.61
       mIoU(ms+flip): 74.24
-  Config: configs/fcn/fcn_r50-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r50_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -166,7 +166,7 @@ Models:
     Metrics:
       mIoU: 75.13
       mIoU(ms+flip): 75.94
-  Config: configs/fcn/fcn_r101-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r101_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -188,7 +188,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 76.8
-  Config: configs/fcn/fcn_r101-d8_4xb2-amp-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r101_d8_4xb2_amp_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -213,7 +213,7 @@ Models:
     Metrics:
       mIoU: 70.8
       mIoU(ms+flip): 73.16
-  Config: configs/fcn/fcn_r18-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r18_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -237,7 +237,7 @@ Models:
     Metrics:
       mIoU: 72.64
       mIoU(ms+flip): 73.32
-  Config: configs/fcn/fcn_r50-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r50_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -260,7 +260,7 @@ Models:
     Metrics:
       mIoU: 75.52
       mIoU(ms+flip): 76.61
-  Config: configs/fcn/fcn_r101-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r101_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -283,7 +283,7 @@ Models:
     Metrics:
       mIoU: 70.24
       mIoU(ms+flip): 72.77
-  Config: configs/fcn/fcn_r18b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r18b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -307,7 +307,7 @@ Models:
     Metrics:
       mIoU: 75.65
       mIoU(ms+flip): 77.59
-  Config: configs/fcn/fcn_r50b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r50b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -331,7 +331,7 @@ Models:
     Metrics:
       mIoU: 77.37
       mIoU(ms+flip): 78.77
-  Config: configs/fcn/fcn_r101b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_r101b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -355,7 +355,7 @@ Models:
     Metrics:
       mIoU: 69.66
       mIoU(ms+flip): 72.07
-  Config: configs/fcn/fcn_r18b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r18b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -379,7 +379,7 @@ Models:
     Metrics:
       mIoU: 73.83
       mIoU(ms+flip): 76.6
-  Config: configs/fcn/fcn_r50b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r50b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -403,7 +403,7 @@ Models:
     Metrics:
       mIoU: 77.02
       mIoU(ms+flip): 78.67
-  Config: configs/fcn/fcn_r101b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_r101b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -427,7 +427,7 @@ Models:
     Metrics:
       mIoU: 77.06
       mIoU(ms+flip): 78.85
-  Config: configs/fcn/fcn-d6_r50-d16_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r50_d16_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -452,7 +452,7 @@ Models:
     Metrics:
       mIoU: 77.27
       mIoU(ms+flip): 78.88
-  Config: configs/fcn/fcn-d6_r50-d16_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r50_d16_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -476,7 +476,7 @@ Models:
     Metrics:
       mIoU: 76.82
       mIoU(ms+flip): 78.22
-  Config: configs/fcn/fcn-d6_r50-d16_4xb2-40k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r50_d16_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -501,7 +501,7 @@ Models:
     Metrics:
       mIoU: 77.04
       mIoU(ms+flip): 78.4
-  Config: configs/fcn/fcn-d6_r50-d16_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r50_d16_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -525,7 +525,7 @@ Models:
     Metrics:
       mIoU: 77.36
       mIoU(ms+flip): 79.18
-  Config: configs/fcn/fcn-d6_r101-d16_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r101_d16_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -550,7 +550,7 @@ Models:
     Metrics:
       mIoU: 78.46
       mIoU(ms+flip): 80.42
-  Config: configs/fcn/fcn-d6_r101-d16_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r101_d16_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -574,7 +574,7 @@ Models:
     Metrics:
       mIoU: 77.28
       mIoU(ms+flip): 78.95
-  Config: configs/fcn/fcn-d6_r101-d16_4xb2-40k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r101_d16_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -599,7 +599,7 @@ Models:
     Metrics:
       mIoU: 78.06
       mIoU(ms+flip): 79.58
-  Config: configs/fcn/fcn-d6_r101-d16_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r101_d16_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -623,7 +623,7 @@ Models:
     Metrics:
       mIoU: 76.99
       mIoU(ms+flip): 79.03
-  Config: configs/fcn/fcn-d6_r50b-d16_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r50b_d16_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -648,7 +648,7 @@ Models:
     Metrics:
       mIoU: 76.86
       mIoU(ms+flip): 78.52
-  Config: configs/fcn/fcn-d6_r50b-d16_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r50b_d16_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -673,7 +673,7 @@ Models:
     Metrics:
       mIoU: 77.72
       mIoU(ms+flip): 79.53
-  Config: configs/fcn/fcn-d6_r101b-d16_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fcn/fcn_d6_r101b_d16_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -698,7 +698,7 @@ Models:
     Metrics:
       mIoU: 77.34
       mIoU(ms+flip): 78.91
-  Config: configs/fcn/fcn-d6_r101b-d16_4xb2-80k_cityscapes-769x769.py
+  Config: configs/fcn/fcn_d6_r101b_d16_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -723,7 +723,7 @@ Models:
     Metrics:
       mIoU: 35.94
       mIoU(ms+flip): 37.94
-  Config: configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -747,7 +747,7 @@ Models:
     Metrics:
       mIoU: 39.61
       mIoU(ms+flip): 40.83
-  Config: configs/fcn/fcn_r101-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -771,7 +771,7 @@ Models:
     Metrics:
       mIoU: 36.1
       mIoU(ms+flip): 38.08
-  Config: configs/fcn/fcn_r50-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/fcn/fcn_r50_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -794,7 +794,7 @@ Models:
     Metrics:
       mIoU: 39.91
       mIoU(ms+flip): 41.4
-  Config: configs/fcn/fcn_r101-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -817,7 +817,7 @@ Models:
     Metrics:
       mIoU: 67.08
       mIoU(ms+flip): 69.94
-  Config: configs/fcn/fcn_r50-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/fcn/fcn_r50_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -841,7 +841,7 @@ Models:
     Metrics:
       mIoU: 71.16
       mIoU(ms+flip): 73.57
-  Config: configs/fcn/fcn_r101-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -865,7 +865,7 @@ Models:
     Metrics:
       mIoU: 66.97
       mIoU(ms+flip): 69.04
-  Config: configs/fcn/fcn_r50-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/fcn/fcn_r50_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -888,7 +888,7 @@ Models:
     Metrics:
       mIoU: 69.91
       mIoU(ms+flip): 72.38
-  Config: configs/fcn/fcn_r101-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -911,7 +911,7 @@ Models:
     Metrics:
       mIoU: 44.43
       mIoU(ms+flip): 45.63
-  Config: configs/fcn/fcn_r101-d8_4xb4-40k_pascal-context-480x480.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_40k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -934,7 +934,7 @@ Models:
     Metrics:
       mIoU: 44.13
       mIoU(ms+flip): 45.26
-  Config: configs/fcn/fcn_r101-d8_4xb4-80k_pascal-context-480x480.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_80k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -957,7 +957,7 @@ Models:
     Metrics:
       mIoU: 48.42
       mIoU(ms+flip): 50.4
-  Config: configs/fcn/fcn_r101-d8_4xb4-40k_pascal-context-59-480x480.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_40k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16
@@ -980,7 +980,7 @@ Models:
     Metrics:
       mIoU: 49.35
       mIoU(ms+flip): 51.38
-  Config: configs/fcn/fcn_r101-d8_4xb4-80k_pascal-context-59-480x480.py
+  Config: configs/fcn/fcn_r101_d8_4xb4_80k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16

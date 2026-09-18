@@ -1,13 +1,24 @@
-_base_ = [
-    '../_base_/models/deeplabv3_r50-d8.py', '../_base_/default_runtime.py',
-    '../_base_/schedules/schedule_40k.py'
-]
+# Converted from configs/dsdl/cityscapes.py by industrial-vision tools/convert_configs.py
+from mmengine.config import read_base
+
+with read_base():
+    from .._base_.models.deeplabv3_r50_d8 import *  # noqa: F401,F403
+    from .._base_.default_runtime import *  # noqa: F401,F403
+    from .._base_.schedules.schedule_40k import *  # noqa: F401,F403
+
+from mmcv.transforms import LoadImageFromFile, RandomResize
+from mmengine.dataset import DefaultSampler, InfiniteSampler
+
+from mmseg.datasets import (DSDLSegDataset, LoadAnnotations, PackSegInputs,
+                            PhotoMetricDistortion, RandomCrop)
+from mmseg.datasets.transforms import RandomFlip, Resize
+from mmseg.evaluation import IoUMetric
 
 crop_size = (512, 1024)
-data_preprocessor = dict(size=crop_size)
-model = dict(data_preprocessor=data_preprocessor)
+data_preprocessor.merge(dict(size=crop_size))
+model.merge(dict(data_preprocessor=data_preprocessor))
 # dataset settings
-dataset_type = 'DSDLSegDataset'
+dataset_type = DSDLSegDataset
 data_root = 'data/CityScapes'
 img_prefix = 'raw/CityScapes'
 train_ann = 'dsdl/dsdl_SemSeg_full/set-train/train.yaml'
@@ -20,31 +31,31 @@ used_labels = [
 ]
 
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations'),
+    dict(type=LoadImageFromFile),
+    dict(type=LoadAnnotations),
     dict(
-        type='RandomResize',
+        type=RandomResize,
         scale=(2048, 1024),
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='PackSegInputs')
+    dict(type=RandomCrop, crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type=RandomFlip, prob=0.5),
+    dict(type=PhotoMetricDistortion),
+    dict(type=PackSegInputs)
 ]
 test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 1024), keep_ratio=True),
+    dict(type=LoadImageFromFile),
+    dict(type=Resize, scale=(2048, 1024), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations'),
-    dict(type='PackSegInputs')
+    dict(type=LoadAnnotations),
+    dict(type=PackSegInputs)
 ]
 train_dataloader = dict(
     batch_size=2,
     num_workers=2,
     persistent_workers=True,
-    sampler=dict(type='InfiniteSampler', shuffle=True),
+    sampler=dict(type=InfiniteSampler, shuffle=True),
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
@@ -56,7 +67,7 @@ val_dataloader = dict(
     batch_size=1,
     num_workers=4,
     persistent_workers=True,
-    sampler=dict(type='DefaultSampler', shuffle=False),
+    sampler=dict(type=DefaultSampler, shuffle=False),
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
@@ -66,5 +77,5 @@ val_dataloader = dict(
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+val_evaluator = dict(type=IoUMetric, iou_metrics=['mIoU'])
 test_evaluator = val_evaluator

@@ -1,11 +1,20 @@
-dataset_type = 'NYUDataset'
+# Converted from projects/Adabins/configs/_base_/datasets/nyu.py by industrial-vision tools/convert_configs.py
+from mmcv.transforms import LoadImageFromFile
+from mmengine.dataset import DefaultSampler
+from mmengine.runner import TestLoop, ValLoop
+
+from mmseg.datasets import NYUDataset, PackSegInputs
+from mmseg.datasets.transforms import LoadDepthAnnotation
+from mmseg.evaluation import DepthMetric
+
+dataset_type = NYUDataset
 data_root = 'data/nyu'
 
 test_pipeline = [
-    dict(dict(type='LoadImageFromFile', to_float32=True)),
-    dict(dict(type='LoadDepthAnnotation', depth_rescale_factor=1e-3)),
+    dict(dict(type=LoadImageFromFile, to_float32=True)),
+    dict(dict(type=LoadDepthAnnotation, depth_rescale_factor=1e-3)),
     dict(
-        type='PackSegInputs',
+        type=PackSegInputs,
         meta_keys=('img_path', 'depth_map_path', 'ori_shape', 'img_shape',
                    'pad_shape', 'scale_factor', 'flip', 'flip_direction',
                    'category_id'))
@@ -15,7 +24,7 @@ val_dataloader = dict(
     batch_size=1,
     num_workers=4,
     persistent_workers=True,
-    sampler=dict(type='DefaultSampler', shuffle=False),
+    sampler=dict(type=DefaultSampler, shuffle=False),
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
@@ -26,7 +35,7 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='DepthMetric', max_depth_eval=10.0, crop_type='nyu_crop')
+    type=DepthMetric, max_depth_eval=10.0, crop_type='nyu_crop')
 test_evaluator = val_evaluator
-val_cfg = dict(type='ValLoop')
-test_cfg = dict(type='TestLoop')
+val_cfg = dict(type=ValLoop)
+test_cfg = dict(type=TestLoop)

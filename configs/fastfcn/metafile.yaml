@@ -20,7 +20,7 @@ Models:
     Metrics:
       mIoU: 79.12
       mIoU(ms+flip): 80.58
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_aspp_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_aspp_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -45,7 +45,7 @@ Models:
     Metrics:
       mIoU: 79.52
       mIoU(ms+flip): 80.91
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_aspp_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_aspp_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -70,7 +70,7 @@ Models:
     Metrics:
       mIoU: 79.26
       mIoU(ms+flip): 80.86
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_psp_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_psp_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -95,7 +95,7 @@ Models:
     Metrics:
       mIoU: 78.76
       mIoU(ms+flip): 80.03
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_psp_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_psp_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -120,7 +120,7 @@ Models:
     Metrics:
       mIoU: 77.97
       mIoU(ms+flip): 79.92
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_enc_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_enc_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -145,7 +145,7 @@ Models:
     Metrics:
       mIoU: 78.6
       mIoU(ms+flip): 80.25
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_enc_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_enc_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -170,7 +170,7 @@ Models:
     Metrics:
       mIoU: 41.88
       mIoU(ms+flip): 42.91
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_aspp_4xb4-80k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_aspp_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -195,7 +195,7 @@ Models:
     Metrics:
       mIoU: 43.58
       mIoU(ms+flip): 44.92
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_aspp_4xb4-160k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_aspp_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -219,7 +219,7 @@ Models:
     Metrics:
       mIoU: 41.4
       mIoU(ms+flip): 42.12
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_psp_4xb4-80k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_psp_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -244,7 +244,7 @@ Models:
     Metrics:
       mIoU: 42.63
       mIoU(ms+flip): 43.71
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_psp_4xb4-160k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_psp_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -268,7 +268,7 @@ Models:
     Metrics:
       mIoU: 40.88
       mIoU(ms+flip): 42.36
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_enc_4xb4-80k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_enc_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -293,7 +293,7 @@ Models:
     Metrics:
       mIoU: 42.5
       mIoU(ms+flip): 44.21
-  Config: configs/fastfcn/fastfcn_r50-d32_jpu_enc_4xb4-160k_ade20k-512x512.py
+  Config: configs/fastfcn/fastfcn_r50_d32_jpu_enc_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

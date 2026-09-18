@@ -1,17 +1,23 @@
+# Converted from configs/_base_/models/cgnet.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import (CGNet, CrossEntropyLoss, EncoderDecoder, FCNHead,
+                          SegDataPreProcessor)
+
 # model settings
-norm_cfg = dict(type='SyncBN', eps=1e-03, requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, eps=1e-03, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[72.39239876, 82.90891754, 73.15835921],
     std=[1, 1, 1],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='CGNet',
+        type=CGNet,
         norm_cfg=norm_cfg,
         in_channels=3,
         num_channels=(32, 64, 128),
@@ -19,7 +25,7 @@ model = dict(
         dilations=(2, 4),
         reductions=(8, 16)),
     decode_head=dict(
-        type='FCNHead',
+        type=FCNHead,
         in_channels=256,
         in_index=2,
         channels=256,
@@ -29,7 +35,7 @@ model = dict(
         num_classes=19,
         norm_cfg=norm_cfg,
         loss_decode=dict(
-            type='CrossEntropyLoss',
+            type=CrossEntropyLoss,
             use_sigmoid=False,
             loss_weight=1.0,
             class_weight=[

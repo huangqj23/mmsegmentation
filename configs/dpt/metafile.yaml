@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 46.97
       mIoU(ms+flip): 48.34
-  Config: configs/dpt/dpt_vit-b16_8xb2-160k_ade20k-512x512.py
+  Config: configs/dpt/dpt_vit_b16_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

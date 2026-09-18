@@ -20,7 +20,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 44.29
-  Config: configs/maskformer/maskformer_r50-d32_8xb2-160k_ade20k-512x512.py
+  Config: configs/maskformer/maskformer_r50_d32_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -44,7 +44,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 45.11
-  Config: configs/maskformer/maskformer_r101-d32_8xb2-160k_ade20k-512x512.py
+  Config: configs/maskformer/maskformer_r101_d32_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -68,7 +68,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 46.69
-  Config: configs/maskformer/maskformer_swin-t_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/maskformer/maskformer_swin_t_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -92,7 +92,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 49.36
-  Config: configs/maskformer/maskformer_swin-s_upernet_8xb2-160k_ade20k-512x512.py
+  Config: configs/maskformer/maskformer_swin_s_upernet_8xb2_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

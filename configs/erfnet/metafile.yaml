@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 72.5
       mIoU(ms+flip): 74.75
-  Config: configs/erfnet/erfnet_fcn_4xb4-160k_cityscapes-512x1024.py
+  Config: configs/erfnet/erfnet_fcn_4xb4_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16

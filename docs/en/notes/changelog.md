@@ -87,7 +87,7 @@
 
 ### Bug Fixes
 
-- Fix train map path for coco-stuff164k.py ([#3187](https://github.com/open-mmlab/mmsegmentation/pull/3187))
+- Fix train map path for coco_stuff164k.py ([#3187](https://github.com/open-mmlab/mmsegmentation/pull/3187))
 - Fix mim search error ([#3194](https://github.com/open-mmlab/mmsegmentation/pull/3194))
 - Fix SegTTAModel with no attribute '\_gt_sem_seg' error ([#3152](https://github.com/open-mmlab/mmsegmentation/pull/3152))
 - Fix Albumentations default key mapping mismatch ([#3195](https://github.com/open-mmlab/mmsegmentation/pull/3195))

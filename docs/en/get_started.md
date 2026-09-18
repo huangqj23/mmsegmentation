@@ -75,14 +75,14 @@ To verify whether MMSegmentation is installed correctly, we provide some sample 
 mim download mmsegmentation --config pspnet_r50-d8_4xb2-40k_cityscapes-512x1024 --dest .
 ```
 
-The downloading will take several seconds or more, depending on your network environment. When it is done, you will find two files `pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py` and `pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth` in your current folder.
+The downloading will take several seconds or more, depending on your network environment. When it is done, you will find two files `pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py` and `pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth` in your current folder.
 
 **Step 2.** Verify the inference demo.
 
 Option (a). If you install mmsegmentation from source, just run the following command.
 
 ```shell
-python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --out-file result.jpg
+python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --out-file result.jpg
 ```
 
 You will see a new image `result.jpg` on your current folder, where segmentation masks are covered on all objects.
@@ -93,7 +93,7 @@ Option (b). If you install mmsegmentation with pip, open you python interpreter 
 from mmseg.apis import inference_model, init_model, show_result_pyplot
 import mmcv
 
-config_file = 'pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+config_file = 'pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 checkpoint_file = 'pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth'
 
 # build the model from a config file and a checkpoint file

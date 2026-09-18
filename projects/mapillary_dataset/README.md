@@ -52,7 +52,7 @@ Preparing `Mapillary Vistas Dataset` dataset following [Mapillary Vistas Dataset
 ```bash
 # Dataset train commands
 # at `mmsegmentation` folder
-bash tools/dist_train.sh projects/mapillary_dataset/configs/deeplabv3plus_r101-d8_4xb2-240k_mapillay_v1-512x1024.py 4
+bash tools/dist_train.sh projects/mapillary_dataset/configs/deeplabv3plus_r101_d8_4xb2_240k_mapillay_v1_512x1024.py 4
 ```
 
 ## Checklist

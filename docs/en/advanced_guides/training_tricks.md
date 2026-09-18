@@ -25,7 +25,7 @@ which is used for remove the "easy" examples for model training.
 Here is an example config of training PSPNet with OHEM enabled.
 
 ```python
-_base_ = './pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+_base_ = './pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 model=dict(
     decode_head=dict(
         sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=100000)) )
@@ -39,7 +39,7 @@ For dataset that is not balanced in classes distribution, you may change the los
 Here is an example for cityscapes dataset.
 
 ```python
-_base_ = './pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py'
+_base_ = './pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py'
 model=dict(
     decode_head=dict(
         loss_decode=dict(

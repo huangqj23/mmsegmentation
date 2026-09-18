@@ -1,5 +1,13 @@
+# Converted from configs/_base_/models/fpn_poolformer_s12.py by industrial-vision tools/convert_configs.py
+from mmengine.model import PretrainedInit
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from mmpretrain.models import PoolFormer
+
+from mmseg.models import (FPN, CrossEntropyLoss, EncoderDecoder, FPNHead,
+                          SegDataPreProcessor)
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/poolformer/poolformer-s12_3rdparty_32xb128_in1k_20220414-f8d83051.pth'  # noqa
 # TODO: delete custom_imports after mmpretrain supports auto import
 # please install mmpretrain >= 1.0.0rc7
@@ -7,20 +15,20 @@ checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/poolformer
 custom_imports = dict(
     imports=['mmpretrain.models'], allow_failed_imports=False)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='mmpretrain.PoolFormer',
+        type=PoolFormer,
         arch='s12',
         init_cfg=dict(
-            type='Pretrained', checkpoint=checkpoint_file, prefix='backbone.'),
+            type=PretrainedInit, checkpoint=checkpoint_file, prefix='backbone.'),
         in_patch_size=7,
         in_stride=4,
         in_pad=2,
@@ -33,12 +41,12 @@ model = dict(
         frozen_stages=0,
     ),
     neck=dict(
-        type='FPN',
+        type=FPN,
         in_channels=[256, 512, 1024, 2048],
         out_channels=256,
         num_outs=4),
     decode_head=dict(
-        type='FPNHead',
+        type=FPNHead,
         in_channels=[256, 256, 256, 256],
         in_index=[0, 1, 2, 3],
         feature_strides=[4, 8, 16, 32],
@@ -48,7 +56,7 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole'))

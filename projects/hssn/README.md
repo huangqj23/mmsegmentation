@@ -34,7 +34,7 @@ bash tools/dist_test.sh [configs] [model weights] [number of gpu]  --tta
 #### Example
 
 ```shell
-bash tools/dist_test.sh projects/hssn/configs/hssn/hieraseg_deeplabv3plus_r101-d8_4xb2-80l_cityscapes-512x1024.py checkpoints/hieraseg_deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024_20230112_125023-bc59a3d1.pth 2 --tta
+bash tools/dist_test.sh projects/hssn/configs/hssn/hieraseg_deeplabv3plus_r101_d8_4xb2_80l_cityscapes_512x1024.py checkpoints/hieraseg_deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024_20230112_125023-bc59a3d1.pth 2 --tta
 ```
 
 ## Results

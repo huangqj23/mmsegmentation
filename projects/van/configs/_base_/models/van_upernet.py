@@ -1,8 +1,16 @@
+# Converted from projects/van/configs/_base_/models/van_upernet.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from projects.van.backbones import VAN
+from torch.nn import GELU
+
+from mmseg.models import (CrossEntropyLoss, EncoderDecoder, FCNHead,
+                          SegDataPreProcessor, UPerHead)
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
@@ -10,19 +18,19 @@ data_preprocessor = dict(
     seg_pad_val=255,
     size=(512, 512))
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='VAN',
+        type=VAN,
         embed_dims=[32, 64, 160, 256],
         drop_rate=0.0,
         drop_path_rate=0.1,
         depths=[3, 3, 5, 2],
-        act_cfg=dict(type='GELU'),
+        act_cfg=dict(type=GELU),
         norm_cfg=norm_cfg,
         init_cfg=dict()),
     decode_head=dict(
-        type='UPerHead',
+        type=UPerHead,
         in_channels=[32, 64, 160, 256],
         in_index=[0, 1, 2, 3],
         pool_scales=(1, 2, 3, 6),
@@ -32,9 +40,9 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     auxiliary_head=dict(
-        type='FCNHead',
+        type=FCNHead,
         in_channels=160,
         in_index=2,
         channels=256,
@@ -45,7 +53,7 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole'))

@@ -92,7 +92,7 @@ An example:
 ```shell
 # checkpoints and logs saved in WORK_DIR=work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512/
 # If work_dir is not set, it will be generated automatically.
-sh tools/dist_train.sh configs/pspnet/pspnet_r50-d8_4xb4-80k_ade20k-512x512.py 8 --work-dir work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512
+sh tools/dist_train.sh configs/pspnet/pspnet_r50_d8_4xb4_80k_ade20k_512x512.py 8 --work-dir work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512
 ```
 
 **Note**: During training, checkpoints and logs are saved in the same folder structure as the config file under `work_dirs/`. A custom work directory is not recommended since evaluation scripts infer work directories from the config file name. If you want to save your weights somewhere else, please use a symlink, for example:
@@ -115,7 +115,7 @@ Optional arguments remain the same as stated [above](#testing-on-a-single-gpu) a
 An example:
 
 ```shell
-./tools/dist_test.sh configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py \
+./tools/dist_test.sh configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py \
     checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth 4
 ```
 
@@ -232,12 +232,12 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out ${OUTPUT_DIR}
 Here is an example to save the predicted results from model `fcn_r50-d8_4xb4-80k_ade20k-512x512` on ADE20k validatation dataset.
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth --out work_dirs/format_results
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth --out work_dirs/format_results
 ```
 
 You also can modify the config file to define `output_dir`. We also take
 `fcn_r50-d8_4xb4-80k_ade20k-512x512` as example just add
-`test_evaluator` in `configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py`
+`test_evaluator` in `configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py`
 
 ```python
 test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'], output_dir='work_dirs/format_results')
@@ -246,7 +246,7 @@ test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'], output_dir='work_d
 then run command without `--out`:
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
 ```
 
 If you would like to only save the predicted results without evaluation as annotation is not released by the official dataset, you can set `format_only=True` and modify `test_dataloader`.
@@ -278,7 +278,7 @@ test_dataloader = dict(
 then run test command:
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
 ```
 
 ### Testing Cityscape dataset and save predicted segment files
@@ -311,5 +311,5 @@ test_dataloader = dict(
 then run test command, for example:
 
 ```shell
-python tools/test.py configs/fcn/fcn_r18-d8_4xb2-80k_cityscapes-512x1024.py ckpt/fcn_r18-d8_512x1024_80k_cityscapes_20201225_021327-6c50f8b4.pth
+python tools/test.py configs/fcn/fcn_r18_d8_4xb2_80k_cityscapes_512x1024.py ckpt/fcn_r18-d8_512x1024_80k_cityscapes_20201225_021327-6c50f8b4.pth
 ```

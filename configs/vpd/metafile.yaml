@@ -18,7 +18,7 @@ Models:
     Dataset: NYU
     Metrics:
       RMSE: 0.253
-  Config: configs/vpd/vpd_sd_4xb8-25k_nyu-480x480.py
+  Config: configs/vpd/vpd_sd_4xb8_25k_nyu_480x480.py
   Metadata:
     Training Data: NYU
     Batch Size: 32
@@ -40,7 +40,7 @@ Models:
     Dataset: NYU
     Metrics:
       RMSE: 0.258
-  Config: configs/vpd/vpd_sd_4xb8-25k_nyu-512x512.py
+  Config: configs/vpd/vpd_sd_4xb8_25k_nyu_512x512.py
   Metadata:
     Training Data: NYU
     Batch Size: 32

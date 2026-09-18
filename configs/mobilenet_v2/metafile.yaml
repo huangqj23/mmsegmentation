@@ -7,7 +7,7 @@ Models:
     Metrics:
       mIoU: 71.19
       mIoU(ms+flip): 73.34
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_fcn_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_fcn_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -30,7 +30,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 70.23
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_pspnet_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_pspnet_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -53,7 +53,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 73.84
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_deeplabv3_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_deeplabv3_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -76,7 +76,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 75.2
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_deeplabv3plus_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_deeplabv3plus_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -99,7 +99,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 19.71
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_fcn_4xb4-160k_ade20k-512x512.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_fcn_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -122,7 +122,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 29.68
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_pspnet_4xb4-160k_ade20k-512x512.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_pspnet_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -145,7 +145,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 34.08
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_deeplabv3_4xb4-160k_ade20k-512x512.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_deeplabv3_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -168,7 +168,7 @@ Models:
     Dataset: ADE20K
     Metrics:
       mIoU: 34.02
-  Config: configs/mobilenet_v2/mobilenet-v2-d8_deeplabv3plus_4xb4-160k_ade20k-512x512.py
+  Config: configs/mobilenet_v2/mobilenet_v2_d8_deeplabv3plus_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

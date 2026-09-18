@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 41.93
       mIoU(ms+flip): 41.77
-  Config: configs/san/san-vit-b16_coco-stuff164k-640x640.py
+  Config: configs/san/san_vit_b16_coco_stuff164k_640x640.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -43,7 +43,7 @@ Models:
     Metrics:
       mIoU: 45.78
       mIoU(ms+flip): 43.99
-  Config: configs/san/san-vit-l14_coco-stuff164k-640x640.py
+  Config: configs/san/san_vit_l14_coco_stuff164k_640x640.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16

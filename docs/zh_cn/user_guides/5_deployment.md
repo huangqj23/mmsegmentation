@@ -71,7 +71,7 @@ mim download mmsegmentation --config unet-s5-d16_fcn_4xb4-160k_cityscapes-512x10
 # convert mmseg model to onnxruntime model with dynamic shape
 python tools/deploy.py \
     configs/mmseg/segmentation_onnxruntime_dynamic.py \
-    unet-s5-d16_fcn_4xb4-160k_cityscapes-512x1024.py \
+    unet_s5_d16_fcn_4xb4_160k_cityscapes_512x1024.py \
     fcn_unet_s5-d16_4x4_512x1024_160k_cityscapes_20211210_145204-6860854e.pth \
     demo/resources/cityscapes.png \
     --work-dir mmdeploy_models/mmseg/ort \
@@ -133,7 +133,7 @@ from mmdeploy.utils import get_input_shape, load_config
 import torch
 
 deploy_cfg = 'configs/mmseg/segmentation_onnxruntime_dynamic.py'
-model_cfg = './unet-s5-d16_fcn_4xb4-160k_cityscapes-512x1024.py'
+model_cfg = './unet_s5_d16_fcn_4xb4_160k_cityscapes_512x1024.py'
 device = 'cpu'
 backend_model = ['./mmdeploy_models/mmseg/ort/end2end.onnx']
 image = './demo/resources/cityscapes.png'

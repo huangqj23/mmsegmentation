@@ -29,7 +29,7 @@ visualizer = dict(
 Launch training experiment e.g.
 
 ```shell
-python tools/train.py configs/pspnet/pspnet_r50-d8_4xb4-80k_ade20k-512x512.py --work-dir work_dir/test_visual
+python tools/train.py configs/pspnet/pspnet_r50_d8_4xb4_80k_ade20k_512x512.py --work-dir work_dir/test_visual
 ```
 
 Find the `vis_data` path of `work_dir` after starting training, for example, the vis_data path of this particular test is as follows:

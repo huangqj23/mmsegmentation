@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 71.82
       mIoU(ms+flip): 73.89
-  Config: configs/stdc/stdc1_4xb12-80k_cityscapes-512x1024.py
+  Config: configs/stdc/stdc1_4xb12_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 48
@@ -43,7 +43,7 @@ Models:
     Metrics:
       mIoU: 74.94
       mIoU(ms+flip): 76.97
-  Config: configs/stdc/stdc1_in1k-pre_4xb12-80k_cityscapes-512x1024.py
+  Config: configs/stdc/stdc1_in1k_pre_4xb12_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 48
@@ -66,7 +66,7 @@ Models:
     Metrics:
       mIoU: 73.15
       mIoU(ms+flip): 76.13
-  Config: configs/stdc/stdc2_4xb12-80k_cityscapes-512x1024.py
+  Config: configs/stdc/stdc2_4xb12_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 48
@@ -90,7 +90,7 @@ Models:
     Metrics:
       mIoU: 76.67
       mIoU(ms+flip): 78.67
-  Config: configs/stdc/stdc2_in1k-pre_4xb12-80k_cityscapes-512x1024.py
+  Config: configs/stdc/stdc2_in1k_pre_4xb12_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 48

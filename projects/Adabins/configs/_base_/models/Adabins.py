@@ -1,25 +1,32 @@
+# Converted from projects/Adabins/configs/_base_/models/Adabins.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from projects.Adabins.backbones import AdabinsBackbone
+from projects.Adabins.decode_head import AdabinsHead
+
+from mmseg.models import DepthEstimator, SegDataPreProcessor
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='DepthEstimator',
+    type=DepthEstimator,
     data_preprocessor=data_preprocessor,
     # pretrained='open-mmlab://resnet50_v1c',
     backbone=dict(
-        type='AdabinsBackbone',
+        type=AdabinsBackbone,
         basemodel_name='tf_efficientnet_b5_ap',
         num_features=2048,
         num_classes=128,
         bottleneck_features=2048,
     ),
     decode_head=dict(
-        type='AdabinsHead',
+        type=AdabinsHead,
         in_channels=128,
         n_query_channels=128,
         patch_size=16,

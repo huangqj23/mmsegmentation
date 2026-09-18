@@ -20,7 +20,7 @@ Models:
     Metrics:
       mIoU: 76.47
       mIoU(ms+flip): 78.13
-  Config: configs/point_rend/pointrend_r50_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/point_rend/pointrend_r50_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -44,7 +44,7 @@ Models:
     Metrics:
       mIoU: 78.3
       mIoU(ms+flip): 79.97
-  Config: configs/point_rend/pointrend_r101_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/point_rend/pointrend_r101_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -68,7 +68,7 @@ Models:
     Metrics:
       mIoU: 37.64
       mIoU(ms+flip): 39.17
-  Config: configs/point_rend/pointrend_r50_4xb4-160k_ade20k-512x512.py
+  Config: configs/point_rend/pointrend_r50_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -92,7 +92,7 @@ Models:
     Metrics:
       mIoU: 40.02
       mIoU(ms+flip): 41.6
-  Config: configs/point_rend/pointrend_r101_4xb4-160k_ade20k-512x512.py
+  Config: configs/point_rend/pointrend_r101_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16

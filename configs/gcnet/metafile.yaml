@@ -21,7 +21,7 @@ Models:
     Metrics:
       mIoU: 77.69
       mIoU(ms+flip): 78.56
-  Config: configs/gcnet/gcnet_r50-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -45,7 +45,7 @@ Models:
     Metrics:
       mIoU: 78.28
       mIoU(ms+flip): 79.34
-  Config: configs/gcnet/gcnet_r101-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -69,7 +69,7 @@ Models:
     Metrics:
       mIoU: 78.12
       mIoU(ms+flip): 80.09
-  Config: configs/gcnet/gcnet_r50-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -93,7 +93,7 @@ Models:
     Metrics:
       mIoU: 78.95
       mIoU(ms+flip): 80.71
-  Config: configs/gcnet/gcnet_r101-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -117,7 +117,7 @@ Models:
     Metrics:
       mIoU: 78.48
       mIoU(ms+flip): 80.01
-  Config: configs/gcnet/gcnet_r50-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -140,7 +140,7 @@ Models:
     Metrics:
       mIoU: 79.03
       mIoU(ms+flip): 79.84
-  Config: configs/gcnet/gcnet_r101-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -163,7 +163,7 @@ Models:
     Metrics:
       mIoU: 78.68
       mIoU(ms+flip): 80.66
-  Config: configs/gcnet/gcnet_r50-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -186,7 +186,7 @@ Models:
     Metrics:
       mIoU: 79.18
       mIoU(ms+flip): 80.71
-  Config: configs/gcnet/gcnet_r101-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -209,7 +209,7 @@ Models:
     Metrics:
       mIoU: 41.47
       mIoU(ms+flip): 42.85
-  Config: configs/gcnet/gcnet_r50-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -233,7 +233,7 @@ Models:
     Metrics:
       mIoU: 42.82
       mIoU(ms+flip): 44.54
-  Config: configs/gcnet/gcnet_r101-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -257,7 +257,7 @@ Models:
     Metrics:
       mIoU: 42.37
       mIoU(ms+flip): 43.52
-  Config: configs/gcnet/gcnet_r50-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -280,7 +280,7 @@ Models:
     Metrics:
       mIoU: 43.69
       mIoU(ms+flip): 45.21
-  Config: configs/gcnet/gcnet_r101-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -303,7 +303,7 @@ Models:
     Metrics:
       mIoU: 76.42
       mIoU(ms+flip): 77.51
-  Config: configs/gcnet/gcnet_r50-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -327,7 +327,7 @@ Models:
     Metrics:
       mIoU: 77.41
       mIoU(ms+flip): 78.56
-  Config: configs/gcnet/gcnet_r101-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -351,7 +351,7 @@ Models:
     Metrics:
       mIoU: 76.24
       mIoU(ms+flip): 77.63
-  Config: configs/gcnet/gcnet_r50-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/gcnet/gcnet_r50_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -374,7 +374,7 @@ Models:
     Metrics:
       mIoU: 77.84
       mIoU(ms+flip): 78.59
-  Config: configs/gcnet/gcnet_r101-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/gcnet/gcnet_r101_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16

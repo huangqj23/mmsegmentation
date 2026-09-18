@@ -7,7 +7,7 @@ Models:
     Metrics:
       mIoU: 53.08
       mIoU(ms+flip): 53.84
-  Config: configs/beit/beit-base_upernet_8xb2-160k_ade20k-640x640.py
+  Config: configs/beit/beit_base_upernet_8xb2_160k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -31,7 +31,7 @@ Models:
     Metrics:
       mIoU: 56.33
       mIoU(ms+flip): 56.84
-  Config: configs/beit/beit-large_upernet_8xb1-amp-160k_ade20k-640x640.py
+  Config: configs/beit/beit_large_upernet_8xb1_amp_160k_ade20k_640x640.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8

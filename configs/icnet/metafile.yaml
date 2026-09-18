@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 68.14
       mIoU(ms+flip): 70.16
-  Config: configs/icnet/icnet_r18-d8_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r18_d8_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -43,7 +43,7 @@ Models:
     Metrics:
       mIoU: 71.64
       mIoU(ms+flip): 74.18
-  Config: configs/icnet/icnet_r18-d8_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r18_d8_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -66,7 +66,7 @@ Models:
     Metrics:
       mIoU: 72.51
       mIoU(ms+flip): 74.78
-  Config: configs/icnet/icnet_r18-d8-in1k-pre_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r18_d8_in1k_pre_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -90,7 +90,7 @@ Models:
     Metrics:
       mIoU: 74.43
       mIoU(ms+flip): 76.72
-  Config: configs/icnet/icnet_r18-d8-in1k-pre_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r18_d8_in1k_pre_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -114,7 +114,7 @@ Models:
     Metrics:
       mIoU: 68.91
       mIoU(ms+flip): 69.72
-  Config: configs/icnet/icnet_r50-d8_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r50_d8_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -138,7 +138,7 @@ Models:
     Metrics:
       mIoU: 73.82
       mIoU(ms+flip): 75.67
-  Config: configs/icnet/icnet_r50-d8_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r50_d8_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -161,7 +161,7 @@ Models:
     Metrics:
       mIoU: 74.58
       mIoU(ms+flip): 76.41
-  Config: configs/icnet/icnet_r50-d8-in1k-pre_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r50_d8_in1k_pre_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -185,7 +185,7 @@ Models:
     Metrics:
       mIoU: 76.29
       mIoU(ms+flip): 78.09
-  Config: configs/icnet/icnet_r50-d8-in1k-pre_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r50_d8_in1k_pre_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -209,7 +209,7 @@ Models:
     Metrics:
       mIoU: 70.28
       mIoU(ms+flip): 71.95
-  Config: configs/icnet/icnet_r101-d8_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r101_d8_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -233,7 +233,7 @@ Models:
     Metrics:
       mIoU: 73.8
       mIoU(ms+flip): 76.1
-  Config: configs/icnet/icnet_r101-d8_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r101_d8_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -256,7 +256,7 @@ Models:
     Metrics:
       mIoU: 75.57
       mIoU(ms+flip): 77.86
-  Config: configs/icnet/icnet_r101-d8-in1k-pre_4xb2-80k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r101_d8_in1k_pre_4xb2_80k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -280,7 +280,7 @@ Models:
     Metrics:
       mIoU: 76.15
       mIoU(ms+flip): 77.98
-  Config: configs/icnet/icnet_r101-d8-in1k-pre_4xb2-160k_cityscapes-832x832.py
+  Config: configs/icnet/icnet_r101_d8_in1k_pre_4xb2_160k_cityscapes_832x832.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8

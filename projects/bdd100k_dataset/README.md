@@ -40,7 +40,7 @@ mmsegmentation/data
 
 ```bash
 %cd mmsegmentation
-!python tools/train.py projects/bdd100k_dataset/configs/pspnet_r50-d8_4xb2-80k_bdd100k-512x1024.py\
+!python tools/train.py projects/bdd100k_dataset/configs/pspnet_r50_d8_4xb2_80k_bdd100k_512x1024.py\
 --work-dir your_work_dir
 ```
 

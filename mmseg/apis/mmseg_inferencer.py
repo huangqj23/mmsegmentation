@@ -34,7 +34,7 @@ class MMSegInferencer(BaseInferencer):
             as an example the `model` could be
             "fcn_r50-d8_4xb2-40k_cityscapes-512x1024", and the weights of model
             will be download automatically. If use config file, like
-            "configs/fcn/fcn_r50-d8_4xb2-40k_cityscapes-512x1024.py", the
+            "configs/fcn/fcn_r50_d8_4xb2_40k_cityscapes_512x1024.py", the
             `weights` should be defined.
         weights (str, optional): Path to the checkpoint. If it is not specified
             and model is a model name of metafile, the weights will be loaded

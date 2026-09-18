@@ -92,7 +92,7 @@ sh tools/dist_train.sh ${配置文件} ${GPU数量} [可选参数]
 ```shell
 # 模型训练的检查点和日志保存在这个路径下： WORK_DIR=work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512/
 # 如果工作路径没有被设定，它将会被自动生成。
-sh tools/dist_train.sh configs/pspnet/pspnet_r50-d8_4xb4-80k_ade20k-512x512.py 8 --work-dir work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512
+sh tools/dist_train.sh configs/pspnet/pspnet_r50_d8_4xb4_80k_ade20k_512x512.py 8 --work-dir work_dirs/pspnet_r50-d8_4xb4-80k_ade20k-512x512
 ```
 
 **注意**: 在训练过程中，检查点和日志保存在`work_dirs/`下的配置文件的相同文件夹结构下。
@@ -117,7 +117,7 @@ sh tools/dist_test.sh ${配置文件} ${检查点文件} ${GPU数量} [可选参
 示例:
 
 ```shell
-./tools/dist_test.sh configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py \
+./tools/dist_test.sh configs/pspnet/pspnet_r50_d8_4xb2_40k_cityscapes_512x1024.py \
     checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth 4
 ```
 
@@ -237,10 +237,10 @@ python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out ${OUTPUT_DIR}
 以保存模型 `fcn_r50-d8_4xb4-80k_ade20k-512x512` 在 ADE20K 验证数据集上的结果为例：
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth --out work_dirs/format_results
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth --out work_dirs/format_results
 ```
 
-或者通过配置文件定义 `output_dir`。例如在 `configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py` 添加 `test_evaluator` 定义：
+或者通过配置文件定义 `output_dir`。例如在 `configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py` 添加 `test_evaluator` 定义：
 
 ```python
 test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'], output_dir='work_dirs/format_results')
@@ -249,7 +249,7 @@ test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'], output_dir='work_d
 然后执行相同功能的命令不需要再使用 `--out`：
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
 ```
 
 当测试的数据集没有提供标注，评测时没有真值可以参与计算，因此需要设置 `format_only=True`，
@@ -281,7 +281,7 @@ test_dataloader = dict(
 然后执行测试命令：
 
 ```shell
-python tools/test.py configs/fcn/fcn_r50-d8_4xb4-80k_ade20k-512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
+python tools/test.py configs/fcn/fcn_r50_d8_4xb4_80k_ade20k_512x512.py ckpt/fcn_r50-d8_512x512_80k_ade20k_20200614_144016-f8ac5082.pth
 ```
 
 ### 测试 Cityscapes 数据集并保存输出分割结果
@@ -313,5 +313,5 @@ test_dataloader = dict(
 然后执行相同的命令，例如：
 
 ```shell
-python tools/test.py configs/fcn/fcn_r18-d8_4xb2-80k_cityscapes-512x1024.py ckpt/fcn_r18-d8_512x1024_80k_cityscapes_20201225_021327-6c50f8b4.pth
+python tools/test.py configs/fcn/fcn_r18_d8_4xb2_80k_cityscapes_512x1024.py ckpt/fcn_r18-d8_512x1024_80k_cityscapes_20201225_021327-6c50f8b4.pth
 ```

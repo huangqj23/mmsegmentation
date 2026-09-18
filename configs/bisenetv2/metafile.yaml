@@ -20,7 +20,7 @@ Models:
     Metrics:
       mIoU: 73.21
       mIoU(ms+flip): 75.74
-  Config: configs/bisenetv2/bisenetv2_fcn_4xb4-160k_cityscapes-1024x1024.py
+  Config: configs/bisenetv2/bisenetv2_fcn_4xb4_160k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -45,7 +45,7 @@ Models:
     Metrics:
       mIoU: 73.57
       mIoU(ms+flip): 75.8
-  Config: configs/bisenetv2/bisenetv2_fcn_4xb4-ohem-160k_cityscapes-1024x1024.py
+  Config: configs/bisenetv2/bisenetv2_fcn_4xb4_ohem_160k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -70,7 +70,7 @@ Models:
     Metrics:
       mIoU: 75.76
       mIoU(ms+flip): 77.79
-  Config: configs/bisenetv2/bisenetv2_fcn_4xb8-160k_cityscapes-1024x1024.py
+  Config: configs/bisenetv2/bisenetv2_fcn_4xb8_160k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 32
@@ -95,7 +95,7 @@ Models:
     Metrics:
       mIoU: 73.07
       mIoU(ms+flip): 75.13
-  Config: configs/bisenetv2/bisenetv2_fcn_4xb4-amp-160k_cityscapes-1024x1024.py
+  Config: configs/bisenetv2/bisenetv2_fcn_4xb4_amp_160k_cityscapes_1024x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16

@@ -1,18 +1,24 @@
+# Converted from configs/_base_/models/bisenetv2.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import (BiSeNetV2, CrossEntropyLoss, EncoderDecoder, FCNHead,
+                          SegDataPreProcessor)
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     pretrained=None,
     backbone=dict(
-        type='BiSeNetV2',
+        type=BiSeNetV2,
         detail_channels=(64, 64, 128),
         semantic_channels=(16, 32, 64, 128),
         semantic_expansion_ratio=6,
@@ -21,7 +27,7 @@ model = dict(
         init_cfg=None,
         align_corners=False),
     decode_head=dict(
-        type='FCNHead',
+        type=FCNHead,
         in_channels=128,
         in_index=0,
         channels=1024,
@@ -32,10 +38,10 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     auxiliary_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=16,
             channels=16,
             num_convs=2,
@@ -45,9 +51,9 @@ model = dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=32,
             channels=64,
             num_convs=2,
@@ -57,9 +63,9 @@ model = dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=64,
             channels=256,
             num_convs=2,
@@ -69,9 +75,9 @@ model = dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=128,
             channels=1024,
             num_convs=2,
@@ -81,7 +87,7 @@ model = dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     ],
     # model training and testing settings
     train_cfg=dict(),

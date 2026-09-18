@@ -23,7 +23,7 @@ Models:
     Metrics:
       mIoU: 69.1
       mIoU(ms+flip): 71.05
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-160k_cityscapes-512x1024.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_160k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 16
@@ -48,7 +48,7 @@ Models:
     Metrics:
       mDice: 88.38
       Dice: 78.67
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -73,7 +73,7 @@ Models:
     Metrics:
       mDice: 88.71
       Dice: 79.32
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-ce-1.0-dice-3.0-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_ce_1_0_dice_3_0_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -98,7 +98,7 @@ Models:
     Metrics:
       mDice: 88.35
       Dice: 78.62
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -123,7 +123,7 @@ Models:
     Metrics:
       mDice: 88.76
       Dice: 79.42
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-ce-1.0-dice-3.0-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_ce_1_0_dice_3_0_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -148,7 +148,7 @@ Models:
     Metrics:
       mDice: 88.38
       Dice: 78.69
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -173,7 +173,7 @@ Models:
     Metrics:
       mDice: 88.84
       Dice: 79.56
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-ce-1.0-dice-3.0-40k_drive-64x64.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_ce_1_0_dice_3_0_40k_drive_64x64.py
   Metadata:
     Training Data: DRIVE
     Batch Size: 16
@@ -198,7 +198,7 @@ Models:
     Metrics:
       mDice: 89.78
       Dice: 81.02
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -223,7 +223,7 @@ Models:
     Metrics:
       mDice: 90.65
       Dice: 82.7
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-ce-1.0-dice-3.0-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_ce_1_0_dice_3_0_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -248,7 +248,7 @@ Models:
     Metrics:
       mDice: 89.89
       Dice: 81.22
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -273,7 +273,7 @@ Models:
     Metrics:
       mDice: 90.72
       Dice: 82.84
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-ce-1.0-dice-3.0-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_ce_1_0_dice_3_0_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -298,7 +298,7 @@ Models:
     Metrics:
       mDice: 89.73
       Dice: 80.93
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -323,7 +323,7 @@ Models:
     Metrics:
       mDice: 90.65
       Dice: 82.71
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-ce-1.0-dice-3.0-40k_stare-128x128.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_ce_1_0_dice_3_0_40k_stare_128x128.py
   Metadata:
     Training Data: STARE
     Batch Size: 16
@@ -348,7 +348,7 @@ Models:
     Metrics:
       mDice: 89.46
       Dice: 80.24
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -373,7 +373,7 @@ Models:
     Metrics:
       mDice: 89.52
       Dice: 80.4
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-ce-1.0-dice-3.0-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_ce_1_0_dice_3_0_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -398,7 +398,7 @@ Models:
     Metrics:
       mDice: 89.52
       Dice: 80.36
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -423,7 +423,7 @@ Models:
     Metrics:
       mDice: 89.45
       Dice: 80.28
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-ce-1.0-dice-3.0-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_ce_1_0_dice_3_0_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -448,7 +448,7 @@ Models:
     Metrics:
       mDice: 89.57
       Dice: 80.47
-  Config: configs/unet/unet_s5-d16_deeplabv3_4xb4-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -473,7 +473,7 @@ Models:
     Metrics:
       mDice: 89.49
       Dice: 80.37
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-ce-1.0-dice-3.0-40k_chase-db1-128x128.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_ce_1_0_dice_3_0_40k_chase_db1_128x128.py
   Metadata:
     Training Data: CHASE_DB1
     Batch Size: 16
@@ -498,7 +498,7 @@ Models:
     Metrics:
       mDice: 88.92
       Dice: 79.45
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16
@@ -523,7 +523,7 @@ Models:
     Metrics:
       mDice: 89.64
       Dice: 80.87
-  Config: configs/unet/unet-s5-d16_fcn_4xb4-ce-1.0-dice-3.0-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_fcn_4xb4_ce_1_0_dice_3_0_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16
@@ -548,7 +548,7 @@ Models:
     Metrics:
       mDice: 89.24
       Dice: 80.07
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16
@@ -573,7 +573,7 @@ Models:
     Metrics:
       mDice: 89.69
       Dice: 80.96
-  Config: configs/unet/unet-s5-d16_pspnet_4xb4-ce-1.0-dice-3.0-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_pspnet_4xb4_ce_1_0_dice_3_0_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16
@@ -598,7 +598,7 @@ Models:
     Metrics:
       mDice: 89.32
       Dice: 80.21
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16
@@ -623,7 +623,7 @@ Models:
     Metrics:
       mDice: 89.56
       Dice: 80.71
-  Config: configs/unet/unet-s5-d16_deeplabv3_4xb4-ce-1.0-dice-3.0-40k_hrf-256x256.py
+  Config: configs/unet/unet_s5_d16_deeplabv3_4xb4_ce_1_0_dice_3_0_40k_hrf_256x256.py
   Metadata:
     Training Data: HRF
     Batch Size: 16

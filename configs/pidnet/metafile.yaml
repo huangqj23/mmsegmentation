@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 78.74
       mIoU(ms+flip): 80.87
-  Config: configs/pidnet/pidnet-s_2xb6-120k_1024x1024-cityscapes.py
+  Config: configs/pidnet/pidnet_s_2xb6_120k_1024x1024_cityscapes.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 12
@@ -43,7 +43,7 @@ Models:
     Metrics:
       mIoU: 80.22
       mIoU(ms+flip): 82.05
-  Config: configs/pidnet/pidnet-m_2xb6-120k_1024x1024-cityscapes.py
+  Config: configs/pidnet/pidnet_m_2xb6_120k_1024x1024_cityscapes.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 12
@@ -67,7 +67,7 @@ Models:
     Metrics:
       mIoU: 80.89
       mIoU(ms+flip): 82.37
-  Config: configs/pidnet/pidnet-l_2xb6-120k_1024x1024-cityscapes.py
+  Config: configs/pidnet/pidnet_l_2xb6_120k_1024x1024_cityscapes.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 12

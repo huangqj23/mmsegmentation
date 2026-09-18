@@ -19,7 +19,7 @@ Models:
     Metrics:
       mIoU: 39.99
       mIoU(ms+flip): 40.83
-  Config: configs/segmenter/segmenter_vit-t_mask_8xb1-160k_ade20k-512x512.py
+  Config: configs/segmenter/segmenter_vit_t_mask_8xb1_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8
@@ -44,7 +44,7 @@ Models:
     Metrics:
       mIoU: 45.75
       mIoU(ms+flip): 46.82
-  Config: configs/segmenter/segmenter_vit-s_fcn_8xb1-160k_ade20k-512x512.py
+  Config: configs/segmenter/segmenter_vit_s_fcn_8xb1_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8
@@ -69,7 +69,7 @@ Models:
     Metrics:
       mIoU: 46.19
       mIoU(ms+flip): 47.85
-  Config: configs/segmenter/segmenter_vit-s_mask_8xb1-160k_ade20k-512x512.py
+  Config: configs/segmenter/segmenter_vit_s_mask_8xb1_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8
@@ -94,7 +94,7 @@ Models:
     Metrics:
       mIoU: 49.6
       mIoU(ms+flip): 51.07
-  Config: configs/segmenter/segmenter_vit-b_mask_8xb1-160k_ade20k-512x512.py
+  Config: configs/segmenter/segmenter_vit_b_mask_8xb1_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8
@@ -119,7 +119,7 @@ Models:
     Metrics:
       mIoU: 52.16
       mIoU(ms+flip): 53.65
-  Config: configs/segmenter/segmenter_vit-l_mask_8xb1-160k_ade20k-512x512.py
+  Config: configs/segmenter/segmenter_vit_l_mask_8xb1_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 8

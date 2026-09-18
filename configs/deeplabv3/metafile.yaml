@@ -25,7 +25,7 @@ Models:
     Metrics:
       mIoU: 79.09
       mIoU(ms+flip): 80.45
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -49,7 +49,7 @@ Models:
     Metrics:
       mIoU: 77.12
       mIoU(ms+flip): 79.61
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -73,7 +73,7 @@ Models:
     Metrics:
       mIoU: 78.58
       mIoU(ms+flip): 79.89
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -97,7 +97,7 @@ Models:
     Metrics:
       mIoU: 79.27
       mIoU(ms+flip): 80.11
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb2-40k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb2_40k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -121,7 +121,7 @@ Models:
     Metrics:
       mIoU: 76.7
       mIoU(ms+flip): 78.27
-  Config: configs/deeplabv3/deeplabv3_r18-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r18_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -145,7 +145,7 @@ Models:
     Metrics:
       mIoU: 79.32
       mIoU(ms+flip): 80.57
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -168,7 +168,7 @@ Models:
     Metrics:
       mIoU: 80.2
       mIoU(ms+flip): 81.21
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -190,7 +190,7 @@ Models:
     Dataset: Cityscapes
     Metrics:
       mIoU: 80.48
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb2-amp-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb2_amp_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -215,7 +215,7 @@ Models:
     Metrics:
       mIoU: 76.6
       mIoU(ms+flip): 78.26
-  Config: configs/deeplabv3/deeplabv3_r18-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r18_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -239,7 +239,7 @@ Models:
     Metrics:
       mIoU: 79.89
       mIoU(ms+flip): 81.06
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -262,7 +262,7 @@ Models:
     Metrics:
       mIoU: 79.67
       mIoU(ms+flip): 80.81
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -285,7 +285,7 @@ Models:
     Metrics:
       mIoU: 76.71
       mIoU(ms+flip): 78.63
-  Config: configs/deeplabv3/deeplabv3_r101-d16-mg124_4xb2-40k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101_d16_mg124_4xb2_40k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -309,7 +309,7 @@ Models:
     Metrics:
       mIoU: 78.36
       mIoU(ms+flip): 79.84
-  Config: configs/deeplabv3/deeplabv3_r101-d16-mg124_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101_d16_mg124_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -332,7 +332,7 @@ Models:
     Metrics:
       mIoU: 76.26
       mIoU(ms+flip): 77.88
-  Config: configs/deeplabv3/deeplabv3_r18b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r18b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -356,7 +356,7 @@ Models:
     Metrics:
       mIoU: 79.63
       mIoU(ms+flip): 80.98
-  Config: configs/deeplabv3/deeplabv3_r50b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r50b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -380,7 +380,7 @@ Models:
     Metrics:
       mIoU: 80.01
       mIoU(ms+flip): 81.21
-  Config: configs/deeplabv3/deeplabv3_r101b-d8_4xb2-80k_cityscapes-512x1024.py
+  Config: configs/deeplabv3/deeplabv3_r101b_d8_4xb2_80k_cityscapes_512x1024.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -404,7 +404,7 @@ Models:
     Metrics:
       mIoU: 75.63
       mIoU(ms+flip): 77.51
-  Config: configs/deeplabv3/deeplabv3_r18b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r18b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -428,7 +428,7 @@ Models:
     Metrics:
       mIoU: 78.8
       mIoU(ms+flip): 80.27
-  Config: configs/deeplabv3/deeplabv3_r50b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r50b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -452,7 +452,7 @@ Models:
     Metrics:
       mIoU: 79.41
       mIoU(ms+flip): 80.73
-  Config: configs/deeplabv3/deeplabv3_r101b-d8_4xb2-80k_cityscapes-769x769.py
+  Config: configs/deeplabv3/deeplabv3_r101b_d8_4xb2_80k_cityscapes_769x769.py
   Metadata:
     Training Data: Cityscapes
     Batch Size: 8
@@ -476,7 +476,7 @@ Models:
     Metrics:
       mIoU: 42.42
       mIoU(ms+flip): 43.28
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -500,7 +500,7 @@ Models:
     Metrics:
       mIoU: 44.08
       mIoU(ms+flip): 45.19
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-80k_ade20k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_80k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -524,7 +524,7 @@ Models:
     Metrics:
       mIoU: 42.66
       mIoU(ms+flip): 44.09
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -547,7 +547,7 @@ Models:
     Metrics:
       mIoU: 45.0
       mIoU(ms+flip): 46.66
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-160k_ade20k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_160k_ade20k_512x512.py
   Metadata:
     Training Data: ADE20K
     Batch Size: 16
@@ -570,7 +570,7 @@ Models:
     Metrics:
       mIoU: 76.17
       mIoU(ms+flip): 77.42
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -594,7 +594,7 @@ Models:
     Metrics:
       mIoU: 78.7
       mIoU(ms+flip): 79.95
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-20k_voc12aug-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_20k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -618,7 +618,7 @@ Models:
     Metrics:
       mIoU: 77.68
       mIoU(ms+flip): 78.78
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -641,7 +641,7 @@ Models:
     Metrics:
       mIoU: 77.92
       mIoU(ms+flip): 79.18
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-40k_voc12aug-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_40k_voc12aug_512x512.py
   Metadata:
     Training Data: Pascal VOC 2012 + Aug
     Batch Size: 16
@@ -664,7 +664,7 @@ Models:
     Metrics:
       mIoU: 46.55
       mIoU(ms+flip): 47.81
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-40k_pascal-context-480x480.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_40k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -688,7 +688,7 @@ Models:
     Metrics:
       mIoU: 46.42
       mIoU(ms+flip): 47.53
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-80k_pascal-context-480x480.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_80k_pascal_context_480x480.py
   Metadata:
     Training Data: Pascal Context
     Batch Size: 16
@@ -711,7 +711,7 @@ Models:
     Metrics:
       mIoU: 52.61
       mIoU(ms+flip): 54.28
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-40k_pascal-context-59-480x480.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_40k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16
@@ -734,7 +734,7 @@ Models:
     Metrics:
       mIoU: 52.46
       mIoU(ms+flip): 54.09
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-80k_pascal-context-59-480x480.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_80k_pascal_context_59_480x480.py
   Metadata:
     Training Data: Pascal Context 59
     Batch Size: 16
@@ -757,7 +757,7 @@ Models:
     Metrics:
       mIoU: 34.66
       mIoU(ms+flip): 36.08
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-20k_coco-stuff10k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_20k_coco_stuff10k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 10k
     Batch Size: 16
@@ -781,7 +781,7 @@ Models:
     Metrics:
       mIoU: 37.3
       mIoU(ms+flip): 38.42
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-20k_coco-stuff10k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_20k_coco_stuff10k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 10k
     Batch Size: 16
@@ -805,7 +805,7 @@ Models:
     Metrics:
       mIoU: 35.73
       mIoU(ms+flip): 37.09
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-40k_coco-stuff10k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_40k_coco_stuff10k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 10k
     Batch Size: 16
@@ -828,7 +828,7 @@ Models:
     Metrics:
       mIoU: 37.81
       mIoU(ms+flip): 38.8
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-40k_coco-stuff10k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_40k_coco_stuff10k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 10k
     Batch Size: 16
@@ -851,7 +851,7 @@ Models:
     Metrics:
       mIoU: 39.38
       mIoU(ms+flip): 40.03
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-80k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_80k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -875,7 +875,7 @@ Models:
     Metrics:
       mIoU: 40.87
       mIoU(ms+flip): 41.5
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-80k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_80k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -899,7 +899,7 @@ Models:
     Metrics:
       mIoU: 41.09
       mIoU(ms+flip): 41.69
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-160k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_160k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -922,7 +922,7 @@ Models:
     Metrics:
       mIoU: 41.82
       mIoU(ms+flip): 42.49
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-160k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_160k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -945,7 +945,7 @@ Models:
     Metrics:
       mIoU: 41.37
       mIoU(ms+flip): 42.22
-  Config: configs/deeplabv3/deeplabv3_r50-d8_4xb4-320k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r50_d8_4xb4_320k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16
@@ -968,7 +968,7 @@ Models:
     Metrics:
       mIoU: 42.61
       mIoU(ms+flip): 43.42
-  Config: configs/deeplabv3/deeplabv3_r101-d8_4xb4-320k_coco-stuff164k-512x512.py
+  Config: configs/deeplabv3/deeplabv3_r101_d8_4xb4_320k_coco_stuff164k_512x512.py
   Metadata:
     Training Data: COCO-Stuff 164k
     Batch Size: 16

@@ -33,7 +33,7 @@
 
 ## 如何获知模型训练时需要的显卡数量
 
-- 看模型的 config 文件命名。可以参考[了解配置文件](../user_guides/1_config.md)中的`配置文件命名风格`部分。比如，对于名字为`segformer_mit-b0_8xb1-160k_cityscapes-1024x1024.py`的 config 文件，`8xb1`代表训练其对应的模型需要的卡数为 8，每张卡中的 batch size 为 1。
+- 看模型的 config 文件命名。可以参考[了解配置文件](../user_guides/1_config.md)中的`配置文件命名风格`部分。比如，对于名字为`segformer_mit_b0_8xb1_160k_cityscapes_1024x1024.py`的 config 文件，`8xb1`代表训练其对应的模型需要的卡数为 8，每张卡中的 batch size 为 1。
 - 看模型的 log 文件。点开该模型的 log 文件，并在其中搜索`nGPU`，在`nGPU`后的数字个数即训练时所需的卡数。比如，在 log 文件中搜索`nGPU`得到`nGPU 0,1,2,3,4,5,6,7`的记录，则说明训练该模型需要使用八张卡。
 
 ## auxiliary head 是什么
@@ -60,7 +60,7 @@ MMSegmentation 使用 `num_classes` 和 `out_channels` 来控制模型最后一�
 
 - 设置 `out_channels=1`，在训练时以 Binary Cross Entropy Loss 作为损失函数，在推理时使用 `F.sigmoid()` 和 `threshold` 得到预测结果，`threshold` 默认为 0.3。
 
-对于实现上述两种计算二值分割的方法，需要在 `decode_head` 和 `auxiliary_head` 的配置里修改。下面是对样例 [pspnet_unet_s5-d16.py](https://github.com/open-mmlab/mmsegmentation/blob/dev-1.x/configs/_base_/models/pspnet_unet_s5-d16.py) 做出的对应修改。
+对于实现上述两种计算二值分割的方法，需要在 `decode_head` 和 `auxiliary_head` 的配置里修改。下面是对样例 [pspnet_unet_s5_d16.py](https://github.com/open-mmlab/mmsegmentation/blob/dev-1.x/configs/_base_/models/pspnet_unet_s5-d16.py) 做出的对应修改。
 
 - (1) `num_classes=2`, `out_channels=2` 并在 `CrossEntropyLoss` 里面设置 `use_sigmoid=False`。
 
