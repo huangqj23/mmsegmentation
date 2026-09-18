@@ -4,6 +4,7 @@ import copy
 from typing import List, Optional, Sequence, Union
 
 from mmengine.dataset import ConcatDataset, force_full_init
+from mmengine.registry import cfg_type_matches
 
 from mmseg.registry import DATASETS, TRANSFORMS
 
@@ -101,8 +102,9 @@ class MultiImageMixDataset:
         results = copy.deepcopy(self.dataset[idx])
         for (transform, transform_type) in zip(self.pipeline,
                                                self.pipeline_types):
-            if self._skip_type_keys is not None and \
-                    transform_type in self._skip_type_keys:
+            if self._skip_type_keys is not None and any(
+                    cfg_type_matches(transform_type, key)
+                    for key in self._skip_type_keys):
                 continue
 
             if hasattr(transform, 'get_indices'):

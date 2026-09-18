@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from mmcv.cnn import ConvModule, build_norm_layer
+from mmengine.registry import resolve_cfg_type
 from torch import Tensor
 
 from mmseg.registry import MODELS
@@ -38,11 +39,22 @@ class EncModule(nn.Module):
         # change to 1d
         if norm_cfg is not None:
             encoding_norm_cfg = norm_cfg.copy()
-            if encoding_norm_cfg['type'] in ['BN', 'IN']:
-                encoding_norm_cfg['type'] += '1d'
+            norm_type = encoding_norm_cfg['type']
+            if isinstance(norm_type, str):
+                if norm_type in ['BN', 'IN']:
+                    encoding_norm_cfg['type'] += '1d'
+                else:
+                    encoding_norm_cfg['type'] = norm_type.replace('2d', '1d')
             else:
-                encoding_norm_cfg['type'] = encoding_norm_cfg['type'].replace(
-                    '2d', '1d')
+                # ``type`` given as a class (pure-Python style config): map
+                # the 2d norm to its 1d counterpart, mirroring the string
+                # rules above ('BN'/'BN2d' -> 'BN1d', 'IN'/'IN2d' -> 'IN1d',
+                # everything else unchanged).
+                norm_type = resolve_cfg_type(norm_type)
+                encoding_norm_cfg['type'] = {
+                    nn.BatchNorm2d: nn.BatchNorm1d,
+                    nn.InstanceNorm2d: nn.InstanceNorm1d,
+                }.get(norm_type, norm_type)
         else:
             # fallback to BN1d
             encoding_norm_cfg = dict(type='BN1d')

@@ -10,6 +10,7 @@ from mmcv.ops import point_sample
 from mmengine.dist import all_reduce
 from mmengine.model.weight_init import (caffe2_xavier_init, normal_init,
                                         trunc_normal_)
+from mmengine.registry import cfg_type_matches
 from mmengine.runner.checkpoint import CheckpointLoader, load_state_dict
 from mmengine.structures import InstanceData
 from torch import Tensor
@@ -510,8 +511,8 @@ class SideAdapterCLIPHead(BaseDecodeHead):
     def init_weights(self):
 
         rec_state_dict = None
-        if isinstance(self.init_cfg, dict) and \
-                self.init_cfg.get('type') == 'Pretrained_Part':
+        if isinstance(self.init_cfg, dict) and cfg_type_matches(
+                self.init_cfg.get('type'), 'Pretrained_Part'):
             checkpoint = CheckpointLoader.load_checkpoint(
                 self.init_cfg['checkpoint'], logger=None, map_location='cpu')
 

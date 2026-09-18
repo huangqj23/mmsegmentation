@@ -7,6 +7,7 @@ import torch.nn as nn
 from mmcv.cnn import build_norm_layer
 from mmcv.cnn.bricks.transformer import BaseTransformerLayer
 from mmengine.model import BaseModule, ModuleList
+from mmengine.registry import cfg_type_matches
 from mmengine.runner.checkpoint import CheckpointLoader, load_state_dict
 from torch.nn import functional as F
 
@@ -138,8 +139,8 @@ class CLIPTextEncoder(BaseModule):
                 self.bg_embed,
                 std=self.bg_embed.shape[1]**-0.5,
             )
-        if isinstance(self.init_cfg, dict) and \
-                self.init_cfg.get('type') == 'Pretrained_Part':
+        if isinstance(self.init_cfg, dict) and cfg_type_matches(
+                self.init_cfg.get('type'), 'Pretrained_Part'):
             checkpoint = CheckpointLoader.load_checkpoint(
                 self.init_cfg['checkpoint'], logger=None, map_location='cpu')
 

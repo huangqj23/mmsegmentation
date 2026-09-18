@@ -11,6 +11,7 @@ from mmengine.logging import print_log
 from mmengine.model import BaseModule, ModuleList
 from mmengine.model.weight_init import (constant_init, kaiming_init,
                                         trunc_normal_)
+from mmengine.registry import cfg_type_matches
 from mmengine.runner.checkpoint import CheckpointLoader, load_state_dict
 from torch.nn.modules.batchnorm import _BatchNorm
 from torch.nn.modules.utils import _pair as to_2tuple
@@ -320,18 +321,19 @@ class VisionTransformer(BaseModule):
         return getattr(self, self.norm1_name)
 
     def init_weights(self):
-        if isinstance(self.init_cfg, dict) and \
-                self.init_cfg.get('type') in ['Pretrained', 'Pretrained_Part']:
+        if isinstance(self.init_cfg, dict) and cfg_type_matches(
+                self.init_cfg.get('type'), 'Pretrained', 'Pretrained_Part'):
             checkpoint = CheckpointLoader.load_checkpoint(
                 self.init_cfg['checkpoint'], logger=None, map_location='cpu')
 
-            if self.init_cfg.get('type') == 'Pretrained':
+            if cfg_type_matches(self.init_cfg.get('type'), 'Pretrained'):
                 if 'state_dict' in checkpoint:
                     state_dict = checkpoint['state_dict']
                 else:
                     state_dict = checkpoint
 
-            elif self.init_cfg.get('type') == 'Pretrained_Part':
+            elif cfg_type_matches(self.init_cfg.get('type'),
+                                  'Pretrained_Part'):
                 state_dict = checkpoint.copy()
                 para_prefix = 'image_encoder'
                 prefix_len = len(para_prefix) + 1

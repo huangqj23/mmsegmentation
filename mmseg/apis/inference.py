@@ -7,7 +7,7 @@ import mmcv
 import numpy as np
 import torch
 from mmengine import Config
-from mmengine.registry import init_default_scope
+from mmengine.registry import cfg_type_matches, init_default_scope
 from mmengine.runner import load_checkpoint
 from mmengine.utils import mkdir_or_exist
 
@@ -44,10 +44,10 @@ def init_model(config: Union[str, Path, Config],
                         'but got {}'.format(type(config)))
     if cfg_options is not None:
         config.merge_from_dict(cfg_options)
-    if config.model.type == 'EncoderDecoder':
+    if cfg_type_matches(config.model.type, 'EncoderDecoder'):
         if 'init_cfg' in config.model.backbone:
             config.model.backbone.init_cfg = None
-    elif config.model.type == 'MultimodalEncoderDecoder':
+    elif cfg_type_matches(config.model.type, 'MultimodalEncoderDecoder'):
         for k, v in config.model.items():
             if isinstance(v, dict) and 'init_cfg' in v:
                 config.model[k].init_cfg = None

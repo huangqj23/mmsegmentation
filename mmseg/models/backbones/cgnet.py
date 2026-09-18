@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.utils.checkpoint as cp
 from mmcv.cnn import ConvModule, build_conv_layer, build_norm_layer
 from mmengine.model import BaseModule
+from mmengine.registry import cfg_type_matches
 from mmengine.utils.dl_utils.parrots_wrapper import _BatchNorm
 
 from mmseg.registry import MODELS
@@ -92,7 +93,7 @@ class ContextGuidedBlock(nn.Module):
         self.downsample = downsample
 
         channels = out_channels if downsample else out_channels // 2
-        if 'type' in act_cfg and act_cfg['type'] == 'PReLU':
+        if 'type' in act_cfg and cfg_type_matches(act_cfg['type'], 'PReLU'):
             act_cfg['num_parameters'] = channels
         kernel_size = 3 if downsample else 1
         stride = 2 if downsample else 1
@@ -264,7 +265,8 @@ class CGNet(BaseModule):
         self.conv_cfg = conv_cfg
         self.norm_cfg = norm_cfg
         self.act_cfg = act_cfg
-        if 'type' in self.act_cfg and self.act_cfg['type'] == 'PReLU':
+        if 'type' in self.act_cfg and cfg_type_matches(
+                self.act_cfg['type'], 'PReLU'):
             self.act_cfg['num_parameters'] = num_channels[0]
         self.norm_eval = norm_eval
         self.with_cp = with_cp

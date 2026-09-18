@@ -11,7 +11,7 @@ import torch.nn as nn
 from mmcv.transforms import Compose
 from mmengine.infer.infer import BaseInferencer, ModelType
 from mmengine.model import revert_sync_batchnorm
-from mmengine.registry import init_default_scope
+from mmengine.registry import cfg_type_matches, init_default_scope
 from mmengine.runner.checkpoint import _load_checkpoint_to_model
 from PIL import Image
 
@@ -377,6 +377,6 @@ class MMSegInferencer(BaseInferencer):
         If the transform is not found, returns -1.
         """
         for i, transform in enumerate(pipeline_cfg):
-            if transform['type'] == name:
+            if cfg_type_matches(transform['type'], name):
                 return i
         return -1

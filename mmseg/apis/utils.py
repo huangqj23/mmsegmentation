@@ -5,6 +5,7 @@ from typing import Sequence, Union
 import numpy as np
 from mmengine.dataset import Compose
 from mmengine.model import BaseModel
+from mmengine.registry import cfg_type_matches
 
 ImageType = Union[str, np.ndarray, Sequence[str], Sequence[np.ndarray]]
 
@@ -13,7 +14,7 @@ def _preprare_data(imgs: ImageType, model: BaseModel):
 
     cfg = model.cfg
     for t in cfg.test_pipeline:
-        if t.get('type') == 'LoadAnnotations':
+        if cfg_type_matches(t.get('type'), 'LoadAnnotations'):
             cfg.test_pipeline.remove(t)
 
     is_batch = True
