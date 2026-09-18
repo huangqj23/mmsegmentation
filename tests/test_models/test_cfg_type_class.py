@@ -93,3 +93,27 @@ def test_vit_pretrained_branch(t):
         dst.init_weights()
     for k, v in src.state_dict().items():
         assert torch.equal(v, dst.state_dict()[k]), k
+
+
+@pytest.mark.parametrize('s,path', [
+    ('BN', 'torch.nn.BatchNorm2d'),
+    ('SyncBN', 'mmengine.utils.dl_utils.parrots_wrapper.SyncBatchNorm'),
+    ('GN', 'torch.nn.GroupNorm'),
+])
+def test_enc_head_norm_import_path(s, path):
+    """``Config.dump`` writes a class ``type`` as its import path."""
+    def make(t):
+        extra = dict(num_groups=4) if t in ('GN', 'torch.nn.GroupNorm') else {}
+        return EncHead(in_channels=[8, 8, 8, 16], channels=16, num_classes=3,
+                       in_index=[0, 1, 2, 3], num_codes=4,
+                       norm_cfg=dict(type=t, **extra))
+    _built_same(make, s, path)
+
+
+def test_albu_import_path():
+    pytest.importorskip('albumentations')
+    from mmseg.datasets.transforms import Albu
+    a = Albu(transforms=[dict(type='Blur', blur_limit=3, p=1.0)])
+    b = Albu(
+        transforms=[dict(type='albumentations.Blur', blur_limit=3, p=1.0)])
+    assert type(a.aug.transforms[0]) is type(b.aug.transforms[0])

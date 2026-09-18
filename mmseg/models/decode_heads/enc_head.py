@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from mmcv.cnn import ConvModule, build_norm_layer
-from mmengine.registry import resolve_cfg_type
+from mmengine.registry import is_import_path, resolve_cfg_type
 from torch import Tensor
 
 from mmseg.registry import MODELS
@@ -40,13 +40,14 @@ class EncModule(nn.Module):
         if norm_cfg is not None:
             encoding_norm_cfg = norm_cfg.copy()
             norm_type = encoding_norm_cfg['type']
-            if isinstance(norm_type, str):
+            if isinstance(norm_type, str) and not is_import_path(norm_type):
                 if norm_type in ['BN', 'IN']:
                     encoding_norm_cfg['type'] += '1d'
                 else:
                     encoding_norm_cfg['type'] = norm_type.replace('2d', '1d')
             else:
-                # ``type`` given as a class (pure-Python style config): map
+                # ``type`` given as a class (pure-Python style config; its
+                # import path once such a config is dumped): map
                 # the 2d norm to its 1d counterpart, mirroring the string
                 # rules above ('BN'/'BN2d' -> 'BN1d', 'IN'/'IN2d' -> 'IN1d',
                 # everything else unchanged).

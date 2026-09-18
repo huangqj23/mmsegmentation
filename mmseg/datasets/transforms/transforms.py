@@ -12,7 +12,7 @@ from mmcv.transforms import RandomFlip as MMCV_RandomFlip
 from mmcv.transforms import Resize as MMCV_Resize
 from mmcv.transforms.base import BaseTransform
 from mmcv.transforms.utils import cache_randomness
-from mmengine.utils import is_tuple_of
+from mmengine.utils import get_object_from_string, is_tuple_of
 from numpy import random
 from scipy.ndimage import gaussian_filter
 
@@ -2380,7 +2380,12 @@ class Albu(BaseTransform):
                     'we suggest install albumentation by '
                     '"pip install albumentations>=0.3.2 --no-binary qudida,albumentations"'  # noqa
                 )
-            obj_cls = getattr(albumentations, obj_type)
+            if '.' in obj_type:
+                # an import path such as 'albumentations.Blur' comes from a
+                # dumped pure-Python config whose ``type`` was the class
+                obj_cls = get_object_from_string(obj_type)
+            else:
+                obj_cls = getattr(albumentations, obj_type)
         elif inspect.isclass(obj_type):
             obj_cls = obj_type
         else:
