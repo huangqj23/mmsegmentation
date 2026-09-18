@@ -1,0 +1,11 @@
+# Converted from configs/deeplabv3/deeplabv3_r101-d8_4xb2-amp-80k_cityscapes-512x1024.py by industrial-vision tools/convert_configs.py
+from mmengine.config import read_base
+
+with read_base():
+    from .deeplabv3_r101_d8_4xb2_40k_cityscapes_512x1024 import *  # noqa: F401,F403
+optimizer.merge(dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005))
+optim_wrapper.merge(dict(
+    _delete_=True,
+    type='AmpOptimWrapper',
+    optimizer=optimizer,
+    loss_scale=512.))
