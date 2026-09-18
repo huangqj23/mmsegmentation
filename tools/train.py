@@ -6,6 +6,7 @@ import os.path as osp
 
 from mmengine.config import Config, DictAction
 from mmengine.logging import print_log
+from mmengine.registry import cfg_type_matches
 from mmengine.runner import Runner
 
 from mmseg.registry import RUNNERS
@@ -72,13 +73,13 @@ def main():
     # enable automatic-mixed-precision training
     if args.amp is True:
         optim_wrapper = cfg.optim_wrapper.type
-        if optim_wrapper == 'AmpOptimWrapper':
+        if cfg_type_matches(optim_wrapper, 'AmpOptimWrapper'):
             print_log(
                 'AMP training is already enabled in your config.',
                 logger='current',
                 level=logging.WARNING)
         else:
-            assert optim_wrapper == 'OptimWrapper', (
+            assert cfg_type_matches(optim_wrapper, 'OptimWrapper'), (
                 '`--amp` is only supported when the optimizer wrapper type is '
                 f'`OptimWrapper` but got {optim_wrapper}.')
             cfg.optim_wrapper.type = 'AmpOptimWrapper'

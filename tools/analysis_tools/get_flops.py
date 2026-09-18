@@ -7,7 +7,7 @@ import torch
 from mmengine import Config, DictAction
 from mmengine.logging import MMLogger
 from mmengine.model import revert_sync_batchnorm
-from mmengine.registry import init_default_scope
+from mmengine.registry import cfg_type_matches, init_default_scope
 
 from mmseg.models import BaseSegmentor
 from mmseg.registry import MODELS
@@ -80,7 +80,8 @@ def inference(args: argparse.Namespace, logger: MMLogger) -> dict:
     }
     data = model.data_preprocessor(data_batch)
     model.eval()
-    if cfg.model.decode_head.type in ['MaskFormerHead', 'Mask2FormerHead']:
+    if cfg_type_matches(cfg.model.decode_head.type, 'MaskFormerHead',
+                        'Mask2FormerHead'):
         # TODO: Support MaskFormer and Mask2Former
         raise NotImplementedError('MaskFormer and Mask2Former are not '
                                   'supported yet.')
