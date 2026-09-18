@@ -3,18 +3,24 @@ from mmengine.config import read_base
 
 with read_base():
     from .segnext_mscan_t_1xb16_adamw_160k_ade20k_512x512 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+from torch.nn import BatchNorm2d, GroupNorm
+
+from mmseg.models import CrossEntropyLoss, EncoderDecoder, LightHamHead
+
 # model settings
 checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segnext/mscan_s_20230227-f33ccdf2.pth'  # noqa
-ham_norm_cfg.merge(dict(type='GN', num_groups=32, requires_grad=True))
+ham_norm_cfg.merge(dict(type=GroupNorm, num_groups=32, requires_grad=True))
 model.merge(dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     backbone=dict(
         embed_dims=[64, 128, 320, 512],
         depths=[2, 2, 4, 2],
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint_file),
-        norm_cfg=dict(type='BN', requires_grad=True)),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint_file),
+        norm_cfg=dict(type=BatchNorm2d, requires_grad=True)),
     decode_head=dict(
-        type='LightHamHead',
+        type=LightHamHead,
         in_channels=[128, 320, 512],
         in_index=[1, 2, 3],
         channels=256,
@@ -25,7 +31,7 @@ model.merge(dict(
         norm_cfg=ham_norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole')))

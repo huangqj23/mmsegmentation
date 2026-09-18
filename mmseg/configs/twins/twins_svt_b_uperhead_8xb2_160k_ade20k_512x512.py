@@ -4,11 +4,13 @@ from mmengine.config import read_base
 with read_base():
     from .twins_svt_s_uperhead_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/alt_gvt_base_20220308-1b7eb711.pth'  # noqa
 
 model.merge(dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         embed_dims=[96, 192, 384, 768],
         num_heads=[3, 6, 12, 24],
         depths=[2, 2, 18, 2]),

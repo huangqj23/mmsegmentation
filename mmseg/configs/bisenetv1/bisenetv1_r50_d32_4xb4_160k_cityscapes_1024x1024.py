@@ -8,6 +8,12 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.optim import SGD
+
+from mmseg.models import BiSeNetV1, EncoderDecoder, FCNHead, ResNet
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -19,23 +25,23 @@ def __iv_merge(base, child):
 # 旧式继承中，子配置里的名字在整个文件内都指向子配置自己的值，
 # 与 base 的合并在最后发生。先保存 base 值以保持完全等价。
 __base_test_dataloader = test_dataloader
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 crop_size = (1024, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='BiSeNetV1',
+        type=BiSeNetV1,
         context_channels=(512, 1024, 2048),
         spatial_channels=(256, 256, 256, 512),
         out_channels=1024,
-        backbone_cfg=dict(type='ResNet', depth=50)),
+        backbone_cfg=dict(type=ResNet, depth=50)),
     decode_head=dict(
-        type='FCNHead', in_channels=1024, in_index=0, channels=1024),
+        type=FCNHead, in_channels=1024, in_index=0, channels=1024),
     auxiliary_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=512,
             channels=256,
             num_convs=1,
@@ -44,7 +50,7 @@ model.merge(dict(
             norm_cfg=norm_cfg,
             concat_input=False),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=512,
             channels=256,
             num_convs=1,
@@ -54,9 +60,9 @@ model.merge(dict(
             concat_input=False),
     ]))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=1000),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=1000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=1000,
@@ -64,8 +70,8 @@ param_scheduler = [
         by_epoch=False,
     )
 ]
-optimizer.merge(dict(type='SGD', lr=0.05, momentum=0.9, weight_decay=0.0005))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optimizer.merge(dict(type=SGD, lr=0.05, momentum=0.9, weight_decay=0.0005))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 train_dataloader.merge(dict(batch_size=4, num_workers=4))
 val_dataloader.merge(dict(batch_size=1, num_workers=4))
 test_dataloader = val_dataloader

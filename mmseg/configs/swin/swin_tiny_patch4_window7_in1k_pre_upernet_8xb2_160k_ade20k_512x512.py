@@ -8,6 +8,10 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from torch.optim import AdamW
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -25,7 +29,7 @@ checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/s
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint_file),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint_file),
         embed_dims=96,
         depths=[2, 2, 6, 2],
         num_heads=[3, 6, 12, 24],
@@ -40,9 +44,9 @@ model.merge(dict(
 # in backbone
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
+    type=OptimWrapper,
     optimizer=dict(
-        type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
+        type=AdamW, lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
     paramwise_cfg=dict(
         custom_keys={
             'absolute_pos_embed': dict(decay_mult=0.),
@@ -52,9 +56,9 @@ optim_wrapper.merge(dict(
 
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=1e-6, by_epoch=False, begin=0, end=1500),
+        type=LinearLR, start_factor=1e-6, by_epoch=False, begin=0, end=1500),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=0.0,
         power=1.0,
         begin=1500,

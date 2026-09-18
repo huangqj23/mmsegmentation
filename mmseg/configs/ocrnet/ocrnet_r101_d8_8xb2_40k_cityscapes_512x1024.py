@@ -6,17 +6,21 @@ with read_base():
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_40k import *  # noqa: F401,F403
+
+from mmengine.optim import OptimWrapper, PolyLR
+from torch.optim import SGD
+
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     pretrained='open-mmlab://resnet101_v1c',
     backbone=dict(depth=101)))
-optimizer.merge(dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0005))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optimizer.merge(dict(type=SGD, lr=0.02, momentum=0.9, weight_decay=0.0005))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 param_scheduler = [
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=2e-4,
         power=0.9,
         begin=0,

@@ -6,11 +6,14 @@ with read_base():
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
+
+from mmseg.models import ResNet
+
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     pretrained='torchvision://resnet50',
-    backbone=dict(type='ResNet', dilations=(1, 1, 2, 4), strides=(1, 2, 2, 2))))
+    backbone=dict(type=ResNet, dilations=(1, 1, 2, 4), strides=(1, 2, 2, 2))))
 if isinstance(crop_size, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     crop_size.pop('_delete_', None)

@@ -8,6 +8,11 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_320k import *  # noqa: F401,F403
 
+from mmengine.optim import AmpOptimWrapper, LinearLR, PolyLR
+from torch.optim import AdamW
+
+from mmseg.models import BEiT
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -25,7 +30,7 @@ model.merge(dict(
     data_preprocessor=data_preprocessor,
     pretrained='pretrain/beit_large_patch16_224_pt22k_ft22k.pth',
     backbone=dict(
-        type='BEiT',
+        type=BEiT,
         embed_dims=1024,
         num_layers=24,
         num_heads=16,
@@ -42,18 +47,18 @@ model.merge(dict(
 
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='AmpOptimWrapper',
+    type=AmpOptimWrapper,
     optimizer=dict(
-        type='AdamW', lr=2e-5, betas=(0.9, 0.999), weight_decay=0.05),
+        type=AdamW, lr=2e-5, betas=(0.9, 0.999), weight_decay=0.05),
     constructor='LayerDecayOptimizerConstructor',
     paramwise_cfg=dict(num_layers=24, layer_decay_rate=0.95),
     accumulative_counts=2))
 
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=1e-6, by_epoch=False, begin=0, end=3000),
+        type=LinearLR, start_factor=1e-6, by_epoch=False, begin=0, end=3000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         power=1.0,
         begin=3000,
         end=160000,

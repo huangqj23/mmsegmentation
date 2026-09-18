@@ -5,6 +5,13 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .segformer_mit_b0_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmcv.transforms import LoadImageFromFile, RandomResize
+from mmengine.model import PretrainedInit
+
+from mmseg.datasets import (LoadAnnotations, PackSegInputs,
+                            PhotoMetricDistortion, RandomCrop)
+from mmseg.datasets.transforms import RandomFlip, Resize
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -23,25 +30,25 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segfor
 crop_size = (640, 640)
 data_preprocessor.merge(dict(size=crop_size))
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', reduce_zero_label=True),
+    dict(type=LoadImageFromFile),
+    dict(type=LoadAnnotations, reduce_zero_label=True),
     dict(
-        type='RandomResize',
+        type=RandomResize,
         scale=(2048, 640),
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='PackSegInputs')
+    dict(type=RandomCrop, crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type=RandomFlip, prob=0.5),
+    dict(type=PhotoMetricDistortion),
+    dict(type=PackSegInputs)
 ]
 test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 640), keep_ratio=True),
+    dict(type=LoadImageFromFile),
+    dict(type=Resize, scale=(2048, 640), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations', reduce_zero_label=True),
-    dict(type='PackSegInputs')
+    dict(type=LoadAnnotations, reduce_zero_label=True),
+    dict(type=PackSegInputs)
 ]
 train_dataloader.merge(dict(dataset=dict(pipeline=train_pipeline)))
 val_dataloader.merge(dict(batch_size=1, dataset=dict(pipeline=test_pipeline)))
@@ -51,7 +58,7 @@ test_dataloader = val_dataloader
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         embed_dims=64,
         num_heads=[1, 2, 5, 8],
         num_layers=[3, 6, 40, 3]),

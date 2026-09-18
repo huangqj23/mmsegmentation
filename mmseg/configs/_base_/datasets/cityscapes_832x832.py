@@ -5,6 +5,13 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .cityscapes import *  # noqa: F401,F403
 
+from mmcv.transforms import LoadImageFromFile, RandomResize
+
+from mmseg.datasets import (LoadAnnotations, PackSegInputs,
+                            PhotoMetricDistortion, RandomCrop)
+from mmseg.datasets.transforms import RandomFlip, Resize
+from mmseg.evaluation import IoUMetric
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -19,31 +26,31 @@ __base_test_dataloader = test_dataloader
 __base_test_evaluator = test_evaluator
 crop_size = (832, 832)
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations'),
+    dict(type=LoadImageFromFile),
+    dict(type=LoadAnnotations),
     dict(
-        type='RandomResize',
+        type=RandomResize,
         scale=(2048, 1024),
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='PackSegInputs')
+    dict(type=RandomCrop, crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type=RandomFlip, prob=0.5),
+    dict(type=PhotoMetricDistortion),
+    dict(type=PackSegInputs)
 ]
 test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 1024), keep_ratio=True),
+    dict(type=LoadImageFromFile),
+    dict(type=Resize, scale=(2048, 1024), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations'),
-    dict(type='PackSegInputs')
+    dict(type=LoadAnnotations),
+    dict(type=PackSegInputs)
 ]
 train_dataloader.merge(dict(dataset=dict(pipeline=train_pipeline)))
 val_dataloader.merge(dict(dataset=dict(pipeline=test_pipeline)))
 test_dataloader = val_dataloader
 
-val_evaluator.merge(dict(type='IoUMetric', iou_metrics=['mIoU']))
+val_evaluator.merge(dict(type=IoUMetric, iou_metrics=['mIoU']))
 test_evaluator = val_evaluator
 
 # ---- 旧式继承语义：子配置的值最后才与 base 递归合并 ----

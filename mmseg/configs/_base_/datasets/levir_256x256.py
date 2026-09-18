@@ -1,6 +1,14 @@
 # Converted from configs/_base_/datasets/levir_256x256.py by industrial-vision tools/convert_configs.py
+from mmcv.transforms import TestTimeAug
+from mmengine.dataset import DefaultSampler, InfiniteSampler
+
+from mmseg.datasets import (Albu, ConcatCDInput, LEVIRCDDataset,
+                            LoadAnnotations, LoadMultipleRSImageFromFile,
+                            PackSegInputs)
+from mmseg.evaluation import IoUMetric
+
 # dataset settings
-dataset_type = 'LEVIRCDDataset'
+dataset_type = LEVIRCDDataset
 data_root = r'data/LEVIRCD'
 
 albu_train_transforms = [
@@ -10,32 +18,32 @@ albu_train_transforms = [
 ]
 
 train_pipeline = [
-    dict(type='LoadMultipleRSImageFromFile'),
-    dict(type='LoadAnnotations'),
-    dict(type='Albu', transforms=albu_train_transforms),
-    dict(type='ConcatCDInput'),
-    dict(type='PackSegInputs')
+    dict(type=LoadMultipleRSImageFromFile),
+    dict(type=LoadAnnotations),
+    dict(type=Albu, transforms=albu_train_transforms),
+    dict(type=ConcatCDInput),
+    dict(type=PackSegInputs)
 ]
 test_pipeline = [
-    dict(type='LoadMultipleRSImageFromFile'),
-    dict(type='LoadAnnotations'),
-    dict(type='ConcatCDInput'),
-    dict(type='PackSegInputs')
+    dict(type=LoadMultipleRSImageFromFile),
+    dict(type=LoadAnnotations),
+    dict(type=ConcatCDInput),
+    dict(type=PackSegInputs)
 ]
 
 tta_pipeline = [
-    dict(type='LoadMultipleRSImageFromFile'),
+    dict(type=LoadMultipleRSImageFromFile),
     dict(
-        type='TestTimeAug',
-        transforms=[[dict(type='LoadAnnotations')],
-                    [dict(type='ConcatCDInput')],
-                    [dict(type='PackSegInputs')]])
+        type=TestTimeAug,
+        transforms=[[dict(type=LoadAnnotations)],
+                    [dict(type=ConcatCDInput)],
+                    [dict(type=PackSegInputs)]])
 ]
 train_dataloader = dict(
     batch_size=4,
     num_workers=4,
     persistent_workers=True,
-    sampler=dict(type='InfiniteSampler', shuffle=True),
+    sampler=dict(type=InfiniteSampler, shuffle=True),
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
@@ -48,7 +56,7 @@ val_dataloader = dict(
     batch_size=1,
     num_workers=4,
     persistent_workers=True,
-    sampler=dict(type='DefaultSampler', shuffle=False),
+    sampler=dict(type=DefaultSampler, shuffle=False),
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
@@ -56,5 +64,5 @@ val_dataloader = dict(
             img_path='test/A', img_path2='test/B', seg_map_path='test/label'),
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+val_evaluator = dict(type=IoUMetric, iou_metrics=['mIoU'])
 test_evaluator = val_evaluator

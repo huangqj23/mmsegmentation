@@ -1,22 +1,29 @@
 # Converted from configs/_base_/models/twins_pcpvt-s_upernet.py by industrial-vision tools/convert_configs.py
+from mmengine.model import PretrainedInit
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.nn import LayerNorm
+
+from mmseg.models import (PCPVT, CrossEntropyLoss, EncoderDecoder, FCNHead,
+                          SegDataPreProcessor, UPerHead)
+
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/pcpvt_small_20220308-e638c41c.pth'  # noqa
 
 # model settings
-backbone_norm_cfg = dict(type='LN')
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+backbone_norm_cfg = dict(type=LayerNorm)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='PCPVT',
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        type=PCPVT,
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         in_channels=3,
         embed_dims=[64, 128, 320, 512],
         num_heads=[1, 2, 5, 8],
@@ -33,7 +40,7 @@ model = dict(
         attn_drop_rate=0.,
         drop_path_rate=0.2),
     decode_head=dict(
-        type='UPerHead',
+        type=UPerHead,
         in_channels=[64, 128, 320, 512],
         in_index=[0, 1, 2, 3],
         pool_scales=(1, 2, 3, 6),
@@ -43,9 +50,9 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     auxiliary_head=dict(
-        type='FCNHead',
+        type=FCNHead,
         in_channels=320,
         in_index=2,
         channels=256,
@@ -56,7 +63,7 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole'))

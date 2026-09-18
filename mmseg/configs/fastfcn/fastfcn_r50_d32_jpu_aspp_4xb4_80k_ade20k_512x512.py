@@ -4,11 +4,16 @@ from mmengine.config import read_base
 
 with read_base():
     from .fastfcn_r50_d32_jpu_psp_4xb4_80k_ade20k_512x512 import *  # noqa: F401,F403
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import ASPPHead, CrossEntropyLoss
+
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 model.merge(dict(
     decode_head=dict(
         _delete_=True,
-        type='ASPPHead',
+        type=ASPPHead,
         in_channels=2048,
         in_index=2,
         channels=512,
@@ -18,7 +23,7 @@ model.merge(dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole')))

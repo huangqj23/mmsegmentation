@@ -8,6 +8,12 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+from mmengine.optim import OptimWrapper
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import CrossEntropyLoss, SETRUPHead
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -21,7 +27,7 @@ def __iv_merge(base, child):
 __base_test_dataloader = test_dataloader
 crop_size = (768, 768)
 data_preprocessor.merge(dict(size=crop_size))
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 crop_size = (768, 768)
 model.merge(dict(
     data_preprocessor=data_preprocessor,
@@ -29,10 +35,10 @@ model.merge(dict(
     backbone=dict(
         drop_rate=0.,
         init_cfg=dict(
-            type='Pretrained', checkpoint='pretrain/vit_large_p16.pth')),
+            type=PretrainedInit, checkpoint='pretrain/vit_large_p16.pth')),
     auxiliary_head=[
         dict(
-            type='SETRUPHead',
+            type=SETRUPHead,
             in_channels=1024,
             channels=256,
             in_index=0,
@@ -44,9 +50,9 @@ model.merge(dict(
             kernel_size=3,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
         dict(
-            type='SETRUPHead',
+            type=SETRUPHead,
             in_channels=1024,
             channels=256,
             in_index=1,
@@ -58,9 +64,9 @@ model.merge(dict(
             kernel_size=3,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
         dict(
-            type='SETRUPHead',
+            type=SETRUPHead,
             in_channels=1024,
             channels=256,
             in_index=2,
@@ -72,13 +78,13 @@ model.merge(dict(
             kernel_size=3,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4))
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4))
     ],
     test_cfg=dict(mode='slide', crop_size=crop_size, stride=(512, 512))))
 
 optimizer.merge(dict(weight_decay=0.0))
 optim_wrapper.merge(dict(
-    type='OptimWrapper',
+    type=OptimWrapper,
     optimizer=optimizer,
     paramwise_cfg=dict(custom_keys={'head': dict(lr_mult=10.)})))
 

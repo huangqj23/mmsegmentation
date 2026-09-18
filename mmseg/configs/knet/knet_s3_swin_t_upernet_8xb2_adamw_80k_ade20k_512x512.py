@@ -5,6 +5,12 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .knet_s3_r50_d8_upernet_8xb2_adamw_80k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, MultiStepLR, OptimWrapper
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.optim import AdamW
+
+from mmseg.models import EncoderDecoder, SwinTransformer
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -20,16 +26,16 @@ __base_test_dataloader = test_dataloader
 checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_tiny_patch4_window7_224_20220308-f41b89d3.pth'  # noqa
 
 # model settings
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 num_stages = 3
 conv_kernel_size = 1
 
 model.merge(dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     pretrained=checkpoint_file,
     backbone=dict(
         _delete_=True,
-        type='SwinTransformer',
+        type=SwinTransformer,
         embed_dims=96,
         depths=[2, 2, 6, 2],
         num_heads=[3, 6, 12, 24],
@@ -49,10 +55,10 @@ model.merge(dict(
 
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
+    type=OptimWrapper,
     # modify learning rate following the official implementation of Swin Transformer # noqa
     optimizer=dict(
-        type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.0005),
+        type=AdamW, lr=0.00006, betas=(0.9, 0.999), weight_decay=0.0005),
     paramwise_cfg=dict(
         custom_keys={
             'absolute_pos_embed': dict(decay_mult=0.),
@@ -64,10 +70,10 @@ optim_wrapper.merge(dict(
 # learning policy
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=0.001, by_epoch=False, begin=0,
+        type=LinearLR, start_factor=0.001, by_epoch=False, begin=0,
         end=1000),
     dict(
-        type='MultiStepLR',
+        type=MultiStepLR,
         begin=1000,
         end=80000,
         milestones=[60000, 72000],

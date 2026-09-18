@@ -6,11 +6,14 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
+
+from mmengine.optim import OptimWrapper
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 optimizer.merge(dict(lr=0.001, weight_decay=0.0))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 train_dataloader.merge(dict(
     # num_gpus: 8 -> batch_size: 8
     batch_size=1))

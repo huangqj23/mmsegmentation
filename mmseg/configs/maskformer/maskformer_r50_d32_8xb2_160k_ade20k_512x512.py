@@ -7,6 +7,19 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmdet.models import CrossEntropyLoss, DiceLoss, FocalLoss, PixelDecoder
+from mmdet.models.task_modules import (ClassificationCost, DiceCost,
+                                       FocalLossCost, HungarianAssigner,
+                                       MaskPseudoSampler)
+from mmengine.model import PretrainedInit
+from mmengine.optim import OptimWrapper, PolyLR
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.nn import GroupNorm, ReLU
+from torch.optim import AdamW
+
+from mmseg.models import (EncoderDecoder, MaskFormerHead, ResNet,
+                          SegDataPreProcessor)
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -22,10 +35,10 @@ __base_optimizer = optimizer
 __base_test_dataloader = test_dataloader
 __base_train_dataloader = train_dataloader
 __base_val_dataloader = val_dataloader
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 crop_size = (512, 512)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     size=crop_size,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
@@ -35,10 +48,10 @@ data_preprocessor = dict(
 # model_cfg
 num_classes = 150
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='ResNet',
+        type=ResNet,
         depth=50,
         num_stages=4,
         out_indices=(0, 1, 2, 3),
@@ -48,9 +61,9 @@ model = dict(
         norm_eval=True,
         style='pytorch',
         contract_dilation=True,
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50')),
+        init_cfg=dict(type=PretrainedInit, checkpoint='torchvision://resnet50')),
     decode_head=dict(
-        type='MaskFormerHead',
+        type=MaskFormerHead,
         in_channels=[256, 512, 1024,
                      2048],  # input channels of pixel_decoder modules
         feat_channels=256,
@@ -59,9 +72,9 @@ model = dict(
         out_channels=256,
         num_queries=100,
         pixel_decoder=dict(
-            type='mmdet.PixelDecoder',
-            norm_cfg=dict(type='GN', num_groups=32),
-            act_cfg=dict(type='ReLU')),
+            type=PixelDecoder,
+            norm_cfg=dict(type=GroupNorm, num_groups=32),
+            act_cfg=dict(type=ReLU)),
         enforce_decoder_input_project=False,
         positional_encoding=dict(  # SinePositionalEncoding
             num_feats=128, normalize=True),
@@ -87,26 +100,26 @@ model = dict(
                     embed_dims=256,
                     feedforward_channels=2048,
                     num_fcs=2,
-                    act_cfg=dict(type='ReLU', inplace=True),
+                    act_cfg=dict(type=ReLU, inplace=True),
                     ffn_drop=0.1,
                     dropout_layer=None,
                     add_identity=True)),
             init_cfg=None),
         loss_cls=dict(
-            type='mmdet.CrossEntropyLoss',
+            type=CrossEntropyLoss,
             use_sigmoid=False,
             loss_weight=1.0,
             reduction='mean',
             class_weight=[1.0] * num_classes + [0.1]),
         loss_mask=dict(
-            type='mmdet.FocalLoss',
+            type=FocalLoss,
             use_sigmoid=True,
             gamma=2.0,
             alpha=0.25,
             reduction='mean',
             loss_weight=20.0),
         loss_dice=dict(
-            type='mmdet.DiceLoss',
+            type=DiceLoss,
             use_sigmoid=True,
             activate=True,
             reduction='mean',
@@ -115,30 +128,30 @@ model = dict(
             loss_weight=1.0),
         train_cfg=dict(
             assigner=dict(
-                type='mmdet.HungarianAssigner',
+                type=HungarianAssigner,
                 match_costs=[
-                    dict(type='mmdet.ClassificationCost', weight=1.0),
+                    dict(type=ClassificationCost, weight=1.0),
                     dict(
-                        type='mmdet.FocalLossCost',
+                        type=FocalLossCost,
                         weight=20.0,
                         binary_input=True),
                     dict(
-                        type='mmdet.DiceCost',
+                        type=DiceCost,
                         weight=1.0,
                         pred_act=True,
                         eps=1.0)
                 ]),
-            sampler=dict(type='mmdet.MaskPseudoSampler'))),
+            sampler=dict(type=MaskPseudoSampler))),
     # training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='whole'),
 )
 # optimizer
 optimizer = dict(
-    type='AdamW', lr=0.0001, betas=(0.9, 0.999), weight_decay=0.0001)
+    type=AdamW, lr=0.0001, betas=(0.9, 0.999), weight_decay=0.0001)
 optim_wrapper = dict(
     _delete_=True,
-    type='OptimWrapper',
+    type=OptimWrapper,
     optimizer=optimizer,
     clip_grad=dict(max_norm=0.01, norm_type=2),
     paramwise_cfg=dict(custom_keys={
@@ -147,7 +160,7 @@ optim_wrapper = dict(
 # learning policy
 param_scheduler = [
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=0,
         power=0.9,
         begin=0,

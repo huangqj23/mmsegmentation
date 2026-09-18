@@ -6,13 +6,16 @@ with read_base():
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
+
+from mmengine.optim import LinearLR, PolyLR
+
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=200),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=200),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=200,

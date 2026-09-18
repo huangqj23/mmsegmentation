@@ -7,21 +7,26 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_40k import *  # noqa: F401,F403
 
+from mmcv.transforms import LoadImageFromFile
+
+from mmseg.datasets import LoadAnnotations, NightDrivingDataset, PackSegInputs
+from mmseg.datasets.transforms import Resize
+
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 
 test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(1920, 1080), keep_ratio=True),
+    dict(type=LoadImageFromFile),
+    dict(type=Resize, scale=(1920, 1080), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations'),
-    dict(type='PackSegInputs')
+    dict(type=LoadAnnotations),
+    dict(type=PackSegInputs)
 ]
 test_dataloader.merge(dict(
     dataset=dict(
-        type='NightDrivingDataset',
+        type=NightDrivingDataset,
         data_root='data/NighttimeDrivingTest/',
         data_prefix=dict(
             img_path='leftImg8bit/test/night',

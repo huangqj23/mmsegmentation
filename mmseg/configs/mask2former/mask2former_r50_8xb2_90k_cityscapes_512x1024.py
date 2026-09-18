@@ -5,9 +5,30 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
 
+from mmcv.transforms import LoadImageFromFile, RandomChoiceResize
+from mmdet.models import CrossEntropyLoss, DiceLoss, MSDeformAttnPixelDecoder
+from mmdet.models.task_modules import (ClassificationCost,
+                                       CrossEntropyLossCost, DiceCost,
+                                       HungarianAssigner, MaskPseudoSampler)
+from mmengine.hooks import (CheckpointHook, DistSamplerSeedHook, IterTimerHook,
+                            LoggerHook, ParamSchedulerHook)
+from mmengine.model import PretrainedInit
+from mmengine.optim import OptimWrapper, PolyLR
+from mmengine.runner import IterBasedTrainLoop, TestLoop, ValLoop
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.nn import GroupNorm, ReLU
+from torch.optim import AdamW
+
+from mmseg.datasets import (LoadAnnotations, PackSegInputs,
+                            PhotoMetricDistortion, RandomCrop)
+from mmseg.datasets.transforms import RandomFlip
+from mmseg.engine import SegVisualizationHook
+from mmseg.models import (EncoderDecoder, Mask2FormerHead, ResNet,
+                          SegDataPreProcessor)
+
 crop_size = (512, 1024)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
@@ -17,20 +38,20 @@ data_preprocessor = dict(
     test_cfg=dict(size_divisor=32))
 num_classes = 19
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='ResNet',
+        type=ResNet,
         depth=50,
         deep_stem=False,
         num_stages=4,
         out_indices=(0, 1, 2, 3),
         frozen_stages=-1,
-        norm_cfg=dict(type='SyncBN', requires_grad=False),
+        norm_cfg=dict(type=SyncBatchNorm, requires_grad=False),
         style='pytorch',
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50')),
+        init_cfg=dict(type=PretrainedInit, checkpoint='torchvision://resnet50')),
     decode_head=dict(
-        type='Mask2FormerHead',
+        type=Mask2FormerHead,
         in_channels=[256, 512, 1024, 2048],
         strides=[4, 8, 16, 32],
         feat_channels=256,
@@ -40,10 +61,10 @@ model = dict(
         num_transformer_feat_level=3,
         align_corners=False,
         pixel_decoder=dict(
-            type='mmdet.MSDeformAttnPixelDecoder',
+            type=MSDeformAttnPixelDecoder,
             num_outs=3,
-            norm_cfg=dict(type='GN', num_groups=32),
-            act_cfg=dict(type='ReLU'),
+            norm_cfg=dict(type=GroupNorm, num_groups=32),
+            act_cfg=dict(type=ReLU),
             encoder=dict(  # DeformableDetrTransformerEncoder
                 num_layers=6,
                 layer_cfg=dict(  # DeformableDetrTransformerEncoderLayer
@@ -62,7 +83,7 @@ model = dict(
                         feedforward_channels=1024,
                         num_fcs=2,
                         ffn_drop=0.0,
-                        act_cfg=dict(type='ReLU', inplace=True))),
+                        act_cfg=dict(type=ReLU, inplace=True))),
                 init_cfg=None),
             positional_encoding=dict(  # SinePositionalEncoding
                 num_feats=128, normalize=True),
@@ -92,24 +113,24 @@ model = dict(
                     embed_dims=256,
                     feedforward_channels=2048,
                     num_fcs=2,
-                    act_cfg=dict(type='ReLU', inplace=True),
+                    act_cfg=dict(type=ReLU, inplace=True),
                     ffn_drop=0.0,
                     dropout_layer=None,
                     add_identity=True)),
             init_cfg=None),
         loss_cls=dict(
-            type='mmdet.CrossEntropyLoss',
+            type=CrossEntropyLoss,
             use_sigmoid=False,
             loss_weight=2.0,
             reduction='mean',
             class_weight=[1.0] * num_classes + [0.1]),
         loss_mask=dict(
-            type='mmdet.CrossEntropyLoss',
+            type=CrossEntropyLoss,
             use_sigmoid=True,
             reduction='mean',
             loss_weight=5.0),
         loss_dice=dict(
-            type='mmdet.DiceLoss',
+            type=DiceLoss,
             use_sigmoid=True,
             activate=True,
             reduction='mean',
@@ -121,45 +142,45 @@ model = dict(
             oversample_ratio=3.0,
             importance_sample_ratio=0.75,
             assigner=dict(
-                type='mmdet.HungarianAssigner',
+                type=HungarianAssigner,
                 match_costs=[
-                    dict(type='mmdet.ClassificationCost', weight=2.0),
+                    dict(type=ClassificationCost, weight=2.0),
                     dict(
-                        type='mmdet.CrossEntropyLossCost',
+                        type=CrossEntropyLossCost,
                         weight=5.0,
                         use_sigmoid=True),
                     dict(
-                        type='mmdet.DiceCost',
+                        type=DiceCost,
                         weight=5.0,
                         pred_act=True,
                         eps=1.0)
                 ]),
-            sampler=dict(type='mmdet.MaskPseudoSampler'))),
+            sampler=dict(type=MaskPseudoSampler))),
     train_cfg=dict(),
     test_cfg=dict(mode='whole'))
 
 # dataset config
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations'),
+    dict(type=LoadImageFromFile),
+    dict(type=LoadAnnotations),
     dict(
-        type='RandomChoiceResize',
+        type=RandomChoiceResize,
         scales=[int(1024 * x * 0.1) for x in range(5, 21)],
         resize_type='ResizeShortestEdge',
         max_size=4096),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='PackSegInputs')
+    dict(type=RandomCrop, crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type=RandomFlip, prob=0.5),
+    dict(type=PhotoMetricDistortion),
+    dict(type=PackSegInputs)
 ]
 train_dataloader.merge(dict(dataset=dict(pipeline=train_pipeline)))
 
 # optimizer
 embed_multi = dict(lr_mult=1.0, decay_mult=0.0)
 optimizer = dict(
-    type='AdamW', lr=0.0001, weight_decay=0.05, eps=1e-8, betas=(0.9, 0.999))
+    type=AdamW, lr=0.0001, weight_decay=0.05, eps=1e-8, betas=(0.9, 0.999))
 optim_wrapper = dict(
-    type='OptimWrapper',
+    type=OptimWrapper,
     optimizer=optimizer,
     clip_grad=dict(max_norm=0.01, norm_type=2),
     paramwise_cfg=dict(
@@ -173,7 +194,7 @@ optim_wrapper = dict(
 # learning policy
 param_scheduler = [
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=0,
         power=0.9,
         begin=0,
@@ -182,18 +203,18 @@ param_scheduler = [
 ]
 
 # training schedule for 90k
-train_cfg = dict(type='IterBasedTrainLoop', max_iters=90000, val_interval=5000)
-val_cfg = dict(type='ValLoop')
-test_cfg = dict(type='TestLoop')
+train_cfg = dict(type=IterBasedTrainLoop, max_iters=90000, val_interval=5000)
+val_cfg = dict(type=ValLoop)
+test_cfg = dict(type=TestLoop)
 default_hooks = dict(
-    timer=dict(type='IterTimerHook'),
-    logger=dict(type='LoggerHook', interval=50, log_metric_by_epoch=False),
-    param_scheduler=dict(type='ParamSchedulerHook'),
+    timer=dict(type=IterTimerHook),
+    logger=dict(type=LoggerHook, interval=50, log_metric_by_epoch=False),
+    param_scheduler=dict(type=ParamSchedulerHook),
     checkpoint=dict(
-        type='CheckpointHook', by_epoch=False, interval=5000,
+        type=CheckpointHook, by_epoch=False, interval=5000,
         save_best='mIoU'),
-    sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(type='SegVisualizationHook'))
+    sampler_seed=dict(type=DistSamplerSeedHook),
+    visualization=dict(type=SegVisualizationHook))
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically

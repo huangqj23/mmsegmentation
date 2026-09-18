@@ -8,6 +8,11 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+from mmengine.optim import AmpOptimWrapper, LinearLR, PolyLR
+from mmpretrain.models import ConvNeXt
+from torch.optim import AdamW
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -25,14 +30,14 @@ checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/convnext/d
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='mmpretrain.ConvNeXt',
+        type=ConvNeXt,
         arch='tiny',
         out_indices=[0, 1, 2, 3],
         drop_path_rate=0.4,
         layer_scale_init_value=1.0,
         gap_before_final_norm=False,
         init_cfg=dict(
-            type='Pretrained', checkpoint=checkpoint_file,
+            type=PretrainedInit, checkpoint=checkpoint_file,
             prefix='backbone.')),
     decode_head=dict(
         in_channels=[96, 192, 384, 768],
@@ -44,9 +49,9 @@ model.merge(dict(
 
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='AmpOptimWrapper',
+    type=AmpOptimWrapper,
     optimizer=dict(
-        type='AdamW', lr=0.0001, betas=(0.9, 0.999), weight_decay=0.05),
+        type=AdamW, lr=0.0001, betas=(0.9, 0.999), weight_decay=0.05),
     paramwise_cfg={
         'decay_rate': 0.9,
         'decay_type': 'stage_wise',
@@ -57,9 +62,9 @@ optim_wrapper.merge(dict(
 
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=1e-6, by_epoch=False, begin=0, end=1500),
+        type=LinearLR, start_factor=1e-6, by_epoch=False, begin=0, end=1500),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         power=1.0,
         begin=1500,
         end=160000,

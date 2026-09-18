@@ -3,10 +3,13 @@ from mmengine.config import read_base
 
 with read_base():
     from .swin_tiny_patch4_window7_in1k_pre_upernet_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_base_patch4_window12_384_20220317-55b0104a.pth'  # noqa
 model.merge(dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint_file),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint_file),
         pretrain_img_size=384,
         embed_dims=128,
         depths=[2, 2, 18, 2],

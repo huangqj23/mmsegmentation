@@ -1,19 +1,26 @@
 # Converted from configs/_base_/models/deeplabv3_unet_s5-d16.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.nn import ReLU
+
+from mmseg.models import (ASPPHead, CrossEntropyLoss, EncoderDecoder, FCNHead,
+                          SegDataPreProcessor, UNet)
+from mmseg.models.backbones.unet import InterpConv
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     pretrained=None,
     backbone=dict(
-        type='UNet',
+        type=UNet,
         in_channels=3,
         base_channels=64,
         num_stages=5,
@@ -26,11 +33,11 @@ model = dict(
         with_cp=False,
         conv_cfg=None,
         norm_cfg=norm_cfg,
-        act_cfg=dict(type='ReLU'),
-        upsample_cfg=dict(type='InterpConv'),
+        act_cfg=dict(type=ReLU),
+        upsample_cfg=dict(type=InterpConv),
         norm_eval=False),
     decode_head=dict(
-        type='ASPPHead',
+        type=ASPPHead,
         in_channels=64,
         in_index=4,
         channels=16,
@@ -40,9 +47,9 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     auxiliary_head=dict(
-        type='FCNHead',
+        type=FCNHead,
         in_channels=128,
         in_index=3,
         channels=64,
@@ -53,7 +60,7 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='slide', crop_size=256, stride=170))

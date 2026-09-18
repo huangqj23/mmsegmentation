@@ -3,8 +3,12 @@ from mmengine.config import read_base
 
 with read_base():
     from .bisenetv2_fcn_4xb4_160k_cityscapes_1024x1024 import *  # noqa: F401,F403
+
+from mmengine.optim import AmpOptimWrapper
+from torch.optim import SGD
+
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='AmpOptimWrapper',
-    optimizer=dict(type='SGD', lr=0.05, momentum=0.9, weight_decay=0.0005),
+    type=AmpOptimWrapper,
+    optimizer=dict(type=SGD, lr=0.05, momentum=0.9, weight_decay=0.0005),
     loss_scale=512.))

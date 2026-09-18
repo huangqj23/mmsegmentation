@@ -1,20 +1,25 @@
 # Converted from configs/_base_/models/pointrend_r50.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import (FPN, CascadeEncoderDecoder, CrossEntropyLoss,
+                          FPNHead, PointHead, ResNetV1c, SegDataPreProcessor)
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='CascadeEncoderDecoder',
+    type=CascadeEncoderDecoder,
     data_preprocessor=data_preprocessor,
     num_stages=2,
     pretrained='open-mmlab://resnet50_v1c',
     backbone=dict(
-        type='ResNetV1c',
+        type=ResNetV1c,
         depth=50,
         num_stages=4,
         out_indices=(0, 1, 2, 3),
@@ -25,13 +30,13 @@ model = dict(
         style='pytorch',
         contract_dilation=True),
     neck=dict(
-        type='FPN',
+        type=FPN,
         in_channels=[256, 512, 1024, 2048],
         out_channels=256,
         num_outs=4),
     decode_head=[
         dict(
-            type='FPNHead',
+            type=FPNHead,
             in_channels=[256, 256, 256, 256],
             in_index=[0, 1, 2, 3],
             feature_strides=[4, 8, 16, 32],
@@ -41,9 +46,9 @@ model = dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='PointHead',
+            type=PointHead,
             in_channels=[256],
             in_index=[0],
             channels=256,
@@ -53,7 +58,7 @@ model = dict(
             num_classes=19,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0))
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0))
     ],
     # model training and testing settings
     train_cfg=dict(

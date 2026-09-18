@@ -4,12 +4,14 @@ from mmengine.config import read_base
 with read_base():
     from .segformer_mit_b0_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segformer/mit_b2_20220624-66e8bf70.pth'  # noqa
 
 # model settings
 model.merge(dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         embed_dims=64,
         num_heads=[1, 2, 5, 8],
         num_layers=[3, 4, 6, 3]),

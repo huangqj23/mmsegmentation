@@ -3,9 +3,14 @@ from mmengine.config import read_base
 
 with read_base():
     from .bisenetv1_r50_d32_4xb4_160k_cityscapes_1024x1024 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
+from mmseg.models import EncoderDecoder
+
 model.merge(dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     backbone=dict(
         backbone_cfg=dict(
             init_cfg=dict(
-                type='Pretrained', checkpoint='open-mmlab://resnet50_v1c')))))
+                type=PretrainedInit, checkpoint='open-mmlab://resnet50_v1c')))))

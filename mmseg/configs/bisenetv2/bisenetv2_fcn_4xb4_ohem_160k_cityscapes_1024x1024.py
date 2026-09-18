@@ -8,6 +8,13 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.optim import SGD
+
+from mmseg.models import CrossEntropyLoss, FCNHead
+from mmseg.structures import OHEMPixelSampler
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -27,14 +34,14 @@ __base_train_dataloader = train_dataloader
 __base_val_dataloader = val_dataloader
 crop_size = (1024, 1024)
 data_preprocessor = dict(size=crop_size)
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 models = dict(
     data_preprocessor=data_preprocessor,
     decode_head=dict(
-        sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=10000)),
+        sampler=dict(type=OHEMPixelSampler, thresh=0.7, min_kept=10000)),
     auxiliary_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=16,
             channels=16,
             num_convs=2,
@@ -43,11 +50,11 @@ models = dict(
             norm_cfg=norm_cfg,
             concat_input=False,
             align_corners=False,
-            sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=10000),
+            sampler=dict(type=OHEMPixelSampler, thresh=0.7, min_kept=10000),
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=32,
             channels=64,
             num_convs=2,
@@ -56,11 +63,11 @@ models = dict(
             norm_cfg=norm_cfg,
             concat_input=False,
             align_corners=False,
-            sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=10000),
+            sampler=dict(type=OHEMPixelSampler, thresh=0.7, min_kept=10000),
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=64,
             channels=256,
             num_convs=2,
@@ -69,11 +76,11 @@ models = dict(
             norm_cfg=norm_cfg,
             concat_input=False,
             align_corners=False,
-            sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=10000),
+            sampler=dict(type=OHEMPixelSampler, thresh=0.7, min_kept=10000),
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=128,
             channels=1024,
             num_convs=2,
@@ -82,15 +89,15 @@ models = dict(
             norm_cfg=norm_cfg,
             concat_input=False,
             align_corners=False,
-            sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=10000),
+            sampler=dict(type=OHEMPixelSampler, thresh=0.7, min_kept=10000),
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     ],
 )
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=1000),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=1000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=1000,
@@ -98,8 +105,8 @@ param_scheduler = [
         by_epoch=False,
     )
 ]
-optimizer = dict(type='SGD', lr=0.05, momentum=0.9, weight_decay=0.0005)
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
+optimizer = dict(type=SGD, lr=0.05, momentum=0.9, weight_decay=0.0005)
+optim_wrapper = dict(type=OptimWrapper, optimizer=optimizer)
 train_dataloader = dict(batch_size=4, num_workers=4)
 val_dataloader = dict(batch_size=1, num_workers=4)
 test_dataloader = val_dataloader

@@ -3,10 +3,13 @@ from mmengine.config import read_base
 
 with read_base():
     from .icnet_r50_d8_4xb2_80k_cityscapes_832x832 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 model.merge(dict(
     backbone=dict(
         layer_channels=(128, 512),
         backbone_cfg=dict(
             depth=18,
             init_cfg=dict(
-                type='Pretrained', checkpoint='open-mmlab://resnet18_v1c')))))
+                type=PretrainedInit, checkpoint='open-mmlab://resnet18_v1c')))))

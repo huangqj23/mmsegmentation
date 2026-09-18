@@ -3,9 +3,12 @@ from mmengine.config import read_base
 
 with read_base():
     from .deeplabv3_r50_d8_4xb2_80k_cityscapes_769x769 import *  # noqa: F401,F403
+
+from mmseg.models import ResNet
+
 model.merge(dict(
     pretrained='torchvision://resnet18',
-    backbone=dict(type='ResNet', depth=18),
+    backbone=dict(type=ResNet, depth=18),
     decode_head=dict(
         in_channels=512,
         channels=128,

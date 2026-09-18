@@ -6,6 +6,13 @@ with read_base():
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+from mmengine.optim import LinearLR, MultiStepLR, OptimWrapper
+from torch.optim import AdamW
+
+from mmseg.models import ResNet
+
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 checkpoint = 'https://download.openmmlab.com/mmclassification/v0/resnet/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth'  # noqa
@@ -13,22 +20,22 @@ model.merge(dict(
     data_preprocessor=data_preprocessor,
     pretrained=None,
     backbone=dict(
-        type='ResNet',
+        type=ResNet,
         init_cfg=dict(
-            type='Pretrained', prefix='backbone.', checkpoint=checkpoint))))
+            type=PretrainedInit, prefix='backbone.', checkpoint=checkpoint))))
 
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
-    optimizer=dict(type='AdamW', lr=0.0005, weight_decay=0.05),
+    type=OptimWrapper,
+    optimizer=dict(type=AdamW, lr=0.0005, weight_decay=0.05),
     clip_grad=dict(max_norm=1, norm_type=2)))
 # learning policy
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=0.001, by_epoch=False, begin=0,
+        type=LinearLR, start_factor=0.001, by_epoch=False, begin=0,
         end=1000),
     dict(
-        type='MultiStepLR',
+        type=MultiStepLR,
         begin=1000,
         end=80000,
         by_epoch=False,

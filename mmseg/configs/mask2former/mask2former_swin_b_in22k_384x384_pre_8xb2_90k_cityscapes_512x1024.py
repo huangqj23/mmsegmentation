@@ -3,6 +3,9 @@ from mmengine.config import read_base
 
 with read_base():
     from .mask2former_swin_t_8xb2_90k_cityscapes_512x1024 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 pretrained = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_base_patch4_window12_384_22k_20220317-e5c09f74.pth'  # noqa
 
 depths = [2, 2, 18, 2]
@@ -13,7 +16,7 @@ model.merge(dict(
         depths=depths,
         num_heads=[4, 8, 16, 32],
         window_size=12,
-        init_cfg=dict(type='Pretrained', checkpoint=pretrained)),
+        init_cfg=dict(type=PretrainedInit, checkpoint=pretrained)),
     decode_head=dict(in_channels=[128, 256, 512, 1024])))
 
 # set all layers in backbone to lr_mult=0.1

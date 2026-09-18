@@ -5,6 +5,8 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .maskformer_r50_d32_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -20,7 +22,7 @@ __base_model = model
 model = dict(
     backbone=dict(
         depth=101,
-        init_cfg=dict(type='Pretrained',
+        init_cfg=dict(type=PretrainedInit,
                       checkpoint='torchvision://resnet101')))
 
 # ---- 旧式继承语义：子配置的值最后才与 base 递归合并 ----

@@ -3,9 +3,12 @@ from mmengine.config import read_base
 
 with read_base():
     from .icnet_r50_d8_4xb2_160k_cityscapes_832x832 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 model.merge(dict(
     backbone=dict(
         backbone_cfg=dict(
             depth=101,
             init_cfg=dict(
-                type='Pretrained', checkpoint='open-mmlab://resnet101_v1c')))))
+                type=PretrainedInit, checkpoint='open-mmlab://resnet101_v1c')))))

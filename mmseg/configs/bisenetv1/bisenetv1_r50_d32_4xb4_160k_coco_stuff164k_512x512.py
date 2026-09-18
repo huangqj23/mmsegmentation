@@ -8,6 +8,12 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.optim import SGD
+
+from mmseg.models import CrossEntropyLoss, FCNHead, ResNet
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -21,18 +27,18 @@ def __iv_merge(base, child):
 __base_test_dataloader = test_dataloader
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(
         context_channels=(512, 1024, 2048),
         spatial_channels=(256, 256, 256, 512),
         out_channels=1024,
-        backbone_cfg=dict(type='ResNet', depth=50)),
+        backbone_cfg=dict(type=ResNet, depth=50)),
     decode_head=dict(in_channels=1024, channels=1024, num_classes=171),
     auxiliary_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=512,
             channels=256,
             num_convs=1,
@@ -42,9 +48,9 @@ model.merge(dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=512,
             channels=256,
             num_convs=1,
@@ -54,12 +60,12 @@ model.merge(dict(
             concat_input=False,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     ]))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=1000),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=1000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=1000,
@@ -67,8 +73,8 @@ param_scheduler = [
         by_epoch=False,
     )
 ]
-optimizer.merge(dict(type='SGD', lr=0.005, momentum=0.9, weight_decay=0.0005))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optimizer.merge(dict(type=SGD, lr=0.005, momentum=0.9, weight_decay=0.0005))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 train_dataloader.merge(dict(batch_size=4, num_workers=4))
 val_dataloader.merge(dict(batch_size=1, num_workers=4))
 test_dataloader = val_dataloader

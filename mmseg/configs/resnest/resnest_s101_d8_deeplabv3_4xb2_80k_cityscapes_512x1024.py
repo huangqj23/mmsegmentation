@@ -3,10 +3,13 @@ from mmengine.config import read_base
 
 with read_base():
     from ..deeplabv3.deeplabv3_r101_d8_4xb2_80k_cityscapes_512x1024 import *  # noqa: F401,F403
+
+from mmseg.models import ResNeSt
+
 model.merge(dict(
     pretrained='open-mmlab://resnest101',
     backbone=dict(
-        type='ResNeSt',
+        type=ResNeSt,
         stem_channels=128,
         radix=2,
         reduction_factor=4,

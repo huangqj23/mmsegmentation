@@ -6,6 +6,11 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
+
+from mmengine.optim import OptimWrapper
+
+from mmseg.models import SegmenterMaskTransformerHead
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
@@ -15,14 +20,14 @@ model.merge(dict(
     pretrained=checkpoint,
     backbone=dict(embed_dims=192, num_heads=3),
     decode_head=dict(
-        type='SegmenterMaskTransformerHead',
+        type=SegmenterMaskTransformerHead,
         in_channels=192,
         channels=192,
         num_heads=3,
         embed_dims=192)))
 
 optimizer.merge(dict(lr=0.001, weight_decay=0.0))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 train_dataloader.merge(dict(
     # num_gpus: 8 -> batch_size: 8
     batch_size=1))

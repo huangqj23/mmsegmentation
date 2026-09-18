@@ -4,11 +4,13 @@ from mmengine.config import read_base
 with read_base():
     from .twins_pcpvt_s_fpn_fpnhead_8xb4_80k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/pcpvt_base_20220308-0621964c.pth'  # noqa
 
 model.merge(dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         depths=[3, 4, 18, 3]), ))
 if isinstance(checkpoint, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     checkpoint.pop('_delete_', None)

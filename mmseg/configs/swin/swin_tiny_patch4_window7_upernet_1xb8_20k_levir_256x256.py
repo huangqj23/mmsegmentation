@@ -8,6 +8,12 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_20k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from torch.nn import BatchNorm2d
+from torch.optim import AdamW
+
+from mmseg.models import SegDataPreProcessor
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -20,10 +26,10 @@ def __iv_merge(base, child):
 # 与 base 的合并在最后发生。先保存 base 值以保持完全等价。
 __base_test_dataloader = test_dataloader
 crop_size = (256, 256)
-norm_cfg.merge(dict(type='BN', requires_grad=True))
+norm_cfg.merge(dict(type=BatchNorm2d, requires_grad=True))
 data_preprocessor.merge(dict(
     size=crop_size,
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53, 123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375, 58.395, 57.12, 57.375]))
 
@@ -45,9 +51,9 @@ model.merge(dict(
 # in backbone
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
+    type=OptimWrapper,
     optimizer=dict(
-        type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
+        type=AdamW, lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
     paramwise_cfg=dict(
         custom_keys={
             'absolute_pos_embed': dict(decay_mult=0.),
@@ -57,9 +63,9 @@ optim_wrapper.merge(dict(
 
 param_scheduler = [
     dict(
-        type='LinearLR', start_factor=1e-6, by_epoch=False, begin=0, end=1500),
+        type=LinearLR, start_factor=1e-6, by_epoch=False, begin=0, end=1500),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=0.0,
         power=1.0,
         begin=1500,

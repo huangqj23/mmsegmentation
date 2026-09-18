@@ -1,20 +1,25 @@
 # Converted from configs/_base_/models/ocrnet_hr18.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import (CascadeEncoderDecoder, CrossEntropyLoss, FCNHead,
+                          HRNet, OCRHead, SegDataPreProcessor)
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='CascadeEncoderDecoder',
+    type=CascadeEncoderDecoder,
     data_preprocessor=data_preprocessor,
     num_stages=2,
     pretrained='open-mmlab://msra/hrnetv2_w18',
     backbone=dict(
-        type='HRNet',
+        type=HRNet,
         norm_cfg=norm_cfg,
         norm_eval=False,
         extra=dict(
@@ -44,7 +49,7 @@ model = dict(
                 num_channels=(18, 36, 72, 144)))),
     decode_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=[18, 36, 72, 144],
             channels=sum([18, 36, 72, 144]),
             in_index=(0, 1, 2, 3),
@@ -57,9 +62,9 @@ model = dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
         dict(
-            type='OCRHead',
+            type=OCRHead,
             in_channels=[18, 36, 72, 144],
             in_index=(0, 1, 2, 3),
             input_transform='resize_concat',
@@ -70,7 +75,7 @@ model = dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     ],
     # model training and testing settings
     train_cfg=dict(),

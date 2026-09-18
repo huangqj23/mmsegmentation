@@ -3,8 +3,11 @@ from mmengine.config import read_base
 
 with read_base():
     from .unet_s5_d16_pspnet_4xb4_40k_hrf_256x256 import *  # noqa: F401,F403
+
+from mmseg.models import CrossEntropyLoss, DiceLoss
+
 model.merge(dict(
     decode_head=dict(loss_decode=[
-        dict(type='CrossEntropyLoss', loss_name='loss_ce', loss_weight=1.0),
-        dict(type='DiceLoss', loss_name='loss_dice', loss_weight=3.0)
+        dict(type=CrossEntropyLoss, loss_name='loss_ce', loss_weight=1.0),
+        dict(type=DiceLoss, loss_name='loss_dice', loss_weight=3.0)
     ])))

@@ -1,7 +1,9 @@
 # Converted from configs/_base_/models/vpd_sd.py by industrial-vision tools/convert_configs.py
+from mmseg.models import VPD, DepthEstimator, SegDataPreProcessor
+
 # model settings
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[127.5, 127.5, 127.5],
     std=[127.5, 127.5, 127.5],
     bgr_to_rgb=True,
@@ -74,10 +76,10 @@ stable_diffusion_cfg = dict(
             target='ldm.modules.encoders.modules.AbstractEncoder')))
 
 model = dict(
-    type='DepthEstimator',
+    type=DepthEstimator,
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='VPD',
+        type=VPD,
         diffusion_cfg=stable_diffusion_cfg,
     ),
 )

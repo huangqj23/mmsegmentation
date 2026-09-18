@@ -3,12 +3,17 @@ from mmengine.config import read_base
 
 with read_base():
     from .mask2former_r50_8xb2_160k_ade20k_512x512 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
+from mmseg.models import SwinTransformer
+
 pretrained = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_tiny_patch4_window7_224_20220317-1cdeb081.pth'  # noqa
 depths = [2, 2, 6, 2]
 model.merge(dict(
     backbone=dict(
         _delete_=True,
-        type='SwinTransformer',
+        type=SwinTransformer,
         embed_dims=96,
         depths=depths,
         num_heads=[3, 6, 12, 24],
@@ -23,7 +28,7 @@ model.merge(dict(
         out_indices=(0, 1, 2, 3),
         with_cp=False,
         frozen_stages=-1,
-        init_cfg=dict(type='Pretrained', checkpoint=pretrained)),
+        init_cfg=dict(type=PretrainedInit, checkpoint=pretrained)),
     decode_head=dict(in_channels=[96, 192, 384, 768])))
 
 # set all layers in backbone to lr_mult=0.1

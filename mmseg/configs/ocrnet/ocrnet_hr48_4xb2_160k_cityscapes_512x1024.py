@@ -3,7 +3,12 @@ from mmengine.config import read_base
 
 with read_base():
     from .ocrnet_hr18_4xb2_160k_cityscapes_512x1024 import *  # noqa: F401,F403
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import CrossEntropyLoss, FCNHead, OCRHead
+
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 model.merge(dict(
     pretrained='open-mmlab://msra/hrnetv2_w48',
     backbone=dict(
@@ -13,7 +18,7 @@ model.merge(dict(
             stage4=dict(num_channels=(48, 96, 192, 384)))),
     decode_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=[48, 96, 192, 384],
             channels=sum([48, 96, 192, 384]),
             input_transform='resize_concat',
@@ -26,9 +31,9 @@ model.merge(dict(
             num_classes=19,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
         dict(
-            type='OCRHead',
+            type=OCRHead,
             in_channels=[48, 96, 192, 384],
             channels=512,
             ocr_channels=256,
@@ -39,5 +44,5 @@ model.merge(dict(
             num_classes=19,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0))
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0))
     ]))

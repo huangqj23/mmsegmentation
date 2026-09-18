@@ -8,6 +8,8 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, PolyLR
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -23,9 +25,9 @@ crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=1000),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=1000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=1000,

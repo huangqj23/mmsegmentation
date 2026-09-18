@@ -6,6 +6,13 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+from mmengine.optim import OptimWrapper
+from torch.optim import AdamW
+
+from mmseg.models import SVT
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/alt_gvt_small_20220308-7e1c3695.pth'  # noqa
@@ -13,8 +20,8 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(
-        type='SVT',
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        type=SVT,
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         embed_dims=[64, 128, 256, 512],
         num_heads=[2, 4, 8, 16],
         mlp_ratios=[4, 4, 4, 4],
@@ -27,8 +34,8 @@ model.merge(dict(
 
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
-    optimizer=dict(type='AdamW', lr=0.0001, weight_decay=0.0001),
+    type=OptimWrapper,
+    optimizer=dict(type=AdamW, lr=0.0001, weight_decay=0.0001),
     clip_grad=None))
 if isinstance(crop_size, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     crop_size.pop('_delete_', None)

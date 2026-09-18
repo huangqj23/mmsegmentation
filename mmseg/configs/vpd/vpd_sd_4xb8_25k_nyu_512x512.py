@@ -7,10 +7,12 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_25k import *  # noqa: F401,F403
 
+from mmseg.models import DepthEstimator, VPDDepthHead
+
 crop_size = (512, 512)
 
 model.merge(dict(
-    type='DepthEstimator',
+    type=DepthEstimator,
     data_preprocessor=dict(size=crop_size),
     backbone=dict(
         class_embed_path='https://download.openmmlab.com/mmsegmentation/'
@@ -20,7 +22,7 @@ model.merge(dict(
         unet_cfg=dict(use_attn=False),
     ),
     decode_head=dict(
-        type='VPDDepthHead',
+        type=VPDDepthHead,
         in_channels=[320, 640, 1280, 1280],
         max_depth=10,
     ),

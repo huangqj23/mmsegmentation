@@ -6,13 +6,17 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_80k import *  # noqa: F401,F403
+
+from mmengine.optim import OptimWrapper
+from torch.optim import AdamW
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='OptimWrapper',
-    optimizer=dict(type='AdamW', lr=0.0001, weight_decay=0.0001),
+    type=OptimWrapper,
+    optimizer=dict(type=AdamW, lr=0.0001, weight_decay=0.0001),
     clip_grad=None))
 if isinstance(crop_size, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     crop_size.pop('_delete_', None)

@@ -1,20 +1,26 @@
 # Converted from configs/_base_/models/segmenter_vit-b16_mask.py by industrial-vision tools/convert_configs.py
+from torch.nn import LayerNorm
+
+from mmseg.models import (CrossEntropyLoss, EncoderDecoder,
+                          SegDataPreProcessor, SegmenterMaskTransformerHead,
+                          VisionTransformer)
+
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_base_p16_384_20220308-96dfe169.pth'  # noqa
 # model settings
-backbone_norm_cfg = dict(type='LN', eps=1e-6, requires_grad=True)
+backbone_norm_cfg = dict(type=LayerNorm, eps=1e-6, requires_grad=True)
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[127.5, 127.5, 127.5],
     std=[127.5, 127.5, 127.5],
     bgr_to_rgb=True,
     pad_val=0,
     seg_pad_val=255)
 model = dict(
-    type='EncoderDecoder',
+    type=EncoderDecoder,
     data_preprocessor=data_preprocessor,
     pretrained=checkpoint,
     backbone=dict(
-        type='VisionTransformer',
+        type=VisionTransformer,
         img_size=(512, 512),
         patch_size=16,
         in_channels=3,
@@ -30,7 +36,7 @@ model = dict(
         interpolate_mode='bicubic',
     ),
     decode_head=dict(
-        type='SegmenterMaskTransformerHead',
+        type=SegmenterMaskTransformerHead,
         in_channels=768,
         channels=768,
         num_classes=150,
@@ -39,7 +45,7 @@ model = dict(
         embed_dims=768,
         dropout_ratio=0.0,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
+            type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0),
     ),
     test_cfg=dict(mode='slide', crop_size=(512, 512), stride=(480, 480)),
 )

@@ -8,6 +8,9 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.optim import LinearLR, OptimWrapper, PolyLR
+from torch.optim import SGD
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -23,9 +26,9 @@ crop_size = (1024, 1024)
 data_preprocessor.merge(dict(size=crop_size))
 model.merge(dict(data_preprocessor=data_preprocessor))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=1000),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=1000),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=1000,
@@ -33,8 +36,8 @@ param_scheduler = [
         by_epoch=False,
     )
 ]
-optimizer.merge(dict(type='SGD', lr=0.05, momentum=0.9, weight_decay=0.0005))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optimizer.merge(dict(type=SGD, lr=0.05, momentum=0.9, weight_decay=0.0005))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 train_dataloader.merge(dict(batch_size=4, num_workers=4))
 val_dataloader.merge(dict(batch_size=1, num_workers=4))
 test_dataloader = val_dataloader

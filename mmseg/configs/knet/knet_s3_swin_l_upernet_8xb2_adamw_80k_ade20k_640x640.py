@@ -5,6 +5,13 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .knet_s3_swin_t_upernet_8xb2_adamw_80k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmcv.transforms import LoadImageFromFile, RandomResize
+
+from mmseg.datasets import (LoadAnnotations, PackSegInputs,
+                            PhotoMetricDistortion, RandomCrop)
+from mmseg.datasets.transforms import RandomFlip, Resize
+from mmseg.models import SegDataPreProcessor
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -23,7 +30,7 @@ checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/s
 # model settings
 crop_size = (640, 640)
 data_preprocessor.merge(dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
     bgr_to_rgb=True,
@@ -47,25 +54,25 @@ model.merge(dict(
 
 crop_size = (640, 640)
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', reduce_zero_label=True),
+    dict(type=LoadImageFromFile),
+    dict(type=LoadAnnotations, reduce_zero_label=True),
     dict(
-        type='RandomResize',
+        type=RandomResize,
         scale=(2048, 640),
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='PackSegInputs')
+    dict(type=RandomCrop, crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type=RandomFlip, prob=0.5),
+    dict(type=PhotoMetricDistortion),
+    dict(type=PackSegInputs)
 ]
 test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 640), keep_ratio=True),
+    dict(type=LoadImageFromFile),
+    dict(type=Resize, scale=(2048, 640), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations', reduce_zero_label=True),
-    dict(type='PackSegInputs')
+    dict(type=LoadAnnotations, reduce_zero_label=True),
+    dict(type=PackSegInputs)
 ]
 # ⚠️ 上游原配置中 train_dataloader 被赋值 2 次；旧式继承只合并最后一次的值，
 # 之前的赋值不会进入最终配置。此处如实保留该行为。

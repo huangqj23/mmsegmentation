@@ -3,6 +3,9 @@ from mmengine.config import read_base
 
 with read_base():
     from .deeplabv3plus_r50_d8_4xb2_40k_cityscapes_512x1024 import *  # noqa: F401,F403
+
+from mmseg.structures import OHEMPixelSampler
+
 model.merge(dict(
     pretrained='open-mmlab://resnet101_v1c',
     backbone=dict(
@@ -12,4 +15,4 @@ model.merge(dict(
         multi_grid=(1, 2, 4)),
     decode_head=dict(
         dilations=(1, 6, 12, 18),
-        sampler=dict(type='OHEMPixelSampler', min_kept=100000))))
+        sampler=dict(type=OHEMPixelSampler, min_kept=100000))))

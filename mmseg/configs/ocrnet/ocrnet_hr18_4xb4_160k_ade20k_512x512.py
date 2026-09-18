@@ -6,14 +6,19 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
+
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import CrossEntropyLoss, FCNHead, OCRHead
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     decode_head=[
         dict(
-            type='FCNHead',
+            type=FCNHead,
             in_channels=[18, 36, 72, 144],
             channels=sum([18, 36, 72, 144]),
             in_index=(0, 1, 2, 3),
@@ -26,9 +31,9 @@ model.merge(dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=0.4)),
         dict(
-            type='OCRHead',
+            type=OCRHead,
             in_channels=[18, 36, 72, 144],
             in_index=(0, 1, 2, 3),
             input_transform='resize_concat',
@@ -39,7 +44,7 @@ model.merge(dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
     ]))
 if isinstance(crop_size, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     crop_size.pop('_delete_', None)

@@ -3,9 +3,13 @@ from mmengine.config import read_base
 
 with read_base():
     from .deeplabv3_r101_d8_4xb2_40k_cityscapes_512x1024 import *  # noqa: F401,F403
-optimizer.merge(dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005))
+
+from mmengine.optim import AmpOptimWrapper
+from torch.optim import SGD
+
+optimizer.merge(dict(type=SGD, lr=0.01, momentum=0.9, weight_decay=0.0005))
 optim_wrapper.merge(dict(
     _delete_=True,
-    type='AmpOptimWrapper',
+    type=AmpOptimWrapper,
     optimizer=optimizer,
     loss_scale=512.))

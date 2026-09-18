@@ -5,6 +5,8 @@ from copy import deepcopy as __deepcopy
 with read_base():
     from .twins_pcpvt_s_uperhead_8xb4_160k_ade20k_512x512 import *  # noqa: F401,F403
 
+from mmengine.model import PretrainedInit
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -21,7 +23,7 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/twins/
 
 model.merge(dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+        init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint),
         depths=[3, 4, 18, 3],
         drop_path_rate=0.3)))
 

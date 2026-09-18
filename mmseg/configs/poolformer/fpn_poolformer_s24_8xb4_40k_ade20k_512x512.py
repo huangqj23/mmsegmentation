@@ -3,13 +3,16 @@ from mmengine.config import read_base
 
 with read_base():
     from .fpn_poolformer_s12_8xb4_40k_ade20k_512x512 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/poolformer/poolformer-s24_3rdparty_32xb128_in1k_20220414-d7055904.pth'  # noqa
 # model settings
 model.merge(dict(
     backbone=dict(
         arch='s24',
         init_cfg=dict(
-            type='Pretrained', checkpoint=checkpoint_file,
+            type=PretrainedInit, checkpoint=checkpoint_file,
             prefix='backbone.'))))
 if isinstance(checkpoint_file, dict):  # base 中是非 dict，旧式替换前弹掉顶层 _delete_
     checkpoint_file.pop('_delete_', None)

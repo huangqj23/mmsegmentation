@@ -3,8 +3,11 @@ from mmengine.config import read_base
 
 with read_base():
     from .bisenetv1_r101_d32_4xb4_160k_coco_stuff164k_512x512 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 model.merge(dict(
     backbone=dict(
         backbone_cfg=dict(
             init_cfg=dict(
-                type='Pretrained', checkpoint='open-mmlab://resnet101_v1c')))))
+                type=PretrainedInit, checkpoint='open-mmlab://resnet101_v1c')))))

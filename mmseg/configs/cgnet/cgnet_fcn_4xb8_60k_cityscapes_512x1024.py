@@ -7,6 +7,12 @@ with read_base():
     from .._base_.datasets.cityscapes import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
 
+from mmengine.hooks import (CheckpointHook, DistSamplerSeedHook, IterTimerHook,
+                            LoggerHook, ParamSchedulerHook)
+from mmengine.optim import OptimWrapper, PolyLR
+from mmengine.runner import IterBasedTrainLoop, TestLoop, ValLoop
+from torch.optim import Adam
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -20,12 +26,12 @@ def __iv_merge(base, child):
 __base_test_dataloader = test_dataloader
 
 # optimizer
-optimizer = dict(type='Adam', lr=0.001, eps=1e-08, weight_decay=0.0005)
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
+optimizer = dict(type=Adam, lr=0.001, eps=1e-08, weight_decay=0.0005)
+optim_wrapper = dict(type=OptimWrapper, optimizer=optimizer)
 # learning policy
 param_scheduler = [
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         by_epoch=False,
@@ -35,15 +41,15 @@ param_scheduler = [
 # runtime settings
 total_iters = 60000
 train_cfg = dict(
-    type='IterBasedTrainLoop', max_iters=total_iters, val_interval=4000)
-val_cfg = dict(type='ValLoop')
-test_cfg = dict(type='TestLoop')
+    type=IterBasedTrainLoop, max_iters=total_iters, val_interval=4000)
+val_cfg = dict(type=ValLoop)
+test_cfg = dict(type=TestLoop)
 default_hooks = dict(
-    timer=dict(type='IterTimerHook'),
-    logger=dict(type='LoggerHook', interval=50),
-    param_scheduler=dict(type='ParamSchedulerHook'),
-    checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=4000),
-    sampler_seed=dict(type='DistSamplerSeedHook'))
+    timer=dict(type=IterTimerHook),
+    logger=dict(type=LoggerHook, interval=50),
+    param_scheduler=dict(type=ParamSchedulerHook),
+    checkpoint=dict(type=CheckpointHook, by_epoch=False, interval=4000),
+    sampler_seed=dict(type=DistSamplerSeedHook))
 
 crop_size = (512, 1024)
 data_preprocessor.merge(dict(size=crop_size))

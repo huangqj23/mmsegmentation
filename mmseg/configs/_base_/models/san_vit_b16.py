@@ -1,9 +1,19 @@
 # Converted from configs/_base_/models/san_vit-b16.py by industrial-vision tools/convert_configs.py
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+from torch.nn import LayerNorm
+
+from mmseg.models import (ClassificationCost, CLIPTextEncoder,
+                          CrossEntropyLoss, CrossEntropyLossCost, DiceCost,
+                          DiceLoss, HungarianAssigner,
+                          MultimodalEncoderDecoder, SegDataPreProcessor,
+                          SideAdapterCLIPHead, VisionTransformer)
+from mmseg.models.text_encoder.clip_text_encoder import QuickGELU
+
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type=SyncBatchNorm, requires_grad=True)
 
 data_preprocessor = dict(
-    type='SegDataPreProcessor',
+    type=SegDataPreProcessor,
     mean=[122.7709, 116.7460, 104.0937],
     std=[68.5005, 66.6322, 70.3232],
     bgr_to_rgb=True,
@@ -14,13 +24,13 @@ data_preprocessor = dict(
 
 num_classes = 171
 model = dict(
-    type='MultimodalEncoderDecoder',
+    type=MultimodalEncoderDecoder,
     data_preprocessor=data_preprocessor,
     pretrained='pretrain/clip_vit_base_patch16_224.pth',
     asymetric_input=True,
     encoder_resolution=0.5,
     image_encoder=dict(
-        type='VisionTransformer',
+        type=VisionTransformer,
         img_size=(224, 224),
         patch_size=16,
         patch_pad=0,
@@ -39,13 +49,13 @@ model = dict(
         output_cls_token=True,
         patch_bias=False,
         pre_norm=True,
-        norm_cfg=dict(type='LN', eps=1e-5),
-        act_cfg=dict(type='QuickGELU'),
+        norm_cfg=dict(type=LayerNorm, eps=1e-5),
+        act_cfg=dict(type=QuickGELU),
         norm_eval=False,
         interpolate_mode='bicubic',
         frozen_exclude=['pos_embed']),
     text_encoder=dict(
-        type='CLIPTextEncoder',
+        type=CLIPTextEncoder,
         dataset_name=None,
         templates='vild',
         embed_dims=512,
@@ -55,10 +65,10 @@ model = dict(
         output_dims=512,
         cache_feature=True,
         cat_bg=True,
-        norm_cfg=dict(type='LN', eps=1e-5)
+        norm_cfg=dict(type=LayerNorm, eps=1e-5)
         ),
     decode_head=dict(
-        type='SideAdapterCLIPHead',
+        type=SideAdapterCLIPHead,
         num_classes=num_classes,
         deep_supervision_idxs=[7],
         san_cfg=dict(
@@ -81,7 +91,7 @@ model = dict(
                 mlp_channels=256,
                 num_mlp=3,
                 rescale=True),
-            norm_cfg=dict(type='LN', eps=1e-6),
+            norm_cfg=dict(type=LayerNorm, eps=1e-6),
         ),
         maskgen_cfg=dict(
             sos_token_format='cls_token',
@@ -94,8 +104,8 @@ model = dict(
             qkv_bias=True,
             out_dims=512,
             final_norm=True,
-            act_cfg=dict(type='QuickGELU'),
-            norm_cfg=dict(type='LN', eps=1e-5),
+            act_cfg=dict(type=QuickGELU),
+            norm_cfg=dict(type=LayerNorm, eps=1e-5),
             frozen_exclude=[]
         ),
         align_corners=False,
@@ -104,28 +114,28 @@ model = dict(
             oversample_ratio=3.0,
             importance_sample_ratio=0.75,
             assigner=dict(
-                type='HungarianAssigner',
+                type=HungarianAssigner,
                 match_costs=[
-                    dict(type='ClassificationCost', weight=2.0),
+                    dict(type=ClassificationCost, weight=2.0),
                     dict(
-                        type='CrossEntropyLossCost',
+                        type=CrossEntropyLossCost,
                         weight=5.0,
                         use_sigmoid=True),
                     dict(
-                        type='DiceCost',
+                        type=DiceCost,
                         weight=5.0,
                         pred_act=True,
                         eps=1.0)
                 ])),
-        loss_decode=[dict(type='CrossEntropyLoss',
+        loss_decode=[dict(type=CrossEntropyLoss,
                           loss_name='loss_cls_ce',
                           loss_weight=2.0,
                           class_weight=[1.0] * num_classes + [0.1]),
-                     dict(type='CrossEntropyLoss',
+                     dict(type=CrossEntropyLoss,
                           use_sigmoid=True,
                           loss_name='loss_mask_ce',
                           loss_weight=5.0),
-                     dict(type='DiceLoss',
+                     dict(type=DiceLoss,
                           ignore_index=None,
                           naive_dice=True,
                           eps=1,

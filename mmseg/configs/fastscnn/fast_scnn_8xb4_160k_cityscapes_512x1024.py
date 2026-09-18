@@ -8,6 +8,9 @@ with read_base():
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
 
+from mmengine.optim import OptimWrapper
+from torch.optim import SGD
+
 
 def __iv_merge(base, child):
     """旧式继承的递归合并（支持 _delete_）。生成新对象、不修改 base 原对象 ——
@@ -28,8 +31,8 @@ val_dataloader.merge(dict(batch_size=1, num_workers=4))
 test_dataloader = val_dataloader
 
 # Re-config the optimizer.
-optimizer.merge(dict(type='SGD', lr=0.12, momentum=0.9, weight_decay=4e-5))
-optim_wrapper.merge(dict(type='OptimWrapper', optimizer=optimizer))
+optimizer.merge(dict(type=SGD, lr=0.12, momentum=0.9, weight_decay=4e-5))
+optim_wrapper.merge(dict(type=OptimWrapper, optimizer=optimizer))
 
 # ---- 旧式继承语义：子配置的值最后才与 base 递归合并 ----
 if isinstance(test_dataloader, dict):

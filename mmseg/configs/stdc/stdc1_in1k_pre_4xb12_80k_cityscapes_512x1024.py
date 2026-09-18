@@ -4,7 +4,10 @@ from mmengine.config import read_base
 
 with read_base():
     from .stdc1_4xb12_80k_cityscapes_512x1024 import *  # noqa: F401,F403
+
+from mmengine.model import PretrainedInit
+
 model.merge(dict(
     backbone=dict(
         backbone_cfg=dict(
-            init_cfg=dict(type='Pretrained', checkpoint=checkpoint)))))
+            init_cfg=dict(type=PretrainedInit, checkpoint=checkpoint)))))

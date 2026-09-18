@@ -4,12 +4,15 @@ from mmengine.config import read_base
 with read_base():
     from .san_vit_b16_pascal_context_640x640 import *  # noqa: F401,F403
 
+from mmseg.models import (CLIPTextEncoder, MultimodalEncoderDecoder,
+                          SideAdapterCLIPHead, VisionTransformer)
+
 model.merge(dict(
-    type='MultimodalEncoderDecoder',
+    type=MultimodalEncoderDecoder,
     pretrained='pretrain/jx_vit_base_p16_224-80ecf9dd.pth',
     encoder_resolution=0.7,
     image_encoder=dict(
-        type='VisionTransformer',
+        type=VisionTransformer,
         img_size=(336, 336),
         patch_size=14,
         patch_pad=0,
@@ -19,14 +22,14 @@ model.merge(dict(
         out_indices=(5, 11, 17),
     ),
     text_encoder=dict(
-        type='CLIPTextEncoder',
+        type=CLIPTextEncoder,
         embed_dims=768,
         num_layers=12,
         num_heads=12,
         output_dims=768,
     ),
     decode_head=dict(
-        type='SideAdapterCLIPHead',
+        type=SideAdapterCLIPHead,
         san_cfg=dict(clip_channels=1024, cfg_decoder=dict(num_heads=16)),
         maskgen_cfg=dict(
             num_layers=6,

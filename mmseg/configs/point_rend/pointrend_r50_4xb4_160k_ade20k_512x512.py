@@ -6,14 +6,20 @@ with read_base():
     from .._base_.datasets.ade20k import *  # noqa: F401,F403
     from .._base_.default_runtime import *  # noqa: F401,F403
     from .._base_.schedules.schedule_160k import *  # noqa: F401,F403
+
+from mmengine.optim import LinearLR, PolyLR
+from mmengine.utils.dl_utils.parrots_wrapper import SyncBatchNorm
+
+from mmseg.models import CrossEntropyLoss, FPNHead, PointHead
+
 crop_size = (512, 512)
 data_preprocessor.merge(dict(size=crop_size))
-norm_cfg.merge(dict(type='SyncBN', requires_grad=True))
+norm_cfg.merge(dict(type=SyncBatchNorm, requires_grad=True))
 model.merge(dict(
     data_preprocessor=data_preprocessor,
     decode_head=[
         dict(
-            type='FPNHead',
+            type=FPNHead,
             in_channels=[256, 256, 256, 256],
             in_index=[0, 1, 2, 3],
             feature_strides=[4, 8, 16, 32],
@@ -23,9 +29,9 @@ model.merge(dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0)),
         dict(
-            type='PointHead',
+            type=PointHead,
             in_channels=[256],
             in_index=[0],
             channels=256,
@@ -35,12 +41,12 @@ model.merge(dict(
             num_classes=150,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0))
+                type=CrossEntropyLoss, use_sigmoid=False, loss_weight=1.0))
     ]))
 param_scheduler = [
-    dict(type='LinearLR', by_epoch=False, start_factor=0.1, begin=0, end=200),
+    dict(type=LinearLR, by_epoch=False, start_factor=0.1, begin=0, end=200),
     dict(
-        type='PolyLR',
+        type=PolyLR,
         eta_min=1e-4,
         power=0.9,
         begin=200,
