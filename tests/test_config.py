@@ -130,12 +130,10 @@ def test_config_data_pipeline():
 
 
 def _check_concat_cd_input(config_mod: Config, results: dict):
-    keys = []
     pipeline = config_mod.train_pipeline.copy()
     pipeline.extend(config_mod.test_pipeline)
-    for t in pipeline:
-        keys.append(t.type)
-    if 'ConcatCDInput' in keys:
+    # type 可能写成类，统一用 cfg_type_matches 判断
+    if any(cfg_type_matches(t.type, 'ConcatCDInput') for t in pipeline):
         results.update({'img2': results['img']})
 
 
