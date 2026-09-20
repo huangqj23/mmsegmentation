@@ -27,6 +27,8 @@ class RSImage:
     """
 
     def __init__(self, image):
+        if gdal is None:
+            raise RuntimeError('gdal is not installed')
         self.dataset = gdal.Open(image, gdal.GA_ReadOnly) if isinstance(
             image, str) else image
         assert isinstance(self.dataset, gdal.Dataset), \

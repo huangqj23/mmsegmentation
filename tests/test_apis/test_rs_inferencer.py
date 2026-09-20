@@ -3,10 +3,14 @@ import os.path as osp
 from unittest import TestCase
 
 import numpy as np
+import pytest
 from mmengine import ConfigDict, init_default_scope
 from utils import *  # noqa: F401, F403
 
 from mmseg.apis import RSImage, RSInferencer
+
+# 遥感大图推理依赖 GDAL 的 Python 绑定（osgeo），未装时整个模块跳过
+pytest.importorskip('osgeo')
 from mmseg.registry import MODELS
 
 
