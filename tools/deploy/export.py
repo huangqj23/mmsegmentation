@@ -233,11 +233,15 @@ def load_images(paths, num, shape, norm, normalize_in_graph):
                                    recursive=True)
         else:
             files.append(p)
-    files = sorted(set(files))[:num]
     H, W = shape
-    batch = []
-    for f in files:
+    batch, used = [], []
+    for f in sorted(set(files)):
+        if len(used) == num:
+            break
         img = cv2.imread(f, cv2.IMREAD_COLOR)  # BGR, like mmseg's loader
+        if img is None:  # not an image cv2 can read
+            continue
+        used.append(f)
         img = cv2.resize(img, (W, H), interpolation=cv2.INTER_LINEAR)
         x = img.astype(np.float32)
         if not normalize_in_graph:
@@ -246,7 +250,7 @@ def load_images(paths, num, shape, norm, normalize_in_graph):
                 x = x[..., ::-1]
             x = (x - np.array(mean, np.float32)) / np.array(std, np.float32)
         batch.append(np.ascontiguousarray(x.transpose(2, 0, 1)[None]))
-    return files, batch
+    return used, batch
 
 
 def run_onnxruntime(path, inputs):
